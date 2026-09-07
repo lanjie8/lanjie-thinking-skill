@@ -2,42 +2,76 @@ name: LBX Nationwide Store Crawl
 
 on:
   push:
-    branches:
-      - tmp/lbx-poi-crawl-20260907
+    branches: [tmp/lbx-poi-crawl-20260907]
     paths:
-      - scripts/lbx_nationwide_crawl.py
+      - scripts/lbx_nationwide_crawler.py
       - .github/workflows/lbx-nationwide-crawl.yml
 
 permissions:
   contents: read
 
+env:
+  PYTHONUNBUFFERED: '1'
+  LBX_THREADS: '8'
+
 jobs:
   crawl:
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        group:
+          - south_central
+          - east_coast
+          - north_central
+          - southwest_south
+          - northwest
+          - north_northeast
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
           ref: tmp/lbx-poi-crawl-20260907
-          fetch-depth: 1
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Install dependencies
-        run: python -m pip install --upgrade pip requests
-      - name: Crawl public LBX store endpoint nationwide
-        env:
-          LBX_WORKERS: '12'
-          LBX_GRID_STEP: '1.0'
-          LBX_MAX_QUERIES: '32000'
-          LBX_TIMEOUT: '12'
-          LBX_RETRIES: '3'
-        run: python scripts/lbx_nationwide_crawl.py
-      - name: Upload crawl output
+      - name: Install crawler dependencies
+        run: python -m pip install --disable-pip-version-check requests shapely
+      - name: Crawl ${{ matrix.group }}
+        run: python scripts/lbx_nationwide_crawler.py --group "${{ matrix.group }}" --output "crawl_part/${{ matrix.group }}"
+      - uses: actions/upload-artifact@v4
         if: always()
-        uses: actions/upload-artifact@v4
         with:
-          name: lbx-nationwide-crawl-output
-          path: nationwide_crawl_output
+          name: lbx-crawl-part-${{ matrix.group }}
+          path: crawl_part/${{ matrix.group }}
+          retention-days: 1
           if-no-files-found: error
-          retention-days: 3
+
+  merge:
+    needs: crawl
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install merge dependencies
+        run: python -m pip install --disable-pip-version-check requests shapely
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: lbx-crawl-part-*
+          path: crawl_parts
+          merge-multiple: true
+      - name: Merge and deduplicate national results
+        run: python scripts/lbx_nationwide_crawler.py --merge crawl_parts --output lbx_nationwide_crawl_output
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-nationwide-store-data
+          path: lbx_nationwide_crawl_output
+          retention-days: 1
+          if-no-files-found: error
