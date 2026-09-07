@@ -1,0 +1,32 @@
+name: LBX Export Fast Output
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - .github/workflows/lbx-export-fast-output.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout temporary branch
+        uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - name: Upload discovered public attachments and reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-fast-output-bundle
+          path: |
+            fast_output/candidate_attachments/**
+            fast_output/bidding_candidates.json
+            fast_output/bidding_attachments.json
+            fast_output/fast_summary.json
+            fast_output/web_app_discovery.json
+          if-no-files-found: error
+          retention-days: 1
