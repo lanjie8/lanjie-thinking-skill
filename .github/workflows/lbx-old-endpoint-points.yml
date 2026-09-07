@@ -3,7 +3,8 @@ on:
   push:
     branches: [tmp/lbx-poi-crawl-20260907]
     paths: [scripts/lbx_old_endpoint_points.py, .github/workflows/lbx-old-endpoint-points.yml]
-permissions: {contents: write}
+  workflow_dispatch:
+permissions: {contents: read}
 jobs:
   probe:
     runs-on: ubuntu-latest
@@ -15,10 +16,10 @@ jobs:
         with: {python-version: '3.12'}
       - run: python -m pip install --disable-pip-version-check requests
       - run: python scripts/lbx_old_endpoint_points.py
-      - run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add old_endpoint_points_output
-          git commit -m "Add LBX old endpoint point results [skip ci]" || exit 0
-          git pull --rebase origin tmp/lbx-poi-crawl-20260907
-          git push origin HEAD:tmp/lbx-poi-crawl-20260907
+      - name: Upload raw store points
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-old-endpoint-points
+          path: old_endpoint_points_output/
+          retention-days: 1
+          if-no-files-found: error
