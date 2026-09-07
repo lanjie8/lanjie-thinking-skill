@@ -1,0 +1,37 @@
+name: LBX National Store Crawl
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_store_national_crawl.py
+      - .github/workflows/lbx-store-national-crawl.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Crawl nationwide LBX stores
+        run: python scripts/lbx_store_national_crawl.py
+      - name: Upload crawl output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-store-national-crawl
+          path: national_crawl_output/
+          if-no-files-found: warn
+          retention-days: 7
