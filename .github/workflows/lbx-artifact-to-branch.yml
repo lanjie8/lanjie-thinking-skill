@@ -1,0 +1,70 @@
+name: LBX Crawl Artifact to Branch
+
+on:
+  push:
+    branches: ["tmp/lbx-poi-crawl-20260907"]
+    paths:
+      - ".github/workflows/lbx-artifact-to-branch.yml"
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  save-output:
+    runs-on: ubuntu-latest
+    timeout-minutes: 100
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RUN_ID: "34109024985"
+      TARGET_BRANCH: "tmp/lbx-poi-crawl-20260907"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+          fetch-depth: 0
+      - name: Wait for crawl and download artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          for _ in $(seq 1 500); do
+            status=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}" --jq .status)
+            echo "crawl status: ${status}"
+            if [ "${status}" = "completed" ]; then
+              break
+            fi
+            sleep 10
+          done
+          status=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}" --jq .status)
+          if [ "${status}" != "completed" ]; then
+            echo "crawl did not complete before timeout" >&2
+            exit 1
+          fi
+          mkdir -p /tmp/lbx-download lbx_crawl_delivery
+          gh run download "${RUN_ID}" --repo "${GITHUB_REPOSITORY}" --name lbx-nationwide-store-crawl --dir /tmp/lbx-download
+          cp -R /tmp/lbx-download/. lbx_crawl_delivery/
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          src = Path('lbx_crawl_delivery')
+          out = Path('lbx_crawl_delivery.zip')
+          with zipfile.ZipFile(out, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
+              for path in sorted(src.rglob('*')):
+                  if path.is_file():
+                      z.write(path, path.relative_to(src))
+          print(out, out.stat().st_size)
+          PY
+      - name: Commit crawl delivery bundle
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add lbx_crawl_delivery lbx_crawl_delivery.zip
+          if git diff --cached --quiet; then
+            echo "No output changes"
+            exit 0
+          fi
+          git commit -m "Add LBX nationwide crawl output"
+          git pull --rebase origin "${TARGET_BRANCH}"
+          git push origin "HEAD:${TARGET_BRANCH}"
