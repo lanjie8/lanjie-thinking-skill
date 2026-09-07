@@ -1,0 +1,45 @@
+name: LBX Full Store Crawl
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_full_store_crawl.py
+      - .github/workflows/lbx-full-store-crawl.yml
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      LBX_CONCURRENCY: "18"
+      LBX_MAX_REQUESTS: "55000"
+      LBX_REQUEST_TIMEOUT: "22"
+      LBX_MAX_RETRIES: "3"
+      LBX_POLITE_DELAY: "0.035"
+      LBX_GRID_X_KM: "31"
+      LBX_GRID_Y_KM: "26.8"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check -q aiohttp shapely requests
+      - name: Crawl public LBX store endpoint
+        run: python scripts/lbx_full_store_crawl.py
+      - name: Upload crawl output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-store-crawl-output
+          path: lbx_crawl_output
+          if-no-files-found: warn
+          retention-days: 1
+          compression-level: 6
