@@ -1,0 +1,40 @@
+name: LBX Final Public Store Crawl
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-final-run-20260907
+    paths:
+      - .github/workflows/lbx-final-crawl.yml
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      PYTHONUNBUFFERED: "1"
+      LBX_WORKERS: "24"
+      LBX_BATCH_SIZE: "800"
+      LBX_MAX_REQUESTS: "42000"
+      LBX_MAX_SECONDS: "2700"
+      LBX_SEED_STEP: "0.5"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check -q requests
+      - name: Crawl LBX public nearby-store endpoint
+        run: python scripts/lbx_fast_bfs_crawl.py
+      - name: Upload crawl output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-final-public-store-output
+          path: lbx_fast_bfs_output/**
+          if-no-files-found: error
+          retention-days: 3
