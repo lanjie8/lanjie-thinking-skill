@@ -1,0 +1,24 @@
+name: LBX Baidu Quick Probe
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_baidu_quick.py
+      - .github/workflows/lbx-baidu-quick.yml
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - run: python3 scripts/lbx_baidu_quick.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add baidu_quick_output
+          git commit -m "Add quick Baidu POI probe results [skip ci]" || exit 0
+          git push origin HEAD:tmp/lbx-poi-crawl-20260907
