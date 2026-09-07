@@ -13,14 +13,14 @@ permissions:
 jobs:
   crawl:
     runs-on: ubuntu-latest
-    timeout-minutes: 16
+    timeout-minutes: 18
     env:
       PYTHONUNBUFFERED: '1'
-      LBX_WORKERS: '32'
-      LBX_RPS: '28'
+      LBX_WORKERS: '128'
+      LBX_RPS: '80'
       LBX_MAX_RUNTIME: '780'
-      LBX_BATCH_SIZE: '1000'
-      LBX_TARGET_FLOOR: '14500'
+      LBX_BATCH_SIZE: '2000'
+      LBX_TARGET_FLOOR: '15100'
     steps:
       - uses: actions/checkout@v4
         with:
@@ -35,7 +35,7 @@ jobs:
         if: always()
         run: |
           find lbx_national_output -maxdepth 1 -type f -printf '%f %s bytes\n' | sort || true
-          cat lbx_national_output/crawl_summary.json || true
+          cat lbx_national_output/crawl_stats.json || true
       - name: Upload output
         if: always()
         uses: actions/upload-artifact@v4
