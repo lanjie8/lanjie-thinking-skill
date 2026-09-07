@@ -1,0 +1,28 @@
+name: LBX Official Superfast Coverage
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_official_superfast.py
+      - .github/workflows/lbx-official-superfast.yml
+permissions:
+  contents: read
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/lbx_official_superfast.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-official-superfast-coverage
+          path: lbx_official_superfast_output/**
+          if-no-files-found: error
+          retention-days: 1
