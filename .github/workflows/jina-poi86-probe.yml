@@ -1,0 +1,27 @@
+name: Jina POI86 Probe
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/jina_poi86_probe.py
+      - .github/workflows/jina-poi86-probe.yml
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/jina_poi86_probe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: jina-poi86-probe
+          path: jina_poi86_probe_output
+          retention-days: 1
