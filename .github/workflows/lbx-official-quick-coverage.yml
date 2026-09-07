@@ -1,0 +1,41 @@
+name: LBX Official Quick Coverage
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_official_quick_coverage.py
+      - .github/workflows/lbx-official-quick-coverage.yml
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install requests
+      - name: Run fast official coverage crawl
+        run: python3 scripts/lbx_official_quick_coverage.py
+      - name: Validate output
+        run: |
+          python3 - <<'PY'
+          import json
+          s=json.load(open('lbx_official_quick_output/summary.json',encoding='utf-8'))
+          print(s)
+          assert s['unique_store_count'] > 0
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-official-quick-coverage
+          path: lbx_official_quick_output/**
+          if-no-files-found: error
+          retention-days: 1
