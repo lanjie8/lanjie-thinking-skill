@@ -48,3 +48,5 @@ jobs:
           if-no-files-found: error
           retention-days: 7
           compression-level: 6
+
+# Triggered for final nationwide collection on 2026-09-07.
