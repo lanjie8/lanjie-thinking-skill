@@ -1,0 +1,37 @@
+name: LBX Store Endpoint Probe
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_store_probe.py
+      - .github/workflows/lbx-store-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Probe LBX store endpoint
+        run: python scripts/lbx_store_probe.py
+      - name: Upload probe output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-store-endpoint-probe
+          path: store_probe_output/
+          if-no-files-found: warn
+          retention-days: 7
