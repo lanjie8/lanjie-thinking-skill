@@ -1,0 +1,35 @@
+name: LBX Affiliated Sub-brand POI Crawl
+
+on:
+  push:
+    branches: ["tmp/lbx-poi-crawl-20260907"]
+    paths:
+      - "scripts/lbx_subbrand_baidu_crawl.py"
+      - ".github/workflows/lbx-subbrand-crawl.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Crawl affiliated regional pharmacy banners
+        run: python scripts/lbx_subbrand_baidu_crawl.py
+      - name: Upload sub-brand POI output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-affiliated-subbrand-poi
+          path: lbx_subbrand_output/
+          retention-days: 3
+          if-no-files-found: error
