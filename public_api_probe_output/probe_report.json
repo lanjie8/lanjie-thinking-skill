@@ -1,0 +1,388 @@
+[
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "no_params",
+    "params": {},
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "elapsed": 2.011,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "changsha_center",
+    "params": {
+      "Latitude": 28.2282,
+      "Longitude": 112.9388
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=28.2282&Longitude=112.9388",
+    "elapsed": 0.419,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "changsha_north",
+    "params": {
+      "Latitude": 28.35,
+      "Longitude": 112.98
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=28.35&Longitude=112.98",
+    "elapsed": 0.323,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "changsha_west",
+    "params": {
+      "Latitude": 28.23,
+      "Longitude": 112.8
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=28.23&Longitude=112.8",
+    "elapsed": 0.343,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "beijing",
+    "params": {
+      "Latitude": 39.9042,
+      "Longitude": 116.4074
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=39.9042&Longitude=116.4074",
+    "elapsed": 0.304,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "shanghai",
+    "params": {
+      "Latitude": 31.2304,
+      "Longitude": 121.4737
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=31.2304&Longitude=121.4737",
+    "elapsed": 0.338,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "xian",
+    "params": {
+      "Latitude": 34.3416,
+      "Longitude": 108.9398
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=34.3416&Longitude=108.9398",
+    "elapsed": 0.398,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "guangzhou",
+    "params": {
+      "Latitude": 23.1291,
+      "Longitude": 113.2644
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=23.1291&Longitude=113.2644",
+    "elapsed": 0.358,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "hangzhou",
+    "params": {
+      "Latitude": 30.2741,
+      "Longitude": 120.1551
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=30.2741&Longitude=120.1551",
+    "elapsed": 0.342,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "wuhan",
+    "params": {
+      "Latitude": 30.5928,
+      "Longitude": 114.3055
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=30.5928&Longitude=114.3055",
+    "elapsed": 0.339,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "zhengzhou",
+    "params": {
+      "Latitude": 34.7466,
+      "Longitude": 113.6254
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=34.7466&Longitude=113.6254",
+    "elapsed": 0.32,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "chengdu",
+    "params": {
+      "Latitude": 30.5728,
+      "Longitude": 104.0668
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=30.5728&Longitude=104.0668",
+    "elapsed": 0.342,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "harbin",
+    "params": {
+      "Latitude": 45.8038,
+      "Longitude": 126.535
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=45.8038&Longitude=126.535",
+    "elapsed": 0.339,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2026api/getlbxStoreList",
+    "label": "urumqi",
+    "params": {
+      "Latitude": 43.8256,
+      "Longitude": 87.6168
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2026api/getlbxStoreList?Latitude=43.8256&Longitude=87.6168",
+    "elapsed": 0.342,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "no_params",
+    "params": {},
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "elapsed": 0.323,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "changsha_center",
+    "params": {
+      "Latitude": 28.2282,
+      "Longitude": 112.9388
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=28.2282&Longitude=112.9388",
+    "elapsed": 0.341,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "changsha_north",
+    "params": {
+      "Latitude": 28.35,
+      "Longitude": 112.98
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=28.35&Longitude=112.98",
+    "elapsed": 0.321,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "changsha_west",
+    "params": {
+      "Latitude": 28.23,
+      "Longitude": 112.8
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=28.23&Longitude=112.8",
+    "elapsed": 0.357,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "beijing",
+    "params": {
+      "Latitude": 39.9042,
+      "Longitude": 116.4074
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=39.9042&Longitude=116.4074",
+    "elapsed": 0.324,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "shanghai",
+    "params": {
+      "Latitude": 31.2304,
+      "Longitude": 121.4737
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=31.2304&Longitude=121.4737",
+    "elapsed": 0.345,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "xian",
+    "params": {
+      "Latitude": 34.3416,
+      "Longitude": 108.9398
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=34.3416&Longitude=108.9398",
+    "elapsed": 0.324,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "guangzhou",
+    "params": {
+      "Latitude": 23.1291,
+      "Longitude": 113.2644
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=23.1291&Longitude=113.2644",
+    "elapsed": 0.306,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "hangzhou",
+    "params": {
+      "Latitude": 30.2741,
+      "Longitude": 120.1551
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=30.2741&Longitude=120.1551",
+    "elapsed": 0.304,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "wuhan",
+    "params": {
+      "Latitude": 30.5928,
+      "Longitude": 114.3055
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=30.5928&Longitude=114.3055",
+    "elapsed": 0.34,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "zhengzhou",
+    "params": {
+      "Latitude": 34.7466,
+      "Longitude": 113.6254
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=34.7466&Longitude=113.6254",
+    "elapsed": 0.321,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "chengdu",
+    "params": {
+      "Latitude": 30.5728,
+      "Longitude": 104.0668
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=30.5728&Longitude=104.0668",
+    "elapsed": 0.343,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "harbin",
+    "params": {
+      "Latitude": 45.8038,
+      "Longitude": 126.535
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=45.8038&Longitude=126.535",
+    "elapsed": 0.324,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  },
+  {
+    "endpoint": "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
+    "label": "urumqi",
+    "params": {
+      "Latitude": 43.8256,
+      "Longitude": 87.6168
+    },
+    "status": 404,
+    "final_url": "https://muyang.hn.cn/out/2212sping/getlbxStoreList?Latitude=43.8256&Longitude=87.6168",
+    "elapsed": 0.303,
+    "content_type": "text/plain; charset=utf-8",
+    "text_preview": "Not Found",
+    "json_error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+  }
+]
