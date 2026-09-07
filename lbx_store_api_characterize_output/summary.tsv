@@ -1,0 +1,59 @@
+name	status	store_count	max_distance	cities	store_ids	url	error
+old_长沙	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882	
+old_株洲	200	10	1.5	["株洲市"]	["7185", "2223", "6274", "7211", "6273", "7114", "16830", "7398", "6280", "6871"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=27.827433&Longitude=113.134002	
+old_岳阳	200	7	2.9	["岳阳市"]	["286", "5965", "461", "1661", "774", "7703", "229"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=29.357104&Longitude=113.129191	
+old_北京	200	1	18.1	[""]	["20201"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=39.904179&Longitude=116.407387	
+old_上海	200	10	3.2	["上海市"]	["489", "5142", "645", "449", "827", "346", "12347", "16555", "3562", "18564"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=31.230525&Longitude=121.473667	
+old_天津	200	6	1.6	["天津市"]	["6551", "15933", "5560", "4047", "15573", "14304"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=39.085318&Longitude=117.201509	
+old_南京	200	10	3.1	["", "南京市"]	["15072", "12931", "6417", "6992", "4169", "1726", "376", "20360", "13352", "6435"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=32.059344&Longitude=118.796624	
+old_苏州	200	10	15.5	["", "苏州市"]	["19811", "19833", "19878", "4899", "5086", "4898", "4900", "5368", "5365", "5383"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=31.299758&Longitude=120.585294	
+old_杭州	200	10	3.9	["杭州市"]	["285", "1935", "1257", "1332", "1516", "514", "289", "1434", "3493", "231"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=30.246026&Longitude=120.210792	
+old_宁波	200	10	2.7	["宁波", "宁波市", "杭州市"]	["7349", "2509", "290", "4793", "2024", "596", "241", "1152", "1649", "3633"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=29.868336&Longitude=121.54399	
+old_合肥	200	10	1.9	["合肥市", "蜀山区"]	["5675", "6821", "682", "3494", "6214", "7584", "6204", "18383", "4005", "6514"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=31.820567&Longitude=117.227267	
+old_武汉	200	10	2.1	["武汉市", "湖北"]	["6901", "3519", "7619", "997", "6669", "5704", "6558", "2438", "2042", "2044"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=30.593354&Longitude=114.304569	
+old_郑州	200	10	2.0	["", "郑州市"]	["3503", "19586", "5074", "395", "2144", "6953", "19555", "6156", "759", "2140"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=34.746303&Longitude=113.625351	
+old_济南	200	10	6.0	["济南市"]	["1399", "14968", "1207", "16011", "6166", "3776", "1402", "2117", "7626", "6965"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=36.651216&Longitude=117.120098	
+old_青岛	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=36.066938&Longitude=120.382665	
+old_西安	200	10	1.7	["", "西安市"]	["17055", "17142", "8845", "19774", "3532", "3570", "5819", "14795", "8773", "16778"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=34.343207&Longitude=108.939645	
+old_兰州	200	10	0.8	["", "兰州市", "甘肃省"]	["2328", "2344", "4985", "4312", "20057", "6377", "20060", "2356", "4228", "19063"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=36.061089&Longitude=103.834303	
+old_银川	200	10	4.1	["银川市"]	["6621", "10164", "17611", "6649", "6620", "6632", "6616", "6658", "6617", "6633"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=38.487194&Longitude=106.230909	
+old_呼和浩特	200	3	17.5	["呼和浩特市"]	["15536", "15526", "15525"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=40.842585&Longitude=111.74918	
+old_太原	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=37.87059&Longitude=112.548879	
+old_贵阳	200	4	15.9	[""]	["19956", "19859", "20076", "19926"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=26.647661&Longitude=106.630153	
+old_南宁	200	10	1.2	["", "南宁市"]	["19390", "2471", "3775", "203", "2534", "13418", "7064", "393", "2130", "7147"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=22.817002&Longitude=108.366543	
+old_广州	200	10	2.6	["广州市"]	["66", "14189", "745", "67", "414", "2409", "415", "823", "1183", "17143"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=23.130061&Longitude=113.264499	
+old_深圳	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=22.543527&Longitude=114.057939	
+old_南昌	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.682892&Longitude=115.858198	
+old_沈阳	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=41.677576&Longitude=123.464675	
+old_白城	200	10	0.8	["白城市"]	["12483", "12384", "12478", "12472", "12385", "12492", "12465", "14643", "12467", "12481"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=45.619026&Longitude=122.838714	
+old_成都	200	1	11.3	["成都市"]	["5647"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=30.572961&Longitude=104.066301	
+old_重庆	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=29.56268&Longitude=106.551787	
+old_乌鲁木齐	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=43.825592&Longitude=87.616848	
+old_拉萨	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=29.652491&Longitude=91.17211	
+old_海口	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=20.04422&Longitude=110.19989	
+old_昆明	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=25.038859&Longitude=102.718277	
+old_三亚	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=18.252847&Longitude=109.511909	
+old_漠河	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=52.972272&Longitude=122.538592	
+old_东海	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=30.0&Longitude=130.0	
+variant_page1_size100	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&page=1&size=100	
+variant_page2_size100	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&page=2&size=100	
+variant_page1_pageSize100	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&page=1&pageSize=100	
+variant_radius1	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&radius=1	
+variant_radius10	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&radius=10	
+variant_radius100	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&radius=100	
+variant_radius1000	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&radius=1000	
+variant_size1	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&size=1	
+variant_size50	200	8	1.2	["长沙", "长沙市"]	["3540", "18126", "5657", "2542", "6147", "13745", "4783", "10767"]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304&Longitude=112.938882&size=50	
+variant_lower	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?latitude=28.228304&longitude=112.938882	
+variant_latlng	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?lat=28.228304&lng=112.938882	
+variant_missing_lat	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Longitude=112.938882	
+variant_missing_lng	200	0		[]	[]	https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.228304	
+new_wrapper_changsha	200	0		[]	[]	https://yx.lbxcn.com/out/2026api/getlbxStoreList?Latitude=28.228304&Longitude=112.938882	
+direct_msapitest.lbxcn.com_31443		0		[]	[]	https://msapitest.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore	ConnectTimeout(MaxRetryError("HTTPSConnectionPool(host='msapitest.lbxcn.com', port=31443): Max retries exceeded with url: /sems-store/nearby/store/pageNearbyStore (Caused by ConnectTimeoutError(<HTTPSConnection(host='msapitest.lbxcn.com', port=31443) at 0x7f9509c22390>, 'Connection to msapitest.lbxcn.com timed out. (connect timeout=40)'))"))
+direct_msapi.lbxcn.com_31443		0		[]	[]	https://msapi.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore	ConnectTimeout(MaxRetryError("HTTPSConnectionPool(host='msapi.lbxcn.com', port=31443): Max retries exceeded with url: /sems-store/nearby/store/pageNearbyStore (Caused by ConnectTimeoutError(<HTTPSConnection(host='msapi.lbxcn.com', port=31443) at 0x7f9509c22990>, 'Connection to msapi.lbxcn.com timed out. (connect timeout=40)'))"))
+direct_msapi.lbxcn.com		0		[]	[]	https://msapi.lbxcn.com/sems-store/nearby/store/pageNearbyStore	ConnectionError(ProtocolError('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')))
+direct_msapi-test.lbxcn.com_31443		0		[]	[]	https://msapi-test.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore	ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\'msapi-test.lbxcn.com\', port=31443): Max retries exceeded with url: /sems-store/nearby/store/pageNearbyStore (Caused by NameResolutionError("HTTPSConnection(host=\'msapi-test.lbxcn.com\', port=31443): Failed to resolve \'msapi-test.lbxcn.com\' ([Errno -2] Name or service not known)"))'))
+direct_msapi-prod.lbxcn.com_31443		0		[]	[]	https://msapi-prod.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore	ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\'msapi-prod.lbxcn.com\', port=31443): Max retries exceeded with url: /sems-store/nearby/store/pageNearbyStore (Caused by NameResolutionError("HTTPSConnection(host=\'msapi-prod.lbxcn.com\', port=31443): Failed to resolve \'msapi-prod.lbxcn.com\' ([Errno -2] Name or service not known)"))'))
+direct_msapiprod.lbxcn.com_31443		0		[]	[]	https://msapiprod.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore	ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\'msapiprod.lbxcn.com\', port=31443): Max retries exceeded with url: /sems-store/nearby/store/pageNearbyStore (Caused by NameResolutionError("HTTPSConnection(host=\'msapiprod.lbxcn.com\', port=31443): Failed to resolve \'msapiprod.lbxcn.com\' ([Errno -2] Name or service not known)"))'))
+direct_api.lbxcn.com		0		[]	[]	https://api.lbxcn.com/sems-store/nearby/store/pageNearbyStore	ConnectTimeout(MaxRetryError("HTTPSConnectionPool(host='api.lbxcn.com', port=443): Max retries exceeded with url: /sems-store/nearby/store/pageNearbyStore (Caused by ConnectTimeoutError(<HTTPSConnection(host='api.lbxcn.com', port=443) at 0x7f9509c23bc0>, 'Connection to api.lbxcn.com timed out. (connect timeout=40)'))"))
+direct_gateway.lbxcn.com		0		[]	[]	https://gateway.lbxcn.com/sems-store/nearby/store/pageNearbyStore	ConnectionError(MaxRetryError('HTTPSConnectionPool(host=\'gateway.lbxcn.com\', port=443): Max retries exceeded with url: /sems-store/nearby/store/pageNearbyStore (Caused by NameResolutionError("HTTPSConnection(host=\'gateway.lbxcn.com\', port=443): Failed to resolve \'gateway.lbxcn.com\' ([Errno -2] Name or service not known)"))'))
