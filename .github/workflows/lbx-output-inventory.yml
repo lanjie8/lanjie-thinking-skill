@@ -1,0 +1,37 @@
+name: LBX Historical Output Inventory
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-final-run-20260907
+    paths:
+      - .github/workflows/lbx-output-inventory.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect historical LBX output files
+        run: |
+          mkdir -p inventory_bundle
+          find . -maxdepth 3 -type f \
+            \( -path '*output*/*.csv' -o -path '*output*/*.json' -o -path '*output*/*.tsv' -o -path '*output*/*.txt' \) \
+            -print | sort > inventory_bundle/file_list.txt
+          while IFS= read -r f; do
+            rel="${f#./}"
+            mkdir -p "inventory_bundle/$(dirname "$rel")"
+            cp "$f" "inventory_bundle/$rel"
+          done < inventory_bundle/file_list.txt
+          du -ah inventory_bundle | sort -h | tail -100 > inventory_bundle/sizes.txt
+          cat inventory_bundle/file_list.txt
+      - name: Upload inventory
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-historical-output-inventory
+          path: inventory_bundle/**
+          retention-days: 2
