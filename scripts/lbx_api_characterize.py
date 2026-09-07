@@ -109,3 +109,5 @@ def main():
     (OUT/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 
 if __name__=='__main__': main()
+
+# Triggered again on 2026-09-07 for nationwide-crawl preparation.
