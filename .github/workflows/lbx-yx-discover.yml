@@ -1,0 +1,28 @@
+name: LBX YX Store API Discovery
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_yx_discover.py
+      - .github/workflows/lbx-yx-discover.yml
+permissions:
+  contents: write
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/lbx_yx_discover.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add yx_discovery_output
+          git commit -m "Add LBX YX store API discovery output [skip ci]" || exit 0
+          git push origin HEAD:tmp/lbx-poi-crawl-20260907
