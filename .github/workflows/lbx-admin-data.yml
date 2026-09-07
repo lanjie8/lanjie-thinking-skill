@@ -1,0 +1,42 @@
+name: LBX Admin Reference Data
+
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - .github/workflows/lbx-admin-data.yml
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download administrative centers
+        run: |
+          mkdir -p admin_reference
+          curl -fsSL --retry 3 \
+            https://raw.githubusercontent.com/simonkuang/cn-pcas-geo/main/xzqh_with_amap_coordinates.json \
+            -o admin_reference/xzqh_with_amap_coordinates.json
+      - name: Create flat reference
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          tree=json.loads(Path('admin_reference/xzqh_with_amap_coordinates.json').read_text())
+          rows=[]
+          def walk(n,province='',prefecture=''):
+              level=n.get('level',''); name=n.get('name','')
+              if level=='province': province=name
+              elif level in ('city','prefecture'): prefecture=name
+              c=n.get('center') or {}
+              rows.append({'code':n.get('code',''),'name':name,'level':level,'province':province,'prefecture':prefecture,'longitude':c.get('longitude'),'latitude':c.get('latitude')})
+              for x in n.get('children') or []: walk(x,province,prefecture)
+          for x in tree: walk(x)
+          Path('admin_reference/admin_flat.json').write_text(json.dumps(rows,ensure_ascii=False),encoding='utf-8')
+          print('rows',len(rows))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-admin-reference
+          path: admin_reference/
+          retention-days: 2
