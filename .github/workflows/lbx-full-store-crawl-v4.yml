@@ -1,0 +1,37 @@
+name: LBX Full Store Crawl V4
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - .github/workflows/lbx-full-store-crawl-v4.yml
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      LBX_WORKERS: "32"
+      LBX_MAX_REQUESTS: "18000"
+      LBX_TIMEOUT: "12"
+    steps:
+      - name: Checkout temporary branch
+        uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - name: Install crawler dependency
+        run: python3 -m pip install --disable-pip-version-check requests
+      - name: Crawl public LBX store endpoint
+        run: python3 scripts/lbx_full_store_crawl_v3.py
+      - name: Upload crawl output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-full-store-output-v4
+          path: full_store_output_v3/**
+          if-no-files-found: warn
+          retention-days: 1
