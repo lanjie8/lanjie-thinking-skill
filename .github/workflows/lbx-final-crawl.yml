@@ -1,0 +1,53 @@
+name: LBX Final Nationwide Crawl
+
+on:
+  push:
+    branches:
+      - tmp/lbx-final-crawl-20260907-a7f3
+    paths:
+      - .github/workflows/lbx-final-crawl.yml
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      LBX_OUTPUT_DIR: lbx_final_output
+      LBX_WORKERS: '14'
+      LBX_MAX_QUERIES: '48000'
+      LBX_MAINLAND_STEP: '1.0'
+      LBX_CHECKPOINT_EVERY: '3000'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-final-crawl-20260907-a7f3
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install crawler dependency
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Crawl public LBX store locator
+        id: crawl
+        continue-on-error: true
+        run: python scripts/lbx_final_crawl.py
+      - name: Print crawl summary
+        if: always()
+        run: |
+          if [ -f lbx_final_output/lbx_summary.json ]; then
+            cat lbx_final_output/lbx_summary.json
+          else
+            echo 'No summary file was generated.'
+          fi
+      - name: Upload crawl outputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-final-crawl-output
+          path: lbx_final_output
+          if-no-files-found: warn
+          retention-days: 3
+          compression-level: 6
