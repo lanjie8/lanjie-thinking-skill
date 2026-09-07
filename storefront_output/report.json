@@ -1,0 +1,87 @@
+{
+  "static": {
+    "pages": [
+      {
+        "url": "https://h5.mall.lbxcn.com/",
+        "error": "SSLError(MaxRetryError(\"HTTPSConnectionPool(host='h5.mall.lbxcn.com', port=443): Max retries exceeded with url: / (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate (_ssl.c:1010)')))\"))",
+        "length": 0
+      },
+      {
+        "url": "https://mall.lbxcn.com/",
+        "status": 404,
+        "final_url": "https://mall.lbxcn.com/",
+        "content_type": "application/json",
+        "length": 110
+      },
+      {
+        "url": "https://mall.lbxcn.com/mall/",
+        "status": 404,
+        "final_url": "https://mall.lbxcn.com/mall/",
+        "content_type": "text/html;charset=UTF-8",
+        "length": 295
+      }
+    ],
+    "scripts": {},
+    "hits": []
+  },
+  "browser": [
+    {
+      "url": "https://h5.mall.lbxcn.com/",
+      "error": "Error('Page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://h5.mall.lbxcn.com/\\nCall log:\\n  - navigating to \"https://h5.mall.lbxcn.com/\", waiting until \"domcontentloaded\"\\n')",
+      "final_url": "about:blank",
+      "requests": [
+        {
+          "method": "GET",
+          "url": "https://h5.mall.lbxcn.com/",
+          "resource_type": "document",
+          "post_data": null
+        }
+      ],
+      "responses": []
+    },
+    {
+      "url": "https://mall.lbxcn.com/",
+      "status": 404,
+      "final_url": "https://mall.lbxcn.com/",
+      "title": "",
+      "html_length": 273,
+      "requests": [
+        {
+          "method": "GET",
+          "url": "https://mall.lbxcn.com/",
+          "resource_type": "document",
+          "post_data": null
+        }
+      ],
+      "responses": [
+        {
+          "status": 404,
+          "url": "https://mall.lbxcn.com/"
+        }
+      ],
+      "keyword_requests": []
+    },
+    {
+      "url": "https://mall.lbxcn.com/mall/",
+      "status": 404,
+      "final_url": "https://mall.lbxcn.com/mall/",
+      "title": "",
+      "html_length": 308,
+      "requests": [
+        {
+          "method": "GET",
+          "url": "https://mall.lbxcn.com/mall/",
+          "resource_type": "document",
+          "post_data": null
+        }
+      ],
+      "responses": [
+        {
+          "status": 404,
+          "url": "https://mall.lbxcn.com/mall/"
+        }
+      ],
+      "keyword_requests": []
+    }
+  ]
+}
