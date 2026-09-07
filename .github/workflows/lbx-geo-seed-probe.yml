@@ -1,0 +1,40 @@
+name: LBX Geo Seed Probe
+
+on:
+  push:
+    branches: ["tmp/lbx-poi-crawl-20260907"]
+    paths:
+      - ".github/workflows/lbx-geo-seed-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check -q requests shapely
+      - name: Test public administrative GeoJSON
+        run: |
+          python - <<'PY'
+          import requests
+          from shapely.geometry import shape
+          from shapely.ops import unary_union
+          urls = [
+              "https://geo.datav.aliyun.com/areas_v3/bound/430000_full.json",
+              "https://geo.datav.aliyun.com/areas_v3/bound/430100_full.json",
+          ]
+          for url in urls:
+              r = requests.get(url, timeout=30, headers={"User-Agent":"Mozilla/5.0","Referer":"https://datav.aliyun.com/"})
+              print(url, r.status_code, len(r.content), r.headers.get("content-type"))
+              r.raise_for_status()
+              obj = r.json()
+              feats = obj.get("features", [])
+              print("features", len(feats), "first", feats[0].get("properties", {}) if feats else None)
+              geom = unary_union([shape(f["geometry"]) for f in feats if f.get("geometry")])
+              print("bounds", geom.bounds, "area", geom.area)
+          PY
