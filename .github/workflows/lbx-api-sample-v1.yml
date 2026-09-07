@@ -1,0 +1,42 @@
+name: LBX API Sample V1
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - .github/workflows/lbx-api-sample-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Changsha sample
+        run: |
+          mkdir -p api_sample_v1
+          curl --fail --silent --show-error --location \
+            --retry 2 --connect-timeout 10 --max-time 30 \
+            -H 'User-Agent: Mozilla/5.0' \
+            -H 'Referer: https://yx.lbxcn.com/h5/springgame/index.html?gameCode=spring_251230_6&source=4' \
+            'https://yx.lbxcn.com/out/2212sping/getlbxStoreList?Latitude=28.2282&Longitude=112.9388' \
+            -o api_sample_v1/changsha.json
+          python3 - <<'PY'
+          import json
+          p='api_sample_v1/changsha.json'
+          obj=json.load(open(p,encoding='utf-8'))
+          rows=(obj.get('data') or {}).get('data') if isinstance(obj,dict) else None
+          print('top keys=', list(obj) if isinstance(obj,dict) else type(obj).__name__)
+          print('rows=', len(rows) if isinstance(rows,list) else None)
+          if isinstance(rows,list) and rows:
+              print('row keys=', sorted(rows[0]))
+              print(json.dumps(rows[0],ensure_ascii=False))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-api-sample-v1
+          path: api_sample_v1/**
+          if-no-files-found: error
+          retention-days: 1
