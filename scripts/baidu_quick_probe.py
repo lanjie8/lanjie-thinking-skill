@@ -2,88 +2,149 @@
 from __future__ import annotations
 
 import json
+import re
 import time
 from pathlib import Path
-from urllib.parse import urlencode
+from urllib.parse import quote
 
 import requests
 
 OUT = Path("baidu_quick_output")
 OUT.mkdir(exist_ok=True)
 
-UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+UA = "Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36"
 S = requests.Session()
 S.headers.update({
     "User-Agent": UA,
-    "Accept": "application/json,text/plain,*/*",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
-    "Referer": "https://map.baidu.com/",
-    "X-Requested-With": "XMLHttpRequest",
+    "Referer": "https://map.baidu.com/mobile/webapp/index/index/",
 })
 
 
-def url(city: str, page: int, keyword: str, extra: dict[str, str] | None = None) -> str:
-    p = {
-        "newmap": "1", "reqflag": "pcmap", "biz": "1", "from": "webmap",
-        "da_par": "direct", "pcevaname": "pc4.1", "qt": "s",
-        "da_src": "searchBox.button", "wd": keyword, "c": city,
-        "src": "0", "pn": str(page), "nn": str(page * 10),
-        "sug": "0", "l": "12", "ie": "utf-8", "oue": "1",
-    }
-    if extra:
-        p.update(extra)
-    return "https://map.baidu.com/?" + urlencode(p)
+def mobile_search(city: str, keyword: str) -> str:
+    return f"https://map.baidu.com/mobile/webapp/search/search/qt=s&wd={quote(keyword)}&c={city}"
 
 
-def fetch(name: str, u: str) -> dict:
-    t = time.time()
+def mobile_list(city: str, keyword: str, page: int) -> str:
+    return (
+        "https://map.baidu.com/mobile/webapp/place/list/"
+        f"qt=s&wd={quote(keyword)}&c={city}&pn={page}&rn=10"
+        "&res_x=0.000000&res_y=0.000000/showall=1"
+    )
+
+
+def extract_widget(text: str) -> dict:
+    markers = [
+        'require("place:widget/mixlist/mixlist.js").createWidget(',
+        "require('place:widget/mixlist/mixlist.js').createWidget(",
+    ]
+    start = -1
+    marker = ""
+    for candidate in markers:
+        start = text.find(candidate)
+        if start >= 0:
+            marker = candidate
+            break
+    if start < 0:
+        # Fall back to locating the first object after createWidget.
+        m = re.search(r"createWidget\s*\(\s*", text)
+        if not m:
+            raise ValueError("mixlist widget JSON marker not found")
+        start = m.end()
+    else:
+        start += len(marker)
+    while start < len(text) and text[start].isspace():
+        start += 1
+    obj, _ = json.JSONDecoder().raw_decode(text[start:])
+    if not isinstance(obj, dict):
+        raise ValueError("widget payload is not an object")
+    return obj
+
+
+def fetch(name: str, url: str) -> dict:
+    started = time.time()
     try:
-        r = S.get(u, timeout=45, allow_redirects=True)
+        r = S.get(url, timeout=45, allow_redirects=True)
         text = r.text
-        (OUT / f"{name}.txt").write_text(text, encoding="utf-8")
-        parsed = None
-        try:
-            parsed = r.json()
-        except Exception:
-            pass
+        (OUT / f"{name}.html").write_text(text, encoding="utf-8")
         summary = {
-            "name": name, "url": u, "status": r.status_code,
-            "content_type": r.headers.get("content-type"), "length": len(r.content),
-            "elapsed": round(time.time()-t, 3), "preview": text[:1200],
+            "name": name,
+            "url": url,
+            "status": r.status_code,
+            "final_url": r.url,
+            "content_type": r.headers.get("content-type"),
+            "length": len(r.content),
+            "elapsed": round(time.time() - started, 3),
         }
-        if isinstance(parsed, dict):
-            summary["top_keys"] = sorted(parsed.keys())
-            result = parsed.get("result")
-            content = parsed.get("content")
-            summary["result"] = result
-            summary["content_count"] = len(content) if isinstance(content, list) else None
-            if isinstance(content, list):
-                summary["sample"] = content[:2]
+        try:
+            data = extract_widget(text)
+            (OUT / f"{name}.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+            result = data.get("result") or {}
+            content = data.get("content") or []
+            page_info = data.get("pageInfo") or {}
+            summary.update({
+                "parsed": True,
+                "total": result.get("total"),
+                "content_count": len(content) if isinstance(content, list) else None,
+                "page_num": page_info.get("pageNum"),
+                "is_first": page_info.get("isFirst"),
+                "is_last": page_info.get("isLast"),
+                "next_url": page_info.get("nextPageUrl"),
+                "current_city": data.get("current_city"),
+                "sample": [
+                    {
+                        "name": item.get("name"),
+                        "uid": item.get("uid"),
+                        "addr": item.get("addr"),
+                        "province": (item.get("admin_info") or {}).get("province_name"),
+                        "city": (item.get("admin_info") or {}).get("city_name"),
+                        "area": (item.get("admin_info") or {}).get("area_name"),
+                        "phone": ((item.get("ext") or {}).get("detail_info") or {}).get("phone") or item.get("tel"),
+                        "brand": item.get("brand_id"),
+                    }
+                    for item in content[:3]
+                ] if isinstance(content, list) else [],
+            })
+        except Exception as exc:  # noqa: BLE001
+            summary.update({"parsed": False, "parse_error": repr(exc), "preview": text[:1500]})
         return summary
-    except Exception as e:
-        return {"name": name, "url": u, "status": None, "error": repr(e), "elapsed": round(time.time()-t, 3)}
+    except Exception as exc:  # noqa: BLE001
+        return {"name": name, "url": url, "error": repr(exc), "elapsed": round(time.time() - started, 3)}
 
 
 def main() -> None:
-    # Establish first-party cookies.
-    try:
-        S.get("https://map.baidu.com/", timeout=45)
-    except Exception:
-        pass
     tests = [
-        ("changsha_p0", url("158", 0, "老百姓大药房")),
-        ("changsha_p1", url("158", 1, "老百姓大药房")),
-        ("beijing_p0", url("131", 0, "老百姓大药房")),
-        ("xian_p0", url("233", 0, "老百姓大药房")),
-        ("changsha_health_p0", url("158", 0, "老百姓健康药房")),
-        ("changsha_simple", "https://map.baidu.com/?qt=s&wd=%E8%80%81%E7%99%BE%E5%A7%93%E5%A4%A7%E8%8D%AF%E6%88%BF&c=158&pn=0&nn=0"),
+        ("changsha_search_p0", mobile_search("158", "老百姓大药房")),
+        ("changsha_list_p0", mobile_list("158", "老百姓大药房", 0)),
+        ("changsha_list_p1", mobile_list("158", "老百姓大药房", 1)),
+        ("changsha_list_p9", mobile_list("158", "老百姓大药房", 9)),
+        ("beijing_search_p0", mobile_search("131", "老百姓大药房")),
+        ("xian_search_p0", mobile_search("233", "老百姓大药房")),
+        ("changsha_health_p0", mobile_search("158", "老百姓健康药房")),
     ]
     report = []
-    for name, u in tests:
-        item = fetch(name, u)
+    for name, url in tests:
+        item = fetch(name, url)
         report.append(item)
         print(json.dumps(item, ensure_ascii=False, indent=2)[:5000], flush=True)
-        time.sleep(1.2)
+        time.sleep(0.8)
+
+    gist_url = "https://gist.githubusercontent.com/CyanSalt/c533a5ae6217a9d1848bd652cee9cf72/raw/baidu-city-code.json"
+    try:
+        r = S.get(gist_url, timeout=45)
+        city_map = r.json()
+        (OUT / "baidu_city_codes.json").write_text(json.dumps(city_map, ensure_ascii=False, indent=2), encoding="utf-8")
+        report.append({
+            "name": "city_codes",
+            "status": r.status_code,
+            "count": len(city_map),
+            "changsha": city_map.get("158"),
+            "sample_keys": list(city_map)[:10],
+        })
+    except Exception as exc:  # noqa: BLE001
+        report.append({"name": "city_codes", "error": repr(exc)})
+
     (OUT / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
