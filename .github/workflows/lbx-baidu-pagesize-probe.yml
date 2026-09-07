@@ -1,0 +1,33 @@
+name: LBX Baidu Page Size Probe
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_baidu_pagesize_probe.py
+      - .github/workflows/lbx-baidu-pagesize-probe.yml
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check requests
+      - run: python scripts/lbx_baidu_pagesize_probe.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lbx-baidu-pagesize-probe
+          path: lbx_baidu_pagesize_probe/
+          if-no-files-found: warn
+          retention-days: 2
