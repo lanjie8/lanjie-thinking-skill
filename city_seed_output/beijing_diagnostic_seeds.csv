@@ -1,0 +1,2 @@
+﻿adcode,name,label,spell,longitude,latitude,level,province_code,province,official_market,occurrences,path,paths
+110000,北京,北京市,BeiJingShi,116.407387,39.904179,province,11,北京,False,2,$.data.cityData.hotCitys[1],$.data.cityData.hotCitys[1] | $.data.cityData.provinces.110000
