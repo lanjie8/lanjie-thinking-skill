@@ -1,0 +1,1250 @@
+{
+  "same_session": [
+    {
+      "requested": "http://poi.mapbar.com/aba/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aba/D30/",
+      "len": 64878,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/aba/D30/",
+          "location": "https://poi.mapbar.com/aba/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "C8A09456424A934188BA8211AB2AFB36"
+      },
+      "set_cookie": "JSESSIONID=C8A09456424A934188BA8211AB2AFB36; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿坝药店地图】阿坝药店大全,阿坝药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/akesu/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/akesu/D30/",
+      "len": 101202,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/akesu/D30/",
+          "location": "https://poi.mapbar.com/akesu/D30/"
+        }
+      ],
+      "cookies": {},
+      "set_cookie": null,
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿克苏药店地图】阿克苏药店大全,阿克苏药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/alaer/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alaer/D30/",
+      "len": 34877,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/alaer/D30/",
+          "location": "https://poi.mapbar.com/alaer/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "9E20D4FFD5C402DF322B6750A6A8ED83"
+      },
+      "set_cookie": "JSESSIONID=9E20D4FFD5C402DF322B6750A6A8ED83; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉尔药店地图】阿拉尔药店大全,阿拉尔药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/alashanmeng/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alashanmeng/D30/",
+      "len": 55490,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/alashanmeng/D30/",
+          "location": "https://poi.mapbar.com/alashanmeng/D30/"
+        }
+      ],
+      "cookies": {},
+      "set_cookie": null,
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉善药店地图】阿拉善药店大全,阿拉善药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/aletai/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aletai/D30/",
+      "len": 54845,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/aletai/D30/",
+          "location": "https://poi.mapbar.com/aletai/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "C719982D1F5C6D89E1B859BD58611B74"
+      },
+      "set_cookie": "JSESSIONID=C719982D1F5C6D89E1B859BD58611B74; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿勒泰药店地图】阿勒泰药店大全,阿勒泰药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/ali/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ali/D30/",
+      "len": 22996,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/ali/D30/",
+          "location": "https://poi.mapbar.com/ali/D30/"
+        }
+      ],
+      "cookies": {},
+      "set_cookie": null,
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿里药店地图】阿里药店大全,阿里药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/ankang/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ankang/D30/",
+      "len": 77328,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/ankang/D30/",
+          "location": "https://poi.mapbar.com/ankang/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "524C73D806D882108207522299E8963B"
+      },
+      "set_cookie": "JSESSIONID=524C73D806D882108207522299E8963B; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安康药店地图】安康药店大全,安康药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anqing/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anqing/D30/",
+      "len": 136851,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anqing/D30/",
+          "location": "https://poi.mapbar.com/anqing/D30/"
+        }
+      ],
+      "cookies": {},
+      "set_cookie": null,
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安庆药店地图】安庆药店大全,安庆药店分布图 - 图吧地图</title>\r\n<meta nam"
+    }
+  ],
+  "fresh_session": [
+    {
+      "requested": "http://poi.mapbar.com/aba/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aba/D30/",
+      "len": 64878,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/aba/D30/",
+          "location": "https://poi.mapbar.com/aba/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "9AC23A1271C441E4376902BBCADDA888"
+      },
+      "set_cookie": "JSESSIONID=9AC23A1271C441E4376902BBCADDA888; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿坝药店地图】阿坝药店大全,阿坝药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/akesu/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/akesu/D30/",
+      "len": 101202,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/akesu/D30/",
+          "location": "https://poi.mapbar.com/akesu/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "A6B2B67A0128CEE07063B401594F20F9"
+      },
+      "set_cookie": "JSESSIONID=A6B2B67A0128CEE07063B401594F20F9; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿克苏药店地图】阿克苏药店大全,阿克苏药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/alaer/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alaer/D30/",
+      "len": 34877,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/alaer/D30/",
+          "location": "https://poi.mapbar.com/alaer/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "C1DE9E5C879F7A1972C9BB41289B5E42"
+      },
+      "set_cookie": "JSESSIONID=C1DE9E5C879F7A1972C9BB41289B5E42; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉尔药店地图】阿拉尔药店大全,阿拉尔药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/alashanmeng/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alashanmeng/D30/",
+      "len": 57525,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/alashanmeng/D30/",
+          "location": "https://poi.mapbar.com/alashanmeng/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "03804AAB7BF561ECA58D6F18A192971D"
+      },
+      "set_cookie": "JSESSIONID=03804AAB7BF561ECA58D6F18A192971D; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉善药店地图】阿拉善药店大全,阿拉善药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/aletai/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aletai/D30/",
+      "len": 52860,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/aletai/D30/",
+          "location": "https://poi.mapbar.com/aletai/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "AEF6F3663E98F0FD94E7816BC1A50ACC"
+      },
+      "set_cookie": "JSESSIONID=AEF6F3663E98F0FD94E7816BC1A50ACC; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿勒泰药店地图】阿勒泰药店大全,阿勒泰药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/ali/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ali/D30/",
+      "len": 22311,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/ali/D30/",
+          "location": "https://poi.mapbar.com/ali/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "BA01BCE1C319F5084FA37612CB5B3C9F"
+      },
+      "set_cookie": "JSESSIONID=BA01BCE1C319F5084FA37612CB5B3C9F; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿里药店地图】阿里药店大全,阿里药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/ankang/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ankang/D30/",
+      "len": 80483,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/ankang/D30/",
+          "location": "https://poi.mapbar.com/ankang/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "1592696A07ECA3EC3988B0CB9C68B535"
+      },
+      "set_cookie": "JSESSIONID=1592696A07ECA3EC3988B0CB9C68B535; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安康药店地图】安康药店大全,安康药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anqing/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anqing/D30/",
+      "len": 136851,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anqing/D30/",
+          "location": "https://poi.mapbar.com/anqing/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "5A2DEAA38E953EC94FDF41886A5EFB53"
+      },
+      "set_cookie": "JSESSIONID=5A2DEAA38E953EC94FDF41886A5EFB53; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安庆药店地图】安庆药店大全,安庆药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anshan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anshan/D30/",
+      "len": 190368,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anshan/D30/",
+          "location": "https://poi.mapbar.com/anshan/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "D1600FD543E886367974022DBFEDF064"
+      },
+      "set_cookie": "JSESSIONID=D1600FD543E886367974022DBFEDF064; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【鞍山药店地图】鞍山药店大全,鞍山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anshun/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anshun/D30/",
+      "len": 87426,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anshun/D30/",
+          "location": "https://poi.mapbar.com/anshun/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "0E51A8FA0B800F32419BDB2D8A8370B2"
+      },
+      "set_cookie": "JSESSIONID=0E51A8FA0B800F32419BDB2D8A8370B2; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安顺药店地图】安顺药店大全,安顺药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anyang/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anyang/D30/",
+      "len": 126268,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anyang/D30/",
+          "location": "https://poi.mapbar.com/anyang/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "4F8989785D394C4A078ED655A774CC8E"
+      },
+      "set_cookie": "JSESSIONID=4F8989785D394C4A078ED655A774CC8E; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安阳药店地图】安阳药店大全,安阳药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baicheng/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baicheng/D30/",
+      "len": 141025,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baicheng/D30/",
+          "location": "https://poi.mapbar.com/baicheng/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "5336A4B90CE5B35E75F4665BDAEF7326"
+      },
+      "set_cookie": "JSESSIONID=5336A4B90CE5B35E75F4665BDAEF7326; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白城药店地图】白城药店大全,白城药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baise/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baise/D30/",
+      "len": 152465,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baise/D30/",
+          "location": "https://poi.mapbar.com/baise/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "D9087C1E3EF3551D2647F14D08E47027"
+      },
+      "set_cookie": "JSESSIONID=D9087C1E3EF3551D2647F14D08E47027; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【百色药店地图】百色药店大全,百色药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baishan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baishan/D30/",
+      "len": 114268,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baishan/D30/",
+          "location": "https://poi.mapbar.com/baishan/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "C74BB45D9F6B575F05915EC9C867B187"
+      },
+      "set_cookie": "JSESSIONID=C74BB45D9F6B575F05915EC9C867B187; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白山药店地图】白山药店大全,白山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baiyin/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baiyin/D30/",
+      "len": 80440,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baiyin/D30/",
+          "location": "https://poi.mapbar.com/baiyin/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "A206DE63914FCCE72A9E86C388F98950"
+      },
+      "set_cookie": "JSESSIONID=A206DE63914FCCE72A9E86C388F98950; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白银药店地图】白银药店大全,白银药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baoding/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoding/D30/",
+      "len": 297357,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baoding/D30/",
+          "location": "https://poi.mapbar.com/baoding/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "E6E7AF422BA10FA8F59C3976EF295626"
+      },
+      "set_cookie": "JSESSIONID=E6E7AF422BA10FA8F59C3976EF295626; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【保定药店地图】保定药店大全,保定药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baoji/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoji/D30/",
+      "len": 135703,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baoji/D30/",
+          "location": "https://poi.mapbar.com/baoji/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "29E880F8D7EE5706E97B917A9EB5F21C"
+      },
+      "set_cookie": "JSESSIONID=29E880F8D7EE5706E97B917A9EB5F21C; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【宝鸡药店地图】宝鸡药店大全,宝鸡药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baoshan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoshan/D30/",
+      "len": 116550,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baoshan/D30/",
+          "location": "https://poi.mapbar.com/baoshan/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "E7F889922AC82631FCA126325597BB48"
+      },
+      "set_cookie": "JSESSIONID=E7F889922AC82631FCA126325597BB48; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【保山药店地图】保山药店大全,保山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baotou/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baotou/D30/",
+      "len": 224331,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baotou/D30/",
+          "location": "https://poi.mapbar.com/baotou/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "B0451F858D8CA2DDEA099FAC446A2D6A"
+      },
+      "set_cookie": "JSESSIONID=B0451F858D8CA2DDEA099FAC446A2D6A; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【包头药店地图】包头药店大全,包头药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/beihai/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/beihai/D30/",
+      "len": 101581,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/beihai/D30/",
+          "location": "https://poi.mapbar.com/beihai/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "BBD7F2C87339B29804C65F1C4DBD614A"
+      },
+      "set_cookie": "JSESSIONID=BBD7F2C87339B29804C65F1C4DBD614A; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【北海药店地图】北海药店大全,北海药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/beijing/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/beijing/D30/",
+      "len": 669545,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/beijing/D30/",
+          "location": "https://poi.mapbar.com/beijing/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "5F4316DA34C48853782852EE1410A5EC"
+      },
+      "set_cookie": "JSESSIONID=5F4316DA34C48853782852EE1410A5EC; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【北京药店地图】北京药店大全,北京药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/bengbu/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/bengbu/D30/",
+      "len": 106544,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/bengbu/D30/",
+          "location": "https://poi.mapbar.com/bengbu/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "D790EB0A8DB3C3E7CE521452A33A09A2"
+      },
+      "set_cookie": "JSESSIONID=D790EB0A8DB3C3E7CE521452A33A09A2; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【蚌埠药店地图】蚌埠药店大全,蚌埠药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/changsha/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/changsha/D30/",
+      "len": 462641,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/changsha/D30/",
+          "location": "https://poi.mapbar.com/changsha/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "2D7F37F6CF5EDCCBBB336451D5BCE317"
+      },
+      "set_cookie": "JSESSIONID=2D7F37F6CF5EDCCBBB336451D5BCE317; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【长沙药店地图】长沙药店大全,长沙药店分布图 - 图吧地图</title>\r\n<meta nam"
+    }
+  ],
+  "plain": [
+    {
+      "requested": "http://poi.mapbar.com/aba/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aba/D30/",
+      "len": 64878,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/aba/D30/",
+          "location": "https://poi.mapbar.com/aba/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "E33C057DF114C5ECBD3248317B7B1C9E"
+      },
+      "set_cookie": "JSESSIONID=E33C057DF114C5ECBD3248317B7B1C9E; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿坝药店地图】阿坝药店大全,阿坝药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/akesu/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/akesu/D30/",
+      "len": 101202,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/akesu/D30/",
+          "location": "https://poi.mapbar.com/akesu/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "AC3BB72CD15A8C3CDEC876E5BFAE4946"
+      },
+      "set_cookie": "JSESSIONID=AC3BB72CD15A8C3CDEC876E5BFAE4946; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿克苏药店地图】阿克苏药店大全,阿克苏药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/alaer/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alaer/D30/",
+      "len": 36067,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/alaer/D30/",
+          "location": "https://poi.mapbar.com/alaer/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "6F15A37882754222992FC27F3B8F8068"
+      },
+      "set_cookie": "JSESSIONID=6F15A37882754222992FC27F3B8F8068; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉尔药店地图】阿拉尔药店大全,阿拉尔药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/alashanmeng/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alashanmeng/D30/",
+      "len": 57525,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/alashanmeng/D30/",
+          "location": "https://poi.mapbar.com/alashanmeng/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "353FFE0BFCF654E0F13F823ADE5E729D"
+      },
+      "set_cookie": "JSESSIONID=353FFE0BFCF654E0F13F823ADE5E729D; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉善药店地图】阿拉善药店大全,阿拉善药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/aletai/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aletai/D30/",
+      "len": 52860,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/aletai/D30/",
+          "location": "https://poi.mapbar.com/aletai/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "4D30F52365C0F1AE589C5F45B2B9499E"
+      },
+      "set_cookie": "JSESSIONID=4D30F52365C0F1AE589C5F45B2B9499E; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿勒泰药店地图】阿勒泰药店大全,阿勒泰药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "http://poi.mapbar.com/ali/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ali/D30/",
+      "len": 22311,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/ali/D30/",
+          "location": "https://poi.mapbar.com/ali/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "0C0B33AF6EC38FCA0F5FFCB274487BB4"
+      },
+      "set_cookie": "JSESSIONID=0C0B33AF6EC38FCA0F5FFCB274487BB4; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿里药店地图】阿里药店大全,阿里药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/ankang/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ankang/D30/",
+      "len": 80483,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/ankang/D30/",
+          "location": "https://poi.mapbar.com/ankang/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "F3C7983DDA226FB68A9C158F14BF5E27"
+      },
+      "set_cookie": "JSESSIONID=F3C7983DDA226FB68A9C158F14BF5E27; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安康药店地图】安康药店大全,安康药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anqing/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anqing/D30/",
+      "len": 142946,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anqing/D30/",
+          "location": "https://poi.mapbar.com/anqing/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "51C580BA4F7A432DE784A9E872AC7152"
+      },
+      "set_cookie": "JSESSIONID=51C580BA4F7A432DE784A9E872AC7152; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安庆药店地图】安庆药店大全,安庆药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anshan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anshan/D30/",
+      "len": 199038,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anshan/D30/",
+          "location": "https://poi.mapbar.com/anshan/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "1F874EC3EC1BC9314604B99A30BDBA6F"
+      },
+      "set_cookie": "JSESSIONID=1F874EC3EC1BC9314604B99A30BDBA6F; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【鞍山药店地图】鞍山药店大全,鞍山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anshun/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anshun/D30/",
+      "len": 91121,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anshun/D30/",
+          "location": "https://poi.mapbar.com/anshun/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "5AE4881E3F82C8F63A874C756563AD8F"
+      },
+      "set_cookie": "JSESSIONID=5AE4881E3F82C8F63A874C756563AD8F; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安顺药店地图】安顺药店大全,安顺药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/anyang/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anyang/D30/",
+      "len": 126268,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/anyang/D30/",
+          "location": "https://poi.mapbar.com/anyang/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "27ABB9A08A39AC1EBC64F3184875205F"
+      },
+      "set_cookie": "JSESSIONID=27ABB9A08A39AC1EBC64F3184875205F; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安阳药店地图】安阳药店大全,安阳药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baicheng/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baicheng/D30/",
+      "len": 147325,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baicheng/D30/",
+          "location": "https://poi.mapbar.com/baicheng/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "66A1D9F05AA0AFB729C7FAB40FF1B04C"
+      },
+      "set_cookie": "JSESSIONID=66A1D9F05AA0AFB729C7FAB40FF1B04C; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白城药店地图】白城药店大全,白城药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baise/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baise/D30/",
+      "len": 159335,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baise/D30/",
+          "location": "https://poi.mapbar.com/baise/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "EE998EDFFC52023D1B208BACF11D3E61"
+      },
+      "set_cookie": "JSESSIONID=EE998EDFFC52023D1B208BACF11D3E61; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【百色药店地图】百色药店大全,百色药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baishan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baishan/D30/",
+      "len": 114268,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baishan/D30/",
+          "location": "https://poi.mapbar.com/baishan/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "179E983F38FF751E3A3E54C9A6747017"
+      },
+      "set_cookie": "JSESSIONID=179E983F38FF751E3A3E54C9A6747017; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白山药店地图】白山药店大全,白山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baiyin/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baiyin/D30/",
+      "len": 77265,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baiyin/D30/",
+          "location": "https://poi.mapbar.com/baiyin/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "C10F81F7DC745E967BC4202582727F5F"
+      },
+      "set_cookie": "JSESSIONID=C10F81F7DC745E967BC4202582727F5F; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白银药店地图】白银药店大全,白银药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baoding/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoding/D30/",
+      "len": 297357,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baoding/D30/",
+          "location": "https://poi.mapbar.com/baoding/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "B1E646E4E45E0F0DCEC796F5360F0EC2"
+      },
+      "set_cookie": "JSESSIONID=B1E646E4E45E0F0DCEC796F5360F0EC2; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【保定药店地图】保定药店大全,保定药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baoji/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoji/D30/",
+      "len": 129983,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baoji/D30/",
+          "location": "https://poi.mapbar.com/baoji/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "84671D4130EFD6FFE543469D174EE049"
+      },
+      "set_cookie": "JSESSIONID=84671D4130EFD6FFE543469D174EE049; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【宝鸡药店地图】宝鸡药店大全,宝鸡药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baoshan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoshan/D30/",
+      "len": 121420,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baoshan/D30/",
+          "location": "https://poi.mapbar.com/baoshan/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "BCFC77E512BC6261AFAA5DCD885AB42C"
+      },
+      "set_cookie": "JSESSIONID=BCFC77E512BC6261AFAA5DCD885AB42C; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【保山药店地图】保山药店大全,保山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/baotou/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baotou/D30/",
+      "len": 224331,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/baotou/D30/",
+          "location": "https://poi.mapbar.com/baotou/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "EB69BE488748A373607C873B6AD9A4E9"
+      },
+      "set_cookie": "JSESSIONID=EB69BE488748A373607C873B6AD9A4E9; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【包头药店地图】包头药店大全,包头药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/beihai/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/beihai/D30/",
+      "len": 97346,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/beihai/D30/",
+          "location": "https://poi.mapbar.com/beihai/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "946CAE1CF2AB7FDFEA419E938765D371"
+      },
+      "set_cookie": "JSESSIONID=946CAE1CF2AB7FDFEA419E938765D371; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【北海药店地图】北海药店大全,北海药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/beijing/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/beijing/D30/",
+      "len": 669545,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/beijing/D30/",
+          "location": "https://poi.mapbar.com/beijing/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "047DAAA306E5EB340432C439576259D2"
+      },
+      "set_cookie": "JSESSIONID=047DAAA306E5EB340432C439576259D2; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【北京药店地图】北京药店大全,北京药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/bengbu/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/bengbu/D30/",
+      "len": 111159,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/bengbu/D30/",
+          "location": "https://poi.mapbar.com/bengbu/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "19E738DE3B5ED39D5305135596353C02"
+      },
+      "set_cookie": "JSESSIONID=19E738DE3B5ED39D5305135596353C02; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【蚌埠药店地图】蚌埠药店大全,蚌埠药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "http://poi.mapbar.com/changsha/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/changsha/D30/",
+      "len": 462641,
+      "history": [
+        {
+          "status": 301,
+          "url": "http://poi.mapbar.com/changsha/D30/",
+          "location": "https://poi.mapbar.com/changsha/D30/"
+        }
+      ],
+      "cookies": {
+        "JSESSIONID": "CBA12BAB55A1392DCFBD8AEADEBF1920"
+      },
+      "set_cookie": "JSESSIONID=CBA12BAB55A1392DCFBD8AEADEBF1920; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【长沙药店地图】长沙药店大全,长沙药店分布图 - 图吧地图</title>\r\n<meta nam"
+    }
+  ],
+  "https_fresh": [
+    {
+      "requested": "https://poi.mapbar.com/aba/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aba/D30/",
+      "len": 64878,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "D08AC929A602E3521AC9EFBB3DCAB958"
+      },
+      "set_cookie": "JSESSIONID=D08AC929A602E3521AC9EFBB3DCAB958; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿坝药店地图】阿坝药店大全,阿坝药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/akesu/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/akesu/D30/",
+      "len": 101202,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "98BC14EF3DD752A45EAD3428AB9F1FB3"
+      },
+      "set_cookie": "JSESSIONID=98BC14EF3DD752A45EAD3428AB9F1FB3; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿克苏药店地图】阿克苏药店大全,阿克苏药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "https://poi.mapbar.com/alaer/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alaer/D30/",
+      "len": 34877,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "7B145EEF6906E1EF7BD333012D0676A8"
+      },
+      "set_cookie": "JSESSIONID=7B145EEF6906E1EF7BD333012D0676A8; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉尔药店地图】阿拉尔药店大全,阿拉尔药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "https://poi.mapbar.com/alashanmeng/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/alashanmeng/D30/",
+      "len": 55490,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "04293EB7525F81A68DABF71B08B9022C"
+      },
+      "set_cookie": "JSESSIONID=04293EB7525F81A68DABF71B08B9022C; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿拉善药店地图】阿拉善药店大全,阿拉善药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "https://poi.mapbar.com/aletai/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/aletai/D30/",
+      "len": 54845,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "F153AF39BF80BCBAB3CA57E777B389B8"
+      },
+      "set_cookie": "JSESSIONID=F153AF39BF80BCBAB3CA57E777B389B8; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿勒泰药店地图】阿勒泰药店大全,阿勒泰药店分布图 - 图吧地图</title>\r\n<meta "
+    },
+    {
+      "requested": "https://poi.mapbar.com/ali/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ali/D30/",
+      "len": 22996,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "8A6E03F3D6EF2525BA9B8ED596FD5DE5"
+      },
+      "set_cookie": "JSESSIONID=8A6E03F3D6EF2525BA9B8ED596FD5DE5; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【阿里药店地图】阿里药店大全,阿里药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/ankang/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/ankang/D30/",
+      "len": 80483,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "4CD0CD5FC56B86DDBEA5462EF6457F82"
+      },
+      "set_cookie": "JSESSIONID=4CD0CD5FC56B86DDBEA5462EF6457F82; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安康药店地图】安康药店大全,安康药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/anqing/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anqing/D30/",
+      "len": 142946,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "EB564C9A5D48B2E1FE3DD2F9DB515B85"
+      },
+      "set_cookie": "JSESSIONID=EB564C9A5D48B2E1FE3DD2F9DB515B85; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安庆药店地图】安庆药店大全,安庆药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/anshan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anshan/D30/",
+      "len": 199038,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "A5D3B4084733BDF510AAA99F93D44EC6"
+      },
+      "set_cookie": "JSESSIONID=A5D3B4084733BDF510AAA99F93D44EC6; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【鞍山药店地图】鞍山药店大全,鞍山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/anshun/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anshun/D30/",
+      "len": 87426,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "B2A1B35E1D734C0CA9CF3A49AEEC1655"
+      },
+      "set_cookie": "JSESSIONID=B2A1B35E1D734C0CA9CF3A49AEEC1655; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安顺药店地图】安顺药店大全,安顺药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/anyang/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/anyang/D30/",
+      "len": 126268,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "EEB6EC37196B8C32E5F7804FDEC1F6B6"
+      },
+      "set_cookie": "JSESSIONID=EEB6EC37196B8C32E5F7804FDEC1F6B6; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【安阳药店地图】安阳药店大全,安阳药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baicheng/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baicheng/D30/",
+      "len": 141025,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "FE9FEA6A602F6BE0D33C35A7E204D59F"
+      },
+      "set_cookie": "JSESSIONID=FE9FEA6A602F6BE0D33C35A7E204D59F; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白城药店地图】白城药店大全,白城药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baise/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baise/D30/",
+      "len": 152465,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "001FBB744FBD8AC3408C8D9EAADEFA32"
+      },
+      "set_cookie": "JSESSIONID=001FBB744FBD8AC3408C8D9EAADEFA32; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【百色药店地图】百色药店大全,百色药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baishan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baishan/D30/",
+      "len": 114268,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "FA78E6EF1807B1C546B4425BE2CE35BB"
+      },
+      "set_cookie": "JSESSIONID=FA78E6EF1807B1C546B4425BE2CE35BB; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白山药店地图】白山药店大全,白山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baiyin/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baiyin/D30/",
+      "len": 77265,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "0292B26CFC775D5B060315956E00DDE1"
+      },
+      "set_cookie": "JSESSIONID=0292B26CFC775D5B060315956E00DDE1; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【白银药店地图】白银药店大全,白银药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baoding/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoding/D30/",
+      "len": 297357,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "92A91204E847D8EFCEFC3F8E3928ECB9"
+      },
+      "set_cookie": "JSESSIONID=92A91204E847D8EFCEFC3F8E3928ECB9; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【保定药店地图】保定药店大全,保定药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baoji/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoji/D30/",
+      "len": 135703,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "BE04795FC1740D565B93297AF6E7EFF9"
+      },
+      "set_cookie": "JSESSIONID=BE04795FC1740D565B93297AF6E7EFF9; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【宝鸡药店地图】宝鸡药店大全,宝鸡药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baoshan/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baoshan/D30/",
+      "len": 116550,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "5AC0ED36ABC0736527C65930BA1A9750"
+      },
+      "set_cookie": "JSESSIONID=5AC0ED36ABC0736527C65930BA1A9750; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【保山药店地图】保山药店大全,保山药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/baotou/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/baotou/D30/",
+      "len": 224331,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "4694EB93CCE1A6F41165FDC42610E48D"
+      },
+      "set_cookie": "JSESSIONID=4694EB93CCE1A6F41165FDC42610E48D; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【包头药店地图】包头药店大全,包头药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/beihai/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/beihai/D30/",
+      "len": 101581,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "BB0F74176ED0453D2F329B22D2E518CD"
+      },
+      "set_cookie": "JSESSIONID=BB0F74176ED0453D2F329B22D2E518CD; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【北海药店地图】北海药店大全,北海药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/beijing/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/beijing/D30/",
+      "len": 669545,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "EE78F33297A30D22272814BF40D7C0CE"
+      },
+      "set_cookie": "JSESSIONID=EE78F33297A30D22272814BF40D7C0CE; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【北京药店地图】北京药店大全,北京药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/bengbu/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/bengbu/D30/",
+      "len": 106544,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "D6FF27E6FFE68053F6697CAE28018D61"
+      },
+      "set_cookie": "JSESSIONID=D6FF27E6FFE68053F6697CAE28018D61; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【蚌埠药店地图】蚌埠药店大全,蚌埠药店分布图 - 图吧地图</title>\r\n<meta nam"
+    },
+    {
+      "requested": "https://poi.mapbar.com/changsha/D30/",
+      "status": 200,
+      "final": "https://poi.mapbar.com/changsha/D30/",
+      "len": 462641,
+      "history": [],
+      "cookies": {
+        "JSESSIONID": "3D5692EFE881625607FCB823328F1636"
+      },
+      "set_cookie": "JSESSIONID=3D5692EFE881625607FCB823328F1636; Path=/; HttpOnly",
+      "title": "\r\n\r\n\r\n<!DOCTYPE html>\r\n<html>\r\n<head>\r\n<meta charset=\"utf-8\" />\r\n<title>【长沙药店地图】长沙药店大全,长沙药店分布图 - 图吧地图</title>\r\n<meta nam"
+    }
+  ]
+}
