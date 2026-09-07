@@ -1,0 +1,495 @@
+/**
+ * 弹出窗口方法
+ * @param title 标题
+ * @param shade 遮罩程度
+ * @param max 是否最大化
+ * @param width 宽
+ * @param height 高
+ * @param endfn 窗口销毁时回调函数
+ * @param content iframe的url
+ * @returns {string} 弹出窗口ifame的id
+ */
+function popup(title, shade, max, width, height, endfn, content,options) {
+    var defaults = {
+        title: '',
+        size: 'nomal',
+        max: false,
+        closeBtn: 1,
+        showTitle:true,
+        maxmin:true,
+        shadeClose: false,
+        scrollbar: true
+    };
+    options = $.extend(defaults,options);
+    var closeBtn = options.closeBtn;
+    var maxmin= options.maxmin;
+    var showTitle= options.showTitle;
+    var shadeClose = options.shadeClose;
+    var move = options.move;
+    width = (width || 1000) + "px";
+    height = (height || 560) + "px";
+    title = title || "";
+    title = title || false;
+    title = showTitle?title:false;
+    if(title){
+        title = escapeJquery(title);
+    }
+    if (!shade || shade == true)
+        shade = 0;
+    else
+        shade = 0.3;
+    move = move || '.layui-layer-title';
+    if(!options.scrollbar) {
+        var contentMap = [];
+        contentMap.push(content);
+        contentMap.push('no');
+        content = contentMap;
+    }
+    index = top.layer.open({
+        closeBtn:closeBtn,
+        content: content,
+        title: title,
+        type: 2,
+        area: [width, height],
+        shadeClose: shadeClose, //点击遮罩关闭
+        maxmin: maxmin,
+        shade: shade,
+        move: move,
+        end: function () {
+            // 关闭窗口移除自身窗口的index
+            $.pindexStorage(null, false);
+            //关闭窗口的执行方法, 可为null
+            if (typeof endfn == 'function') {
+                endfn();
+            } else {
+                eval(endfn);
+            }
+        }
+    });
+    //关键代码, 将自身窗口产生的index 加入全局存储中.
+    $.pindexStorage(index, true);
+    if (max == true)
+        top.layer.full(index);
+    return "layui-layer-iframe" + index;
+}
+
+/**
+ * 每次打开窗口都记录打开窗口的index，放入数组，形如[1,3,4]
+ * 原因是layer组件是自行对弹出窗口的index+1，无法程序控制，故需要记录该值以便找到父页面的index
+ * @param index
+ * @param isadd
+ * @returns {*}
+ */
+jQuery.pindexStorage = function (index, isadd) {
+    if (!isadd) {
+        //关闭窗口拿掉最后一个窗口的index
+        popupArray.pop();
+    } else {
+        // index 重复不放进去数组,保持数组的index 唯一, 同时也避免反复弹窗关闭的bug
+        if (top.popupArray.indexOf(index) < 0) {
+            top.popupArray.push(index);
+        }
+    }
+    return top.popupArray[top.popupArray.length - 1];
+
+};
+
+/**
+ * 返回父页面frame，frameName详见forward方法
+ * @returns {*}
+ */
+function getParentPop(framepath) {
+    var frameName = getParameterByName("frameName");
+    if (frameName == null || frameName == "") {
+        if((top.location.pathname).indexOf('/XY/')>-1){
+            return top;
+        }
+        return top.frames[0];
+    }else{
+        if(framepath){
+            return eval(framepath);
+        } else {
+            return eval(frameName);
+        }
+    }
+}
+
+/**
+ * 弹窗的回调方法
+ * @param datas
+ */
+function popupCallBack(datas) {
+    if (typeof datas === 'string') {
+        try {
+            datas = JSON.parse(datas);
+        } catch (e) {
+            return;
+        }
+    }
+    if (datas.method == "popup") {
+        var params = datas.params;
+        if((params.height==null||params.height=='')&&(params.width==null||params.width=='')){
+            if (params.size == "nomal") {
+                params.width = 1000;
+                params.height = 560;
+            }
+            if (params.size == "small") {
+                params.width = 400;
+                params.height = 460;
+            }
+            if (params.size == "smallHigher") {
+                params.width = 400;
+                params.height = 660;
+            }
+            if (params.size == "large") {
+                params.width = 1310;
+                params.height = 600;
+            }
+            if (params.size == "full") {
+                params.width = top.document.documentElement.clientWidth;
+                params.height = top.document.documentElement.clientHeight;
+            }
+        } else {
+            if (params.width && (typeof params.width=='string') && params.width.constructor==String && params.width.endWith("%")) {
+                params.width = popup_parse_percentage(params.width, top.document.documentElement.clientWidth);
+            }
+            if (params.height && (typeof params.height=='string') && params.height.constructor==String && params.height.endWith("%")) {
+                params.height = popup_parse_percentage(params.height, top.document.documentElement.clientHeight);
+            }
+        }
+        popup(params.title, 0.3, params.max, params.width, params.height, params.endfn, params.content,params);
+    }
+}
+
+function popup_parse_percentage(percentageNum, total) {
+    var patt1 = new RegExp(/^(100|[1-9]?\d(\.\d\d?)?)%$/);
+    var result = patt1.test(percentageNum);
+    if(result){
+        return parseFloat(percentageNum.substr(0, percentageNum.length - 1)) * total /100;
+    } else {
+        alert(percentageNum + "格式有误！");
+        return percentageNum;
+    }
+}
+
+/**
+ * 内部使用，关闭某个弹出窗口
+ * @param windowName 弹出窗口的window.name
+ */
+function shut(windowName) {
+    var index;
+    if (windowName) {
+        index = top.layer.getFrameIndex(windowName); //先得到当前iframe层的索引
+    } else {
+        index = top.layer.getFrameIndex(window.name);
+    }
+    top.layer.close(index); //再执行关闭
+}
+
+function maxPop(windowName) {
+    var index;
+    if (windowName) {
+        index = top.layer.getFrameIndex(windowName); //先得到当前iframe层的索引
+    } else {
+        index = top.layer.getFrameIndex(window.name);
+    }
+    top.layer.full(index);
+}
+
+function restorePop(windowName) {
+    var index;
+    if (windowName) {
+        index = top.layer.getFrameIndex(windowName); //先得到当前iframe层的索引
+    } else {
+        index = top.layer.getFrameIndex(window.name);
+    }
+    top.layer.restore(index);
+}
+
+/**
+ * 弹出窗口的关闭方法
+ */
+function shutCors() {
+    var codeInfo = {'windowName': window.name};
+    sendMessageCrossDomain("shut", codeInfo);
+}
+
+/**
+ * 弹窗后修改窗口大小
+ * @param windowName
+ * @param width 数字
+ * @param height 数字
+ */
+function resize(width, height, windowName) {
+    var index;
+    if (windowName) {
+        index = top.layer.getFrameIndex(windowName); //先得到当前iframe层的索引
+    } else {
+        index = top.layer.getFrameIndex(window.name);
+    }
+    var popleft = ($(top).width() - width) / 2;
+    var poptop = ($(top).height() - height) / 2 - 8;
+    top.layer.style(index, {
+        top:poptop,
+        left:popleft,
+        width: width,
+        height: height
+    });
+}
+
+/**
+ * 弹出窗口关闭的回调方法
+ * @param datas
+ */
+function shutCallBack(datas) {
+    if (typeof datas === 'string') {
+        try {
+            datas = JSON.parse(datas);
+        } catch (e) {
+            return;
+        }
+    }
+    if (datas.method == "shut") {
+        shut(datas.params.windowName);
+    }
+}
+
+function maxPopCallBack(datas) {
+    if (typeof datas === 'string') {
+        try {
+            datas = JSON.parse(datas);
+        } catch (e) {
+            return;
+        }
+    }
+    if (datas.method == "maxPop") {
+        maxPop(datas.params.windowName);
+    }
+}
+function restorePopCallBack(datas) {
+    if (typeof datas === 'string') {
+        try {
+            datas = JSON.parse(datas);
+        } catch (e) {
+            return;
+        }
+    }
+    if (datas.method == "restorePop") {
+        restorePop(datas.params.windowName);
+    }
+}
+
+/**
+ * 弹出成功页面
+ * @param returnValue 等同于后台的returnValue
+ * @param successFn 成功后执行的回调函数
+ * @param failFn 失败后执行的回调函数
+ * @param sfyiframe 是否含有很长的iframe页面
+ */
+function popupOk(returnValue, successFn, failFn,sfyiframe) {
+    if (jQuery.type(returnValue) == "string") {
+        returnValue = eval("(" + returnValue + ")");
+    }
+    if (returnValue.state == SUCCESS) {
+        msg(returnValue.text, returnValue.state, staytime, successFn,sfyiframe);
+    } else if (returnValue.state == ERROR) {
+        if (returnValue._ResubmitToken) {
+            $("#_ResubmitToken").val(returnValue._ResubmitToken);
+        }
+        msg(returnValue.text, returnValue.state, 0,failFn,sfyiframe);
+    } else if (returnValue.state == RESUMBIT) {
+        msg(returnValue.text, ERROR, 0,failFn,sfyiframe);
+    } else if (returnValue.state == RELOGIN) {
+        msg(returnValue.text, ERROR, 0, failFn, sfyiframe);
+        window.location = self.location;
+    } else {
+        if (returnValue._ResubmitToken) {
+            $("#_ResubmitToken").val(returnValue._ResubmitToken);
+        }
+        if (failFn) {
+            failFn();
+        }
+    }
+}
+
+/**
+ * 流程自动提交时不弹出成功页面
+ * @param returnValue 等同于后台的returnValue
+ * @param successFn 成功后执行的回调函数
+ * @param failFn 失败后执行的回调函数
+ * @param sfyiframe 是否含有很长的iframe页面
+ */
+function popupOkProcess(returnValue, successFn, failFn,sfyiframe) {
+    if (jQuery.type(returnValue) == "string") {
+        returnValue = eval("(" + returnValue + ")");
+    }
+    if (returnValue.state == SUCCESS) {
+        successFn();
+        // msg(returnValue.text, returnValue.state, staytime, successFn,sfyiframe);
+    } else if (returnValue.state == ERROR) {
+        if (returnValue._ResubmitToken) {
+            $("#_ResubmitToken").val(returnValue._ResubmitToken);
+        }
+        msg(returnValue.text, returnValue.state, 0,failFn,sfyiframe);
+    } else if (returnValue.state == RESUMBIT) {
+        msg(returnValue.text, ERROR, 0,failFn,sfyiframe);
+    } else if (returnValue.state == RELOGIN) {
+        msg(returnValue.text, ERROR, 0, failFn, sfyiframe);
+        window.location = self.location;
+    } else {
+        if (returnValue._ResubmitToken) {
+            $("#_ResubmitToken").val(returnValue._ResubmitToken);
+        }
+        if (failFn) {
+            failFn();
+        }
+    }
+}
+
+var successFnInWorkflow = null;
+var failFnInWorkflow = null;
+
+/**
+ * 内部使用的信息提示框
+ * @param text 提示内容
+ * @param icon 提示图标
+ * @param time 关闭时间
+ * @param successFn 提示完成后的回调方法
+ * @param sfyiframe 是否含有很长的iframe页面
+ */
+function msg(text, icon, time, successFn,sfyiframe) {
+    if(text ===null || text === undefined){
+        text ="undefined";
+    }
+    //成功回调函数只执行一次
+    var successFlag = false;
+    var msgOptions = {
+        icon: icon,
+        time: time, //不自动关闭
+        shade: 0.00001,
+        btn: ['确定'],
+        yes: function (index) {
+            if (successFn) {
+                successFn();
+                successFlag = true;
+                layer.close(index);
+            } else {
+                //点确定的时候关闭，因为默认是3秒关闭，所以需要手动关
+                layer.close(index);
+            }
+        },
+        end: function (index) {
+            if (successFn && !successFlag) {
+                successFn();
+            }
+        }
+    };
+    if(sfyiframe && self != top){
+        //按钮存在与iframe页面进行操作
+        var isokFn = false;
+        if (successFn) {
+            isokFn = true;
+        }
+        var datas = {
+            'text':text,
+            'msgOptions':msgOptions,
+            'iframeName':this.name,
+            "isokFn":isokFn
+        }
+        successFnInWorkflow= successFn;
+        parentXmxdPopup('msgType',datas);
+    }else{
+        layer.msg(text,msgOptions);
+    }
+}
+
+/**
+ * 等同于浏览器原生的confirm的实现
+ * @param title 提示信息
+ * @param okFn 点确定后的回调方法
+ * @param failFn 点取消后的回调方法
+ */
+function verify(title, okFn, failFn,sfyiframe,options) {
+    var confirmOptions;
+    if (options!=''&&typeof(options) != "undefined"){
+        //设置弹出框的大小
+        if (typeof options === 'string') {
+            try {
+                options = $.parseJSON(options);
+            } catch (e) {
+                console.error("options parse error", e);
+            }
+        }
+        if (options && options.height!=''&&typeof(options.height) != "undefined"&&options.width!=''&&typeof(options.width) != "undefined"){
+            confirmOptions = {
+                title: false,
+                shade: 0.00001,
+                btn: ['确定', '取消'],
+                area: [options.width,options.height]
+            };
+        }else if(options.width!=''&&typeof(options.width) != "undefined"){
+            confirmOptions = {
+                title: false,
+                shade: 0.00001,
+                btn: ['确定', '取消'],
+                area: options.width
+            };
+        }
+    } else{
+        confirmOptions = {
+            title: false,
+            shade: 0.00001,
+            btn: ['确定', '取消'],
+        };
+    }
+
+    if (sfyiframe && self != top) {
+        //按钮存在与iframe页面进行操作
+        var datas = {
+            'title':title,
+            'confirmOptions':confirmOptions,
+            'iframeName':this.name
+        }
+        successFnInWorkflow= okFn;
+        failFnInWorkflow = failFn;
+        parentXmxdPopup('verifyType',datas);
+    }else{
+        layer.confirm(title, confirmOptions, function (index) {
+            layer.close(index);
+            okFn();
+        }, function (index) {
+            layer.close(index);
+            if (failFn) {
+                failFn();
+            }
+        });
+    }
+}
+
+/**
+ * 工作流回调verify  -内部使用
+ *
+ * @param isSure    确定为true,取消为false
+ */
+function okFnInWorkflow(isSure){
+    if(isSure){
+        successFnInWorkflow();
+    }else if(failFnInWorkflow){
+        failFnInWorkflow();
+    }
+}
+
+
+/**
+ * 含有iframe页面,向父页面传输数据
+ *
+ * @param popupType     弹出框的类型 -msg, -verify
+ * @param datasObject   传输的数据
+ */
+function parentXmxdPopup(popupType,datasObject) {
+    var params = {
+        'popupType': popupType,
+        'datasObject': datasObject
+    };
+    sendMessageCrossDomain('sendparentXmxdPopup', params, parent);
+}

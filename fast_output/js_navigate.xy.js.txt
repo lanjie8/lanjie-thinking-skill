@@ -1,0 +1,857 @@
+/**
+ * 点击分页调用的方法
+ * @param currentPage
+ */
+function submitPaginate(currentPage) {
+    if (currentPage)
+        $("#currentPage").val(currentPage);
+
+    removeBizParameters();
+    submitThis();
+}
+/**
+ * 点击项目评审分页调用的方法
+ * @param currentPage
+ */
+function submitPaginateXmps(currentPage) {
+    if (currentPage)
+        $("#xmpsSplitPageInfoCurrentPage").val(currentPage);
+
+    removeBizParameters();
+    submitThis();
+}
+
+function removeBizParameters() {
+    if ($("#bizid").length > 0) {
+        $("#bizid").remove();
+
+        if ($("#url").length > 0) {
+            $("#url").remove();
+        }
+        if ($("#from").length > 0) {
+            $("#from").remove();
+        }
+        if ($("#pslb").length > 0) {
+            $("#pslb").remove();
+        }
+
+        if ($("#taskStatus").length > 0) {
+            $("#taskStatus").remove();
+        }
+        if ($("#taskid").length > 0) {
+            $("#taskid").remove();
+        }
+        if ($("#taskdefid").length > 0) {
+            $("#taskdefid").remove();
+        }
+        if ($("#tasksign").length > 0) {
+            $("#tasksign").remove();
+        }
+        if ($("#executorid").length > 0) {
+            $("#executorid").remove();
+        }
+        if ($("#datatabid").length > 0) {
+            $("#datatabid").remove();
+        }
+        if ($("#datatabsign").length > 0) {
+            $("#datatabsign").remove();
+        }
+        if ($("#datatabbqxz").length > 0) {
+            $("#datatabbqxz").remove();
+        }
+        if ($("#taskAutoLaunch").length > 0) {
+            $("#taskAutoLaunch").remove();
+        }
+    }
+}
+
+/**
+ * 点击扩展分页调用的方法
+ * @param currentPage
+ */
+function submitPaginateMult(currentPage) {
+    if (currentPage)
+        $("#MultSplitPageInfoCurrentPage").val(currentPage);
+
+    removeBizParameters();
+    submitThis();
+}
+
+/**
+ * 替换页面跳转方法
+ * @param obj 可以是button或者a的this，也可以使{action:''}
+ */
+function forward(obj,options) {
+    if(isElement(obj)){
+        forwardDom(obj,options);
+    }else{
+        forwardParas(obj);
+    }
+}
+
+/**
+ * 弹出窗口跳转方法
+ * @param obj 可以是button或者a的this，也可以使{action:''}
+ */
+function openWindow(obj,options) {
+    if(isElement(obj)){
+        openWindowDom(obj,options);
+    }else{
+        openWindowParas(obj);
+    }
+}
+
+/**
+ * 提交当前页面
+ * @param options
+ */
+function submitThis(options) {
+    if (typeof options == "undefined" || typeof options.formid == "undefined" || !options.formid) {
+        formx = $("#isFmVisibleForm").parent("form");
+    } else {
+        formx = $("#" + options.formid);
+    }
+    opContent(formx);
+    var defaults = {
+        formid:'',
+        method:'post'
+    };
+    options = $.extend(defaults,options);
+
+    var defaultMethod = formx.attr("method");
+    formx.attr("method", options.method);
+    //获取url请求的参数
+    var urlParams = getUrlParam();
+
+    $(urlParams).each(function(){
+        var urlParam = this.toString();
+        var formParam = formx.find("[name="+urlParam+"]");
+        var useUrl = true;
+        if(formx.find("[id="+urlParam+"UseUrl]").length>0 && formx.find("[id="+urlParam+"UseUrl]")[0].val()!=="true"){
+            useUrl = false
+        }
+        if(formParam.length>0 && useUrl ){
+            formParam.remove();
+        }
+    });
+
+    $("#serializeQuery").val("");
+    var input = $("<input type='hidden'>");
+    input.attr({"name": "trt"});
+    input.val($('meta[name=xy_trt]').attr('content'));
+    formx.append(input);
+    formx.submit();
+    //恢复现场
+    formx.attr("method", defaultMethod);
+}
+function getUrlParam() {
+    var url = location.search; //获取url中"?"符后的字串
+    var theRequest = [];
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        var strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[i]=strs[i].split("=")[0];
+        }
+    }
+    return theRequest;
+}
+
+function refresh() {
+    refresh(null);
+}
+
+/**
+ * 有参数的刷新
+ * @param param
+ */
+function refresh(param) {
+    var urlParams = getUrlParam();
+    var urlStr = $("#url").val();
+    if(param!=null){
+        for(var key  in param){
+            if(urlParams.indexOf(key) === -1){
+                urlStr = urlStr + "&" + key + "=" +  param[key];
+            }
+        }
+    }
+   setTimeout(function(){
+       window.location.replace(urlStr);
+   }, 80);
+}
+function replaceUrl(urlStr) {
+
+}
+/**
+ * 用于替换页面后返回上一页
+ * @param url
+ * @param queryCriteria 用于第二个列表页跳转回去的时候，附带第二个列表页的查询条件的
+ * @param backOrClose 如果为true时弹出框的back执行shutCors
+ */
+function back(url,queryCriteria,backOrClose,parametersBs) {
+    if(typeof backOrClose == "undefined" ){
+        backOrClose = false;
+    }
+    try{
+        if(backOrClose && this.window.name.indexOf("layui-layer-iframe") == 0) {
+            shutCors();
+        }
+    } catch (e) {
+        console.log(e);
+    }
+    if(typeof queryCriteria == "undefined" ){
+        queryCriteria = true
+    }
+    var formx = $("<form method='post'></form>");
+    var input;
+    if(typeof url == "undefined" || url==null || url==""){
+        url=$("#previousUrl").val();
+    }
+    if(url.indexOf("trt") == -1) {
+        if (url.indexOf("?") > 0) {
+            url = url + "&trt=" + $('meta[name=xy_trt]').attr('content');
+        } else {
+            url = url + "?trt=" + $('meta[name=xy_trt]').attr('content');
+        }
+    }
+    formx.attr({"action": url});
+    // input = $("<input type='hidden'>");
+    // input.attr({"name": "trt"});
+    // input.val($('meta[name=xy_trt]').attr('content'));
+    // formx.append(input);
+    if(parametersBs){
+        var serializeQuery = decodeURIComponent($.base64.atob(localStorage.getItem(parametersBs),false));
+        var serializeQueryJson = parseQueryString (serializeQuery);
+        var urlQueryString = parseQueryString(url);
+        $.each(serializeQueryJson, function (key, value) {
+            if(!urlQueryString.hasOwnProperty(key)){
+                input = $("<input type='hidden'>");
+                input.attr({"name": key});
+                input.val(value);
+                formx.append(input);
+            }
+        });
+        input = $("<input type='hidden'>");
+        input.attr({"name": "_csrf"});
+        input.val($('meta[name=_csrf]').attr('content'));
+        formx.append(input);
+    }else{
+        if (typeof $("#serializeQuery").val() != "undefined" && $("#serializeQuery").val() != "" && queryCriteria) {
+            if(queryCriteria){
+                var serializeQuery = decodeURIComponent($.base64.atob($("#serializeQuery").val(), true));
+                var serializeQueryJson = parseQueryString (serializeQuery);
+                var urlQueryString = parseQueryString(url);
+                $.each(serializeQueryJson, function (key, value) {
+                    if(!urlQueryString.hasOwnProperty(key)){
+                        input = $("<input type='hidden'>");
+                        input.attr({"name": key});
+                        input.val(value);
+                        formx.append(input);
+                    }
+                });
+            }
+        } else {
+            input = $("<input type='hidden'>");
+            input.attr({"name": "_csrf"});
+            input.val($('meta[name=_csrf]').attr('content'));
+            formx.append(input);
+        }
+    }
+
+    formx.appendTo(document.body);
+    formx.submit();
+}
+
+/**
+ * 页面提交方法
+ * @param obj 可以是当前button对象，也可以是url
+ * @param doneFn 回调函数
+ * @param formid 想要提交的form表单id（可选）
+ */
+function hold(obj, doneFn, formid) {
+    if(isElement(obj)){
+        holdDom(obj, doneFn, formid);
+    }else{
+        holdParas(obj, doneFn, formid);
+    }
+}
+/**
+ * 页面提交方法（文件）
+ * @param obj 可以是当前button对象，也可以是url
+ * @param doneFn 回调函数
+ * @param formid 想要提交的form表单id（可选）
+ */
+function holdWithFile(obj, doneFn, formid) {
+    if(isElement(obj)){
+        holdWithFileDom(obj, doneFn, formid);
+    }else{
+        holdWithFileParas(obj, doneFn, formid);
+    }
+}
+
+/**
+ * 替换页面跳转方法
+ * @param obj 可以是button或者a的this，也可以使{action:''}
+ * @async 是否为异步操作
+ */
+function ajaxDefault(obj,obj2,obj3,obj4) {
+    var async = false;
+    if("boolean" ==typeof obj3){
+        async = obj3;
+    }
+    if("boolean" == typeof obj4){
+        async = obj4;
+    }
+    if(isElement(obj)){
+        return ajaxDefaultDom(obj,obj2,async);
+    }else{
+        return ajaxDefaultPara(obj,obj2,obj3,async);
+    }
+}
+
+function ajaxDefaultDom(obj,doneFn,async) {
+    var url = $(obj).attr("url");
+    var parameters = $(obj).attr("parameters");
+    var trt =$(obj).attr("trt");
+    if(!parameters){
+       parameters = {}
+    }
+    if(trt){
+        if (jQuery.type(parameters) == "string") {
+            parameters = eval("(" + parameters + ")");
+        }
+        parameters.trt = $(obj).attr("trt");
+    }
+    return ajaxDefaultPara(url,parameters,doneFn,async);
+}
+
+/**
+ * 通用的ajax提交方法
+ * @param url 请求地址
+ * @param parameters 形如{"key":"value"}的数据
+ * @param async 是否异步
+ */
+//必须写在这才能返回
+var returnValue;
+
+function ajaxDefaultPara(url, parameters, doneFn,async) {
+    var parametersString = "";
+    if (parameters) {
+        if (jQuery.type(parameters) == "string") {
+            parameters = eval("(" + parameters + ")");
+        }
+
+        $.each(parameters, function (key, value) {
+            //encodeURIComponent处理个别情况乱码问题
+            parametersString = parametersString + "&" + key + "=" + encodeURIComponent(value);
+        });
+    }
+    var csrftoken = $('meta[name=_csrf]').attr('content');
+    $.ajax({
+        method: "POST",
+        url: url,
+        async: async,
+        headers: {
+            accept: 'application/json',
+            'X-CSRF-TOKEN': csrftoken
+        },
+        data: parametersString,
+        beforeSend: function () {
+            processIndex = layer.load();
+        }
+    })
+        .done(function (returnValueAjax) {
+            layer.close(processIndex);
+            if (doneFn) {
+                doneFn(returnValueAjax);
+            }
+            returnValue = returnValueAjax;
+        }).error(function (error) {
+        layer.close(processIndex);
+        console.log(JSON.stringify(error));
+    });
+    return returnValue;
+}
+
+
+//---------------------私有方法begin----------------------------
+/**
+ * 页面跳转方法，在a或者button按钮上使用
+ * @param button button或者a元素本身
+ * @param options 选项
+ */
+function forwardDom(button,options) {
+    if (typeof options == "undefined" ) {
+        options={};
+    }
+    if(!options.action  && options.url){
+        options.action = options.url;
+    }
+    if(!options.action  && $(button).attr("url")){
+        options.action = $(button).attr("url");
+    }
+    if($(button).attr("method")){
+        options.method = $(button).attr("method");
+    }
+    if($(button).attr("target")){
+        options.target = $(button).attr("target");
+    }
+    if($(button).attr("formid")){
+        options.formid = $(button).attr("formid");
+    }
+    if($(button).attr("trt")){
+        options.trt = $(button).attr("trt");
+    }
+    if($(button).attr("parameters")){
+        options.parameters = $(button).attr("parameters");
+    }
+    if($(button).attr("parametersBs")){
+        options.parametersBs = $(button).attr("parametersBs");
+    }
+
+    forwardParas(options);
+}
+
+function addBizInputs(formOragin, formSubmit) {
+    if ($(formOragin).find("#pslb").length > 0) {
+        var inputP = $("<input type='hidden'>");
+        inputP.attr({"name": "pslb"});
+        inputP.attr({"id": "pslb"});
+        inputP.val($("#pslb").val());
+        formSubmit.append(inputP);
+    }
+
+    if ($(formOragin).find("#bizid").length > 0) {
+        var inputB = $("<input type='hidden'>");
+        inputB.attr({"name": "bizid"});
+        inputB.attr({"id": "bizid"});
+        inputB.val($("#bizid").val());
+        formSubmit.append(inputB);
+    }
+    if ($("#url").length > 0) {
+        var inputU = $("<input type='hidden'>");
+        inputU.attr({"name": "url"});
+        inputU.attr({"id": "url"});
+        var regStr = /url.*?&/;
+
+        // console.log($("#url").val());
+        // console.log($("#url").val().replace(regStr,""));
+
+        inputU.val($("#url").val().replace(regStr, ""));
+        formSubmit.append(inputU);
+    }
+    if ($("#from").length > 0) {
+        var inputF = $("<input type='hidden'>");
+        inputF.attr({"name": "from"});
+        inputF.attr({"id": "from"});
+        inputF.val($("#from").val());
+        formSubmit.append(inputF);
+    }
+    if ($(formOragin).find("#taskid").length > 0) {
+        var inputTask = $("<input type='hidden'>");
+        inputTask.attr({"name": "taskid"});
+        inputTask.attr({"id": "taskid"});
+        inputTask.val($("#taskid").val());
+        formSubmit.append(inputTask);
+    }
+    if ($(formOragin).find("#taskdefid").length > 0) {
+        var inputTask = $("<input type='hidden'>");
+        inputTask.attr({"name": "taskdefid"});
+        inputTask.attr({"id": "taskdefid"});
+        inputTask.val($("#taskdefid").val());
+        formSubmit.append(inputTask);
+    }
+    if ($(formOragin).find("#tasksign").length > 0) {
+        var inputTask = $("<input type='hidden'>");
+        inputTask.attr({"name": "tasksign"});
+        inputTask.attr({"id": "tasksign"});
+        inputTask.val($("#tasksign").val());
+        formSubmit.append(inputTask);
+    }
+    if ($(formOragin).find("#executorid").length > 0) {
+        var inputExecutor = $("<input type='hidden'>");
+        inputExecutor.attr({"name": "executorid"});
+        inputExecutor.attr({"id": "executorid"});
+        inputExecutor.val($("#executorid").val());
+        formSubmit.append(inputExecutor);
+    }
+    if ($(formOragin).find("#datatabid").length > 0) {
+        var inputDatatab = $("<input type='hidden'>");
+        inputDatatab.attr({"name": "datatabid"});
+        inputDatatab.attr({"id": "datatabid"});
+        inputDatatab.val($("#datatabid").val());
+        formSubmit.append(inputDatatab);
+    }
+    if ($(formOragin).find("#datatabsign").length > 0) {
+        var inputDatatab = $("<input type='hidden'>");
+        inputDatatab.attr({"name": "datatabsign"});
+        inputDatatab.attr({"id": "datatabsign"});
+        inputDatatab.val($("#datatabsign").val());
+        formSubmit.append(inputDatatab);
+    }
+    if ($(formOragin).find("#datatabbqxz").length > 0) {
+        var inputDatatab = $("<input type='hidden'>");
+        inputDatatab.attr({"name": "datatabbqxz"});
+        inputDatatab.attr({"id": "datatabbqxz"});
+        inputDatatab.val($("#datatabbqxz").val());
+        formSubmit.append(inputDatatab);
+    }
+    if ($(formOragin).find("#taskStatus").length > 0) {
+        var inputStatus = $("<input type='hidden'>");
+        inputStatus.attr({"name": "taskStatus"});
+        inputStatus.attr({"id": "taskStatus"});
+        inputStatus.val($("#taskStatus").val());
+        formSubmit.append(inputStatus);
+    }
+    if ($(formOragin).find("#taskAutoLaunch").length > 0) {
+        var inputDatatab = $("<input type='hidden'>");
+        inputDatatab.attr({"name": "taskAutoLaunch"});
+        inputDatatab.attr({"id": "taskAutoLaunch"});
+        inputDatatab.val($("#taskAutoLaunch").val());
+        formSubmit.append(inputDatatab);
+    }
+}
+
+/**
+ * 页面跳转方法，用在js中forwardParas({action:''})
+ * @param options
+ */
+function forwardParas(options) {
+    var defaults = {
+        queryCriteria: true,
+        method: 'get',
+        target:'_self',
+        exportExcel:false,
+        exportExcelAppendQuery:false,
+    };
+    options = $.extend(defaults,options);
+    //此处调用确保属性合并完成
+    //如果是自己替换不加消失时间
+    if("_self" === options.target && !options.exportExcel){
+        layer.load();
+    }else{
+        layer.load(null, {time: 3000});
+    }
+    var formOragin;
+    if (options.formid) {
+        formOragin = $("#" + options.formid);
+    } else {
+        formOragin = $("#isFmVisibleForm").parent("form");
+    }
+
+    var formSubmit = $("<form></form>");
+
+    //清理xytable.js中生成的动态列数据
+    if(!options.exportExcel){
+        $("#exportColumns").val("");
+    }else{
+        var inputP = $("<input type='hidden'>");
+        inputP.attr({"name": "exportColumns"});
+        inputP.attr({"id": "exportColumns"});
+        inputP.val($("#exportColumns").val());
+        formSubmit.append(inputP);
+        //导出excel时自动追加查询条件
+        if(options.exportExcelAppendQuery){
+            var urlQueryString = parseQueryString(decodeURI(formOragin.serialize()));
+            $.each(urlQueryString, function (key, value) {
+                if(key!="exportColumns"){
+                    input = $("<input type='hidden'>");
+                    input.attr({"name": key});
+                    input.val(value);
+                    formSubmit.append(input);
+                }
+            });
+        }
+    }
+
+    $("#serializeQuery").val("");
+    if (options.queryCriteria) {
+        var serializeQuery = $.base64.btoa(formOragin.serialize(), true);
+        var inputQ = $("<input type='hidden'>");
+        inputQ.attr({"name": "serializeQuery"});
+        inputQ.attr({"id": "serializeQuery"});
+        inputQ.val(serializeQuery);
+        formSubmit.append(inputQ);
+    }
+    if(options.parametersBs){
+        localStorage.setItem(options.parametersBs, $.base64.btoa(formOragin.serialize(), true));
+    }
+    if (options.trt) {
+        var inputT = $("<input type='hidden'>");
+        inputT.attr({"name": "trt"});
+        inputT.attr({"id": "trt"});
+        inputT.val(options.trt);
+        formSubmit.append(inputT);
+    }
+
+    addBizInputs(formOragin, formSubmit);
+
+    if(options.method=="post"){
+        var inputCsrf = $("<input type='hidden'>");
+        inputCsrf.attr({"name": "_csrf"});
+        inputCsrf.attr({"id": "_csrf"});
+        inputCsrf.val($('meta[name=_csrf]').attr('content'));
+        formSubmit.append(inputCsrf);
+    }
+
+    genParameters(options, formSubmit);
+
+    formSubmit.attr("method", options.method);
+    formSubmit.attr("target", options.target);
+    formSubmit.appendTo(document.body);
+    formSubmit.attr("action", options.action).submit();
+}
+
+/**
+ * 私有方法
+ * @param button
+ * @param options
+ */
+function openWindowDom(button,options) {
+    if (typeof options == "undefined" ) {
+        options={};
+    }
+    options.action = $(button).attr("url");
+    if($(button).attr("formid")){
+        options.formid = $(button).attr("formid");
+    }
+    if($(button).attr("trt")){
+        options.trt = $(button).attr("trt");
+    }
+    if($(button).attr("parameters")){
+        options.parameters = $(button).attr("parameters");
+    }
+
+    if (typeof options == "undefined" || typeof options.title == "undefined" || !options.title) {
+        if(button.innerText=="..."){
+            options.title ="请选择";
+        }else{
+            options.title = button.innerText.trim();//
+        }
+    }
+
+    openWindowParas(options);
+}
+
+/**
+ * 私有方法
+ * @param options
+ */
+function openWindowParas(options) {
+    var defaults = {
+        title: '',
+        size: 'nomal',
+        max: false,
+        closeBtn: 1,
+        showTitle:true,
+        maxmin:true
+    };
+    options = $.extend(defaults,options);
+    var formSubmit = $("<form></form>");
+    //数据权限
+    if (options.trt) {
+        var inputT = $("<input type='hidden'>");
+        inputT.attr({"name": "trt"});
+        inputT.attr({"id": "trt"});
+        inputT.val(options.trt);
+        formSubmit.append(inputT);
+    }
+    genParameters(options, formSubmit);
+    //当前窗口所在frameName，弹出窗口回调使用
+    var input = $("<input type='hidden'>");
+    input.attr({"name": "frameName"});
+    input.attr({"id": "frameName"});
+    if (options.framepath && options.framepath != "") {
+        input.val(options.framepath);
+    } else if (window.name) {
+        input.val("top['" + window.name + "']");
+    }
+    formSubmit.append(input);
+    //from=http...跨域访问使用
+    formSubmit.append(genFrom());
+
+    if(options.action.indexOf("?") > 0) {
+        options.content = options.action + "&" + formSubmit.serialize();
+    } else {
+        options.content = options.action + "?" + formSubmit.serialize();
+    }
+
+    sendMessageCrossDomain("popup", options);
+}
+
+/**
+ * 获取options中的parameters参数，并形成input追加到form
+ * @param options
+ * @param formSubmit
+ */
+function genParameters(options, formSubmit) {
+//参数
+    if (options.parameters) {
+        if (typeof options.parameters == "string") {
+            options.parameters = eval("(" + options.parameters + ")");
+        }
+
+        $.each(options.parameters, function (key, value) {
+            var input = $("<input type='hidden'>");
+            input.attr({"name": key});
+            input.attr({"id": key});
+            input.val(value);
+            formSubmit.append(input);
+        });
+    }
+}
+
+/**
+ * 生成跨域时候的from
+ * @returns {Mixed|jQuery|HTMLElement}
+ */
+function genFrom() {
+    var input = $("<input type='hidden'>");
+    input.attr({"name": "from"});
+    input.attr({"id": "from"});
+    input.val(self_app_wwdz);
+    return input;
+}
+
+//带参数提交不带跳转
+function holdDom(obj, doneFn, formid) {
+    var url = $(obj).attr("url");
+    holdParas(url, doneFn, formid)
+}
+
+//带参数提交不带跳转
+function holdParas(url, doneFn, formid) {
+    var parametersString = "";
+
+    if (formid) {
+        parametersString = $('#' + formid).serialize();
+    } else {
+        parametersString = $("#isFmVisibleForm").parent("form").serialize();
+    }
+
+    $.ajax({
+        method: "POST",
+        url: url,
+        headers: {accept: 'application/json'},
+        data: parametersString,
+        beforeSend: function () {
+            // processIndex = layer.load(null,{shade: [0.8, '#393D49']});
+            var datas = {
+                'iframeName':this.name,
+            };
+            parentXmxdPopup('loadOpenType',datas);
+        }
+    })
+        .done(function (returnValue) {
+            var datas = {
+                'iframeName':this.name,
+            };
+            parentXmxdPopup('loadCloseType',datas);
+            doneFn(returnValue);
+        })
+        .error(function(jqXHR, textStatus, errorThrown){
+            alert(jqXHR.status + ":" + jqXHR.responseText);
+            parentXmxdPopup('loadCloseType',datas);
+        });
+}
+
+//带参数提交不带跳转
+function holdWithFileDom(obj, doneFn, formid) {
+    var url = $(obj).attr("url");
+    holdWithFileParas(url, doneFn, formid)
+}
+
+// spring mvc原生上传文件 带参数提交不带跳转
+function holdWithFileParas(url, doneFn, formid) {
+    var formx = null;
+    if (formid) {
+        formx = $('#' + formid);
+    } else {
+        formx = $("#isFmVisibleForm").parent("form");
+    }
+    $.ajax({
+        method: "POST",
+        url: url,
+        headers: {accept: 'application/json'},
+        data: new FormData(formx[0]),
+        processData: false,
+        contentType: false,
+        beforeSend: function () {
+            var datas = {
+                'iframeName':this.name,
+            };
+            parentXmxdPopup('loadOpenType',datas);
+        }
+    }).done(function (returnValue) {
+        var datas = {
+            'iframeName':this.name,
+        };
+        parentXmxdPopup('loadCloseType',datas);
+        doneFn(returnValue);
+    });
+}
+function opContent(form){
+    var opcontent={};
+    $(form).find("input").each(function () {
+        if($(this).attr("opcontent")&&$(this).attr("opcontent")!="undefined"&&$(this).attr("opcontent")=="true"){
+            if($(this).attr("id")&&$(this).attr("id")!="undefined"){
+                opcontent[$(this).attr("id")]=$(this).attr("value");
+            }else{
+                opcontent[$(this).attr("name")]=$(this).attr("value");
+            }
+        }
+    });
+    $(form).find("select").each(function () {
+        if($(this).attr("opcontent")&&$(this).attr("opcontent")!="undefined"&&$(this).attr("opcontent")=="true"){
+            if($(this).attr("id")&&$(this).attr("id")!="undefined"){
+                opcontent[$(this).attr("id")]=$(this).attr("value");
+            }else{
+                opcontent[$(this).attr("name")]=$(this).attr("value");
+            }
+        }
+    });
+    $(form).find("textarea").each(function () {
+        if($(this).attr("opcontent")&&$(this).attr("opcontent")!="undefined"&&$(this).attr("opcontent")=="true"){
+            if($(this).attr("id")&&$(this).attr("id")!="undefined"){
+                opcontent[$(this).attr("id")]=$(this).attr("value");
+            }else{
+                opcontent[$(this).attr("name")]=$(this).attr("value");
+            }
+        }
+    });
+$("#opContent").val(JSON.stringify(opcontent));
+
+}
+function tableSort(sortname,sortorder,obj) {
+    if(sortorder=="asc"){
+        $(obj).parent().addClass("asc");
+    }else if(sortorder=="desc"){
+        $(obj).parent().addClass("desc");
+    }
+    $("#qvSortName").val(sortname);
+    $("#qvSortOrder").val(sortorder);
+    submitThis();
+}
+function titSort(sortname,sortorder,obj) {
+    if(sortorder=="asc"){
+        $(obj).addClass("current");
+    }else if(sortorder=="desc"){
+        $(obj).addClass("active");
+    }
+    $("#qvSortName").val(sortname);
+    $("#qvSortOrder").val(sortorder);
+    submitThis();
+}
+function zdySort(sortname,sortorder,obj) {
+    if(sortorder=="asc"){
+        $(obj).addClass("active");
+    }else if(sortorder=="desc"){
+        $(obj).addClass("active");
+    }
+    $("#qvSortName").val(sortname);
+    $("#qvSortOrder").val(sortorder);
+    submitThis();
+}
+//---------------------私有方法end----------------------------
+
+

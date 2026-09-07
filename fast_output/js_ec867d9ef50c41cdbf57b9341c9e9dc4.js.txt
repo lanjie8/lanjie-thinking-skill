@@ -1,0 +1,21 @@
+$require(['swiper'], function () {
+    var mySwiper = new Swiper('.developmentPath', {
+        direction: 'vertical',
+        initialSlide: 0,
+        grabCursor: true,
+        slidesPerView: 3,
+        centeredSlides: false,
+        spaceBetween: 40,
+        mousewheel: true,
+        navigation: {
+            nextEl: '.developmentPathBox .swiper-button-next',
+            prevEl: '.developmentPathBox .swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                centeredSlides: true,
+                initialSlide: 1,
+            },
+        }
+    })  
+})

@@ -1,0 +1,1214 @@
+/**
+ * 弹出确认然后刷新当前页面的方法。
+ * @param obj 当前按钮或者超链接
+ * @param title 提示内容
+ * @param bool 是否含有很长的iframe页面
+ */
+function confirmSubmitThis(obj, title, bool) {
+    if (!title) {
+        title = "确定删除所选的信息吗？"
+    }
+    verify(title, function () {
+        ajaxDefault(obj, function (returnValue) {
+            popupOk(returnValue, function () {
+                submitThis();
+            }, null, bool);
+        });
+    }, null, bool);
+}
+/**
+ * 弹出确认然后刷新当前页面的方法。
+ * @param obj 当前按钮或者超链接
+ * @param title 提示内容
+ * @param bool 是否含有很长的iframe页面
+ */
+function confirmRefresh(obj, title, bool) {
+    if (!title) {
+        title = "确定删除所选的信息吗？"
+    }
+    verify(title, function () {
+        ajaxDefault(obj, function (returnValue) {
+            popupOk(returnValue, function () {
+                refresh();
+            }, null, bool);
+        },true);
+    }, null, bool);
+}
+
+String.prototype.endWith = function (s) {
+    if (s == null || s == "" || this.length == 0 || s.length > this.length)
+        return false;
+    if (this.substring(this.length - s.length) == s)
+        return true;
+    else
+        return false;
+    return true;
+}
+
+String.prototype.startWith = function (s) {
+    if (s == null || s == "" || this.length == 0 || s.length > this.length)
+        return false;
+    if (this.substr(0, s.length) == s)
+        return true;
+    else
+        return false;
+    return true;
+}
+
+/**
+ * js生成uuid方法
+ * @returns {string}
+ */
+function guid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    }).replace(/[-]/g, '');
+}
+
+/**
+ * 为search_group组件的回车绑定查询按钮事件
+ * @param searchId
+ */
+function searchBindEnter(searchId) {
+    $("#" + searchId).on("keydown", function (event) {
+        if (event.keyCode == "13") {
+            //回车执行查询
+            $('#' + searchId + '_search').click();
+        }
+    });
+}
+
+/**
+ * 跨域向某个页面传递内容，默认为弹出窗口上一个页面
+ * @param methodName 方法名
+ * @param params 传递的参数
+ */
+function sendMessageCrossDomain(methodName, params, target) {
+    var sDatas = JSON.stringify({'method': methodName, 'params': params});
+    if (target) {
+        target.postMessage(sDatas, '*');
+    } else {
+        top.postMessage(sDatas, '*');
+    }
+}
+
+/**
+ * js获取querystring
+ * @param name
+ * @param url
+ * @returns {*}
+ */
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function parseQueryString(queryString) {
+    var reg_para = /([^&=]+)=([\w\W]*?)(&|$|#)/g,
+        ret = {},
+        result
+    while ((result = reg_para.exec(queryString)) != null) {
+        ret[result[1]] = result[2];
+    }
+    return ret;
+}
+
+/**
+ * 判断对象是否为dom对象
+ * @param obj
+ * @returns {boolean}
+ */
+var isElement = function (obj) {
+    if (obj && obj.nodeType === 1) {//先过滤最简单的
+        if (window.Node && (obj instanceof Node)) { //如果是IE9,则判定其是否Node的实例
+            return true; //由于obj可能是来自另一个文档对象，因此不能轻易返回false
+        }
+        return true;
+    }
+    return false;
+}
+
+/**
+ * 获取表格中的所有的数据
+ *
+ * @param tableId   表格id
+ * @returns [{}]
+ */
+
+
+/**
+ * 获取表格中的所有可输入或选择的数据
+ *
+ * @param tableId   表格id
+ * @param options   json的参数配置(
+ *                  zbid : 页面有多表格时,为第二表中的隐藏主键id的name值 ,
+ *                  radioName : 为单选框往数据库时的对应的表字段名称)
+ * @returns 表格中的所有的数据
+ */
+function getTableData(tableId, options) {
+
+    if (typeof options == "undefined") {
+        options = {
+            zbid: '',
+            radioName: ''
+        };
+    }
+    var editData = [];
+    $("#" + tableId).find('>tbody>tr').each(function () {
+        var editRow = {};
+        // 获取某一行每个子元素的内容、id、class、rowspan、title、data属性
+        $(this).children('td').each(function (i) {
+            $(this).find('input').each(function () {
+                if ($(this).attr("name") != undefined) {
+                    if ($(this).attr("type") == "radio") {
+                        if ($(this).prop("checked") == true && options.radioName != '') {
+                            editRow["'" + options.radioName + "'"] = $(this).val();
+                        }
+                    } else {
+                        if ($(this).attr("name") == options.zbid) {
+                            editRow['id'] = $(this).val();
+                        } else {
+                            editRow[$(this).attr("name")] = $(this).val();
+                        }
+                    }
+                }
+
+            });
+            $(this).find('textarea').each(function () {
+                editRow[$(this).attr("name")] = $(this).val();
+            });
+            $(this).find('select').each(function () {
+                editRow[$(this).attr("name")] = $(this).val();
+            });
+        });
+        editData.push(editRow);
+    });
+    return editData;
+}
+
+/**
+ * 获取金额中文大写格式
+ * @param moneyValue 金额
+ * @param maxDec 保留小数位
+ * @returns 金额中文大写格式
+ */
+function cnMoney(moneyValue, maxDec) {
+    // 验证输入金额数值或数值字符串：
+    if (!moneyValue || moneyValue == "") {
+        return "";
+    }
+    moneyValue = moneyValue.toString().replace(/,/g, "");
+    //分别去字符串前后，左边，右边空格
+    moneyValue = moneyValue.toString().replace(/^\s+|\s+$/g, "");
+    moneyValue = moneyValue.toString().replace(/^\s+/g, "");
+    moneyValue = moneyValue.toString().replace(/\s+$/g, "");
+    moneyValue = moneyValue.replace(/^0+/, ""); // 金额数值转字符、移除逗号、移除前导零
+    if (moneyValue == "") {
+        return "";
+    } // （错误：金额为空！）
+    else if (isNaN(moneyValue)) {
+        return "错误：金额不是合法的数值！";
+    }
+
+    var minus = ""; // 负数的符号“-”的大写：“负”字。可自定义字符，如“（负）”。
+    var CN_SYMBOL = ""; // 币种名称（如“人民币”，默认空）
+    if (moneyValue.length > 1) {
+        if (moneyValue.indexOf('-') == 0) {
+            moneyValue = moneyValue.replace("-", "");
+            minus = "负";
+        } // 处理负数符号“-”
+        if (moneyValue.indexOf('+') == 0) {
+            moneyValue = moneyValue.replace("+", "");
+        } // 处理前导正数符号“+”（无实际意义）
+    }
+    var vInt = "", vDec = ""; // 字符串：金额的整数部分、小数部分
+    var resAIW; // 字符串：要输出的结果
+    var parts; // 数组（整数部分.小数部分），length=1时则仅为整数。
+    var digits, radices, bigRadices, decimals; // 数组：数字（0~9——零~玖）；基（十进制记数系统中每个数字位的基是10——拾,佰,仟）；大基（万,亿,兆,京,垓,杼,穰,沟,涧,正）；辅币（元以下，角/分/厘/毫/丝）。
+    var zeroCount; // 零计数
+    var i, p, d; // 循环因子；前一位数字；当前位数字。
+    var quotient, modulus; // 整数部分计算用：商数、模数。
+
+    // 金额数值转换为字符，分割整数部分和小数部分：整数、小数分开来搞（小数部分有可能四舍五入后对整数部分有进位）。
+    var NoneDecLen = (typeof (maxDec) == "undefined" || maxDec == null || Number(maxDec) < 0 || Number(maxDec) > 5); // 是否未指定有效小数位（true/false）
+    parts = moneyValue.split('.'); // 数组赋值：（整数部分.小数部分），Array的length=1则仅为整数。
+    if (parts.length > 1) {
+        vInt = parts[0];
+        vDec = parts[1]; // 变量赋值：金额的整数部分、小数部分
+        if (NoneDecLen) {
+            maxDec = vDec.length > 5 ? 5 : vDec.length;
+        }
+        // 未指定有效小数位参数值时，自动取实际小数位长但不超5。
+        var rDec = Number("0." + vDec);
+        rDec *= Math.pow(10, maxDec);
+        rDec = Math.round(Math.abs(rDec));
+        rDec /= Math.pow(10, maxDec); // 小数四舍五入
+        var aIntDec = rDec.toString().split('.');
+        if (Number(aIntDec[0]) == 1) {
+            vInt = (Number(vInt) + 1).toString();
+        } // 小数部分四舍五入后有可能向整数部分的个位进位（值1）
+        if (aIntDec.length > 1) {
+            vDec = aIntDec[1];
+        } else {
+            vDec = "";
+        }
+    } else {
+        vInt = moneyValue;
+        vDec = "";
+        if (NoneDecLen) {
+            maxDec = 0;
+        }
+    }
+    if (vInt.length > 44) {
+        return "错误：金额值太大了！整数位长【" + vInt.length.toString() + "】超过了上限——44位/千正/10^43（注：1正=1万涧=1亿亿亿亿亿，10^40）！";
+    }
+
+    // 准备各字符数组 Prepare the characters corresponding to the digits:
+    digits = new Array("零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"); // 零~玖
+    radices = new Array("", "拾", "佰", "仟"); // 拾,佰,仟
+    bigRadices = new Array("", "万", "亿", "兆", "京", "垓", "杼", "穰", "沟", "涧", "正"); // 万,亿,兆,京,垓,杼,穰,沟,涧,正
+    decimals = new Array("角", "分", "厘", "毫", "丝"); // 角/分/厘/毫/丝
+    resAIW = ""; // 开始处理
+
+    // 处理整数部分（如果有）
+    if (Number(vInt) > 0) {
+        zeroCount = 0;
+        for (i = 0; i < vInt.length; i++) {
+            p = vInt.length - i - 1;
+            d = vInt.substr(i, 1);
+            quotient = p / 4;
+            modulus = p % 4;
+            if (d == "0") {
+                zeroCount++;
+            } else {
+                if (zeroCount > 0) {
+                    resAIW += digits[0];
+                }
+                zeroCount = 0;
+                resAIW += digits[Number(d)] + radices[modulus];
+            }
+            if (modulus == 0 && zeroCount < 4) {
+                resAIW += bigRadices[quotient];
+            }
+        }
+        resAIW += "元";
+    }
+    // 处理小数部分（如果有）
+    for (i = 0; i < vDec.length; i++) {
+        d = vDec.substr(i, 1);
+        if (d != "0") {
+            resAIW += digits[Number(d)] + decimals[i];
+        }
+    }
+
+    // 处理结果
+    if (resAIW == "") {
+        resAIW = "零" + "元";
+    } // 零元
+    if (vDec == "") {
+        resAIW += "整";
+    } // ...元整
+    resAIW = CN_SYMBOL + minus + resAIW; // 人民币/负......元角分/整
+    return resAIW;
+}
+
+
+//定义进度环的颜色
+var brandColors = {
+    'primary': '#1277c7',
+    'success': '#35aa47',
+    'info': '#2da1f8',
+    'warning': '#fe9700',
+    'danger': '#d84a38'
+}
+
+//页面进度环调用颜色方案
+function getBrandColor(name) {
+    if (brandColors[name]) {
+        return brandColors[name];
+    } else {
+        return 'primary';
+    }
+}
+
+//步骤条
+function bsStep(stepId, i) {
+    var a = 0;
+    var thisStep = $(stepId);
+    if (i > thisStep.find('li').length) {
+        console.log('输入数值已超过实际步骤最大数量' + thisStep.find('li').length + '！！！');
+        a = thisStep.find('li').length;
+    } else if (i == undefined) {
+        a = 1
+    } else {
+        a = i
+    }
+    thisStep.find('li').removeClass('done');
+    thisStep.find('li:lt(' + a + ')').addClass('done');
+    thisStep.find('li:eq(' + (a - 1) + ')').removeClass('done').addClass('current');
+}
+
+
+/**
+ * ztree组件增加节点的时候，如果超过宽度自动截取的方法
+ * @param treeId
+ * @param treeNode
+ */
+function addSubstringDom(treeId, treeNode) {
+    var ztreeWidth = $("#" + treeId).css("width");
+    ztreeWidth = parseInt(ztreeWidth);
+
+    //默认ztree字体大小为12px，可以显示字节数（10代表ztree的padding，18代表图标宽度，每一级节点缩进16px）
+    var num = parseInt((ztreeWidth - 10 - 18 * (treeNode.level + 1) - 16) / 12 * 2);
+    //判断 节点 字节数
+    var spantxt = $("#" + treeNode.tId + "_span").html();
+    if (spantxt) {
+        var txtLength = GetLength(spantxt);
+    }
+    //如果 节点数据长度大于允许长度，即将超出时
+    var cutNum, cutLength = 0;
+    if (txtLength > num) {
+        for (var i = 0; i < spantxt.length; i++) {
+            var charCode = spantxt.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128) {
+                cutLength += 1;
+            } else {
+                cutLength += 2;
+            }
+            if (cutLength >= num - 2) {
+                cutNum = i;//找到刚符合 允许长度 的字符串的位置
+                break;
+            }
+        }
+        spantxt = spantxt.substring(0, cutNum) + "...";
+        $("#" + treeNode.tId + "_span").html(spantxt);
+    }
+
+    //判断 包含汉字和英文的字符串的长度判断方法，判断字节数
+    function GetLength(str) {
+        var realLength = 0;
+        for (var i = 0; i < str.length; i++) {
+            var charCode = str.charCodeAt(i);
+            if (charCode >= 0 && charCode <= 128)
+                realLength += 1;
+            else
+                realLength += 2;
+        }
+        return realLength;
+    }
+}
+
+function stopBubble(e) {
+    if (e && e.stopPropagation) {
+        e.stopPropagation();    //w3c
+    } else {
+        window.event.cancelBubble = true; //IE
+    }
+}
+
+
+//筛选条件增加选中效果
+function selectItem(selectId) {
+    var thisSelect = $(selectId);
+    thisSelect.find(".item").each(function () {
+        $(this).on("click", function () {
+            if ($(this).hasClass("selectall")) {
+                if ($(this).hasClass("select")) {
+                    $(this).parent().find(".item").removeClass("select");
+                } else {
+                    $(this).addClass("select");
+                    $(this).parent().find(".item").addClass("select");
+                }
+            } else {
+                $(this).toggleClass("select");
+                var totalnumber = $(this).parent().find(".item").not(".selectall").length;
+                var selectnumber = $(this).parent().find(".item.select").not(".selectall").length;
+                if (selectnumber == totalnumber) {
+                    $(this).parent().find(".selectall").addClass("select");
+                }
+                if (selectnumber < totalnumber) {
+                    $(this).parent().find(".selectall").removeClass("select");
+                }
+            }
+        });
+    });
+};
+
+function refreshOtherSjbq() {
+    var params = {
+        'myname': window.name
+    };
+    sendMessageCrossDomain('refreshSjbq', params, top);
+}
+
+$(function () {
+    window.addEventListener('message', function (e) {
+        var datas = e.data;
+        if (typeof datas === 'string') {
+            try {
+                datas = JSON.parse(datas);
+            } catch (e) {
+                return;
+            }
+        }
+        if (datas && datas.method == "refresh") {
+            refresh();
+        }
+    }, false);
+});
+
+
+//控制按钮在左右两侧（滑动选项卡、小评标页码及所有典型设计页面用到）
+function switchLine(step) {
+    var step = $(step);
+    var cons = step.find('.cons'),
+        con = step.find('.con'),
+        btnWr = step.find('.btns'),
+        btnPr = btnWr.find('a.left'),
+        btnNr = btnWr.find('a.right');
+
+    var lisr = con.find('li');
+
+    var pnumr = 2,
+        numr = lisr.length;
+
+    var fwidth = 0,
+        remain_width = 0, //滑动后的剩余长度
+        swidth = step.width();
+
+    for (i = 0; i < numr; i++) {
+        fwidth = fwidth + $(lisr[i]).outerWidth(true);
+    }
+
+    if (fwidth > swidth) {
+        btnWr.show();
+        cons.addClass('hasspace');
+        btnPr.addClass('uN');
+    } else {
+        btnWr.hide();
+        cons.removeClass('hasspace');
+    }
+
+    var owr = fwidth / numr,
+        idxArear = [0, numr - pnumr],
+        idxr = 0;
+
+    function updateNum(n) {
+        if (n > idxArear[1] || n < idxArear[0]) {
+            return;
+        }
+
+        remain_width = fwidth - n * owr + 80;
+
+        btnPr[((n == 0) ? 'add' : 'remove') + 'Class']('uN');
+        btnNr[((n == idxArear[1]) || (remain_width < swidth) ? 'add' : 'remove') + 'Class']('dN');
+
+        idxr = n;
+        con.stop().animate({left: -n * owr}, 300);
+    }
+
+    btnPr.click(function () {
+        updateNum(idxr - 1);
+        return false;
+    });
+
+    btnNr.click(function () {
+        updateNum(idxr + 1);
+        return false;
+    });
+}
+
+
+//返回顶部代码
+$(function () {
+    var $body = $(document.body);
+    var $bottomTools = $('.bottom-tools');
+    $(window).scroll(function () {
+        var scrollHeight = $(document).height();
+        var scrollTop = $(window).scrollTop();
+        var $windowHeight = $(window).innerHeight();
+        scrollTop > 600 ? $("#scrollUp").fadeIn(200).css("display", "block") : $("#scrollUp").fadeOut(200);
+
+    });
+    $('#scrollUp').click(function (e) {
+        e.preventDefault();
+        $('html,body').animate({scrollTop: 0});
+    });
+});
+
+
+//锚点平滑滚动效果
+$(function () {
+
+    $('a[href*="#section"]:not([href="#section"])').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html, body').animate({
+                    scrollTop: target.offset().top - 120
+                }, 500);
+                return false;
+            }
+        }
+    });
+});
+
+
+//chosen-container-diy组件增加点击增加clss,用于控制下划线动效
+$(function () {
+    $(".chosen-container-diy").click(function () {
+        $(".chosen-container-diy").removeClass("chosen-container-active");
+        $(this).addClass("chosen-container-active");
+    });
+
+    //chosen-container-diy组件鼠标点击其他位置去掉下划线动效
+    $("body").on('click', function (e) {
+        e = e || window.event;
+        if (!$(e.target).closest('.chosen-container-diy').length) {
+            $(".chosen-container-diy").removeClass("chosen-container-active");
+        }
+    });
+
+});
+
+
+//分包列表的宽度适应
+function fix_packagelist() {
+    var top_num = 0;
+    var linewrap = false;
+    var package_width = 0;
+    $(".packagelist > li").each(function () {
+        if ($(this).position().top == 0) {
+            top_num = top_num + 1;
+        } else {
+            linewrap = true;
+        }
+        package_width = $(this).width();
+    });
+    var left_distance = top_num * (package_width + 20) + 10;
+    if (linewrap == true) {
+        $(".packagelist > .package-control").css("display", "block").css("left", left_distance + "px");
+    } else {
+        $(".packagelist > .package-control").css("display", "none");
+    }
+};
+
+//新的分包列表按钮逻辑
+function display_packagelist() {
+    var linewrap = false;
+    $(".packagelist > li").each(function () {
+        if ($(this).position().top != 0) {
+            linewrap = true;
+        }
+    });
+    if (linewrap == true) {
+        $(".packagetools").css("display", "block");
+    } else {
+        $(".packagetools").css("display", "none");
+    }
+};
+
+//点击分包下拉按钮
+function showMorePackages(buttonx) {
+    var ptext = $("#searchtext").val();
+    if (ptext == "") {
+        if ($("#package-i").attr("class").indexOf("collapsed") >= 0) {
+            movePackages();
+        } else {
+            movePackages(firstPackageTop);
+        }
+    }
+    $(buttonx).toggleClass("collapsed");
+    $(buttonx).parents(".package-main").find("ul.packagelist").toggleClass("expanded");
+    stopBubble();
+}
+
+function searchPackageAction() {
+    movePackages(firstPackageTop)
+    var ptext = $("#searchtext").val();
+    $("ul.packagelist li").each(function () {
+        var pname = $(this).find(".statbody").text();
+        if (ptext != "") {
+            if (pname.indexOf(ptext) > -1) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        } else {
+            $(this).show();
+        }
+    })
+}
+
+function movePackages(firsttop) {
+    var movex = 0;
+    try {
+        var firstOffset = $("ul.packagelist li").first().show().offset();
+        var currFirstTop = firstOffset ? firstOffset.top : firstPackageTop;
+        var selectOffset = $("ul.packagelist li div.select").parent().show().offset();
+        var selectTop = currFirstTop;
+        if (firsttop) {
+            selectTop = firsttop;
+        } else if (selectOffset) {
+            selectTop = selectOffset.top;
+        }
+        console.log("selectTop:", currFirstTop, selectTop);
+        movex = selectTop - currFirstTop;
+    } catch (e) {
+        console.log(e);
+        return;
+    }
+    console.log("move : ", movex);
+    if (movex == 0) {
+        return;
+    }
+    $("ul.packagelist li").each(function () {
+        var topx = parseInt($(this).offset().top);
+        if (currFirstTop < firstPackageTop) {
+            topx += movex;
+        } else {
+            topx -= movex;
+        }
+        $(this).offset({"top": topx, "left": $(this).offset().left});
+    })
+}
+
+//分包点击选择
+$(".package-thumb").click(function () {
+    if (!$(this).hasClass("invalid")) {
+        $(".package-thumb").removeClass("select");
+        $(this).addClass("select");
+    }
+});
+
+//阻止下拉菜单内的点击进行冒泡
+$(".packagelist,.modelist").on('click', function (e) {
+    stopBubble();
+});
+
+//body空白点击时关掉相关下拉区
+$("body").on('click', function () {
+    $(".packagelist").removeClass("expanded");
+    $(".modelist").removeClass("expanded");
+});
+
+$(window).on("load resize", function () {
+    if ($(".packagelist").length > 0) {
+        display_packagelist();
+    }
+    if ($(".slidestep").length > 0) {
+        $(".slidestep").each(function () {
+            switchLine(this);
+        });
+    }
+    if ($("[data-toggle='dropdown']").length > 0) {
+        fixDropMenu();
+    }
+    if ($(".chosen-container").length > 0) {
+        fixChosen();
+    }
+    //listtab组件及大评标页码
+    if ($(".pagenumber-step").length > 0) {
+        $(".pagenumber-step").each(function () {
+            doPageNumber(this);
+        });
+    }
+    //桌面快捷入口
+    if ($(".entry-step").length > 0) {
+        entrySlide();
+    }
+    //listindex组件
+    if ($(".listindex").length > 0) {
+        $(".listindex").each(function () {
+            display_listindex(this);
+        });
+    }
+    //listtab组件
+    if ($(".tab-step").length > 0) {
+        $(".tab-step").each(function () {
+            doPageNumber(this);
+        });
+    }
+    //listiselect组件
+    if ($(".listselect").length > 0) {
+        $(".listselect").each(function () {
+            display_listselect(this);
+        });
+    }
+});
+
+
+//listindex数据项过多的控制
+function display_listindex(listindex) {
+    var current_li = $(listindex);
+    var linewrap = false;
+
+    current_li.find(".item").each(function () {
+        if ($(this).position().top != 0) {
+            linewrap = true;
+        }
+    });
+    if (linewrap == true) {
+        current_li.find(".listindextools").css("display", "block");
+    } else {
+        current_li.find(".listindextools").css("display", "none");
+    }
+};
+
+//点击listindex的更多按钮
+function showMoreListindex(obj) {
+    $(obj).parent().parent('.listindex').toggleClass("expanded");
+    stopBubble();
+}
+
+//listselect收缩按钮
+function display_listselect(listselect) {
+    var current_ls = $(listselect);
+    if (current_ls.find(".ls-hide").length > 0) {
+        current_ls.find(".listselecttools").css("display", "block");
+    } else {
+        current_ls.find(".listselecttools").css("display", "none");
+    }
+};
+
+//点击listselect隐藏区的控制
+function showMoreListselect(obj) {
+    $(obj).parent().parent('.listselect').toggleClass("expanded");
+    stopBubble();
+}
+
+
+//listtab数据项过多的控制（控制按钮在右上角，listtab组件、大评标页码组件专用）
+function doPageNumber(pagecontrol) {
+
+    var pc = $(pagecontrol);
+    var conr = pc.find('.con'),
+        conr0 = conr[0],
+        btnWr = pc.parent().find('.s-right'),
+        btnPr = btnWr.find('.btnleft'),
+        btnNr = btnWr.find('.btnright');
+
+    var lisr = conr.find('li');
+
+    var pnumr = 5,
+        numr = lisr.length;
+
+    var fwidth = 0,
+        swidth = pc.width();
+
+    for (i = 0; i < numr; i++) {
+        fwidth = fwidth + $(lisr[i]).outerWidth(true);
+    }
+
+    if (fwidth > swidth) {
+        btnWr.show();
+        btnPr.addClass('uN');
+    } else {
+        btnWr.hide();
+    }
+
+    var owr = fwidth / numr,
+        idxArear = [0, numr - pnumr],
+        idxr = 0;
+
+    function updateNum(n) {
+        if (n > idxArear[1] || n < idxArear[0]) {
+            return;
+        }
+
+        btnPr[((n == 0) ? 'add' : 'remove') + 'Class']('uN');
+        btnNr[((n == idxArear[1]) ? 'add' : 'remove') + 'Class']('dN');
+
+        idxr = n;
+        conr.stop().animate({left: -n * owr}, 300);
+    }
+
+    btnPr.click(function () {
+        updateNum(idxr - 1);
+        return false;
+    });
+
+    btnNr.click(function () {
+        updateNum(idxr + 1);
+        return false;
+    });
+}
+
+var firstPackageTop = 15;
+$(function () {
+    if ($(".packagelist").length > 0) {
+        var firstOffset = $("ul.packagelist li").first().show().offset();
+        firstPackageTop = firstOffset ? firstOffset.top : 15;
+        setTimeout(function () {
+            movePackages();
+        }, 50);
+
+        if ($("#searchtext")) {
+            document.onkeydown = function (e) {
+                var ev = (typeof event != 'undefined') ? window.event : e;
+                if (ev.keyCode == 13) {
+                    if (ev.target && ev.target.id && ev.target.id == "searchtext") {
+                        searchPackageAction();
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+})
+
+//固定表格头部
+$(function () {
+    var tablefixed = document.querySelector('#table-fixed')
+
+    function scrollHandle(e) {
+        var scrollTop = this.scrollTop;
+        this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
+        if (scrollTop == '0') {
+            this.querySelector('thead').style.transform = '';
+        }
+    }
+
+    if (tablefixed) {
+        tablefixed.addEventListener('scroll', scrollHandle);
+    }
+});
+
+
+//采购助手
+$(function () {
+    $('.showbar').click(function (event) {
+        //取消事件冒泡
+        event.stopPropagation();
+        //按钮的toggle,如果div是可见的,点击按钮切换为隐藏的;如果是隐藏的,切换为可见的。
+        $('.xy-bar').toggleClass('in');
+
+    });
+
+    //点击空白处隐藏弹出层，下面为滑动消失效果和淡出消失效果。
+    $(document).click(function (event) {
+        var _con = $('.xy-bar');  // 设置目标区域
+        if (!_con.is(event.target) && _con.has(event.target).length === 0) { // Mark 1
+            $('.xy-bar').removeClass('in');  //滑动消失
+        }
+    });
+
+
+});
+
+//关闭采购助手
+function closebar() {
+    $('.xy-bar').removeClass('in');
+}
+
+
+/**
+ * 转义jQuery选择器中的特殊字符
+ * @param srcString
+ * @returns {*}
+ */
+function escapeJquery(srcString) {
+    // 转义之后的结果
+    var escapseResult = srcString;
+    // javascript正则表达式中的特殊字符
+    var jsSpecialChars = ["\\", "^", "$", "*", "?", "+", "[",
+        "]", "|", "{", "}"];
+    // jquery中的特殊字符,不是正则表达式中的特殊字符
+    var jquerySpecialChars = ["~", "`", "@", "#", "%", "&", "=", "'", "\"",
+        ":", ";", "<", ">", ",", "/"];
+    for (var i = 0; i < jsSpecialChars.length; i++) {
+        escapseResult = escapseResult.replace(new RegExp("\\"
+            + jsSpecialChars[i], "g"), "\\"
+            + jsSpecialChars[i]);
+    }
+    for (var i = 0; i < jquerySpecialChars.length; i++) {
+        escapseResult = escapseResult.replace(new RegExp(jquerySpecialChars[i],
+            "g"), "\\" + jquerySpecialChars[i]);
+    }
+    return escapseResult;
+};
+/**
+ * 处理fileName中的特殊字符
+ * @param srcString
+ * @returns {*}
+ */
+function execFileNameXss(srcString) {
+    // 转义之后的结果
+    var escapseResult = srcString;
+    // javascript正则表达式中的特殊字符
+    var jsSpecialChars = ["\\", "^", "$", "*", "?", "+", "|", "{", "}"];
+    // jquery中的特殊字符,不是正则表达式中的特殊字符
+    var jquerySpecialChars = ["~", "`", "@", "#", "%", "&", "=", "'", "\"",
+        ":", ";", "<", ">", ",", "/"];
+    for (var i = 0; i < jsSpecialChars.length; i++) {
+        escapseResult = escapseResult.replace(new RegExp("\\"
+            + jsSpecialChars[i], "g"), "\\"
+            + jsSpecialChars[i]);
+    }
+    for (var i = 0; i < jquerySpecialChars.length; i++) {
+        escapseResult = escapseResult.replace(new RegExp(jquerySpecialChars[i],
+            "g"), "\\" + jquerySpecialChars[i]);
+    }
+    return escapseResult;
+};
+//供应商菜单hover处理
+$(function () {
+    $(".gysgl-side .gysgl-menu .nav-item").hover(function () {
+        $(this).children().addClass("in")
+    }, function () {
+        $(this).children().removeClass("in");
+    });
+});
+
+//供应商菜单收缩控制
+function setGysMenu() {
+    if ($('body').hasClass('collapsed-menu-gys')) {
+        $('body').removeClass('collapsed-menu-gys');
+    } else {
+        $('body').addClass('collapsed-menu-gys');
+    }
+};
+
+
+//dropmenu下拉菜单自动位置
+function fixDropMenu() {
+    $("[data-toggle='dropdown']").on('mouseover', function () {
+        var distance_b = 0, //底边距
+            distance_r = 0, //右边距
+            dropmenu_h = 0, //下拉块高度
+            dropmenu_w = 0; //下拉快宽度
+        distance_b = $(window).height() - $(this).parent().offset().top - $(this).parent().height() + $(document).scrollTop();
+        distance_r = $(window).width() - $(this).parent().offset().left - $(this).parent().width();
+        dropmenu_h = $(this).next('.dropdown-menu').height();
+        dropmenu_w = $(this).next('.dropdown-menu').width();
+
+
+        if (dropmenu_h >= distance_b && dropmenu_h <= $(this).parent().offset().top) {
+            $(this).parent().addClass('dropup');
+        } else {
+            $(this).parent().removeClass('dropup');
+        }
+
+        if (dropmenu_w >= distance_r) {
+            $(this).next().addClass('pull-right');
+        } else {
+            $(this).next().removeClass('pull-right');
+        }
+    });
+}
+
+
+//chosen下拉菜单自动位置
+function fixChosen() {
+    $('.chosen-container').on('mouseover', function (event) {
+        //如果在窗口内
+        var distance_b = 0, //底边距
+            chosendrop_h = 0, //下拉块高度
+            distance_b = $(window).height() - $(this).offset().top - $(this).height() + $(document).scrollTop();
+            chosendrop_h = $(this).find('.chosen-drop').height();
+
+        //如果在scrollbar-inner内
+        var scrollbar_h = $(this).parents('.scroll-content').height(),
+            scrollbar_t = $(this).position().top+$(this).height(),
+            scrollbar_v = scrollbar_h - scrollbar_t;
+
+        if ((scrollbar_v <= 200) || (chosendrop_h >= distance_b && chosendrop_h <= $(this).offset().top)) {
+            $(this).find('.chosen-drop').css('top', 'auto').css('bottom', '100%');
+        } else {
+            $(this).find('.chosen-drop').css('top', '100%').css('bottom', 'auto');
+        }
+    });
+}
+
+//文本段落自动展开收起
+$(function () {
+    if ($(".keyword-block p").length > 0) {
+        $(".keyword-block p").each(function () {
+            var num = 76;
+            var a = $("<a></a>").on('click', showText).addClass('text-control').html("展开 <i class='fa fa-angle-down'></i>");
+            var b = $("<a></a>").on('click', showText).addClass('text-control').html("收起 <i class='fa fa-angle-up'></i>");
+            var p = $("<p></p>").addClass('text-all');
+            var str = $(this).text();
+            $(this).after(p);
+            if (str.length > num) {
+                var text = str.substring(0, num) + "...";
+                $(this).html(text).append(a);
+            }
+            $(this).next('.text-all').html(str).append(b);
+
+            function showText() {
+                $(this).parent().hide().siblings().show();
+            }
+        });
+    }
+});
+
+
+//桌面快捷入口滑动控制
+function entrySlide() {
+    var ss = $('.entry-step');
+    var conr = ss.find('.con'),
+        conr0 = conr[0],
+        btnWr = ss.find('.btns'),
+        btnLeft = btnWr.find('a.left'),
+        btnRight = btnWr.find('a.right');
+
+    var lisr = conr.find('li');
+
+    var pnumr = 5,
+        numr = lisr.length;
+
+    var fwidth = 0,
+        swidth = ss.width();
+
+    for (i = 0; i < numr; i++) {
+        fwidth = fwidth + $(lisr[i]).outerWidth(true);
+    }
+
+    if (fwidth > swidth) {
+        $('.btns').show();
+    } else {
+        $('.btns').hide();
+    }
+
+    var owr = fwidth / numr,
+        idxArear = [0, numr - pnumr],
+        idxr = 0;
+
+    function updateNum(n) {
+        if (n > idxArear[1] || n < idxArear[0]) {
+            return;
+        }
+
+        btnLeft[((n == 0) ? 'add' : 'remove') + 'Class']('dn');
+        btnRight[((n == idxArear[1]) ? 'add' : 'remove') + 'Class']('dn');
+
+        idxr = n;
+        conr.stop().animate({left: -n * owr}, 300);
+    }
+
+    btnLeft.click(function () {
+        updateNum(idxr - 1);
+        return false;
+    });
+
+    btnRight.click(function () {
+        updateNum(idxr + 1);
+        return false;
+    });
+}
+
+
+//定义进度环的颜色
+var brandColors = {
+    'primary': '#1890FF',
+    'success': '#52C41A',
+    'info': '#1890FF',
+    'warning': '#EE9918',
+    'danger': '#FA541C'
+}
+
+//调用进度环的颜色
+function getBrandColor(name) {
+    if (brandColors[name]) {
+        return brandColors[name];
+    } else {
+        return '#f00';
+    }
+}
+
+//listtab组件的鼠标悬浮
+$(function () {
+    $('.tabul > li a').hover(function () {
+        $(this).tab('show');
+    });
+})
+
+//通用文本折叠控制
+function collapsed_text(text_dom, limit_num) {
+    var dom = $(text_dom);
+    var num = limit_num ? limit_num : 50;
+
+    if (dom.length > 0) {
+        dom.each(function () {
+            var a = $("<a></a>").on('click', showText).addClass('text-control').html("展开 <i class='fa fa-angle-down'></i>");
+            var b = $("<a></a>").on('click', showText).addClass('text-control').html("收起 <i class='fa fa-angle-up'></i>");
+            var p = $("<p></p>").addClass('text-all');
+            var str = $(this).text();
+            $(this).after(p);
+            if (str.length > num) {
+                var text = str.substring(0, num) + "...";
+                $(this).html(text).append(a);
+            }
+            $(this).next('.text-all').html(str).append(b);
+
+            function showText() {
+                $(this).parent().hide().siblings().show();
+            }
+        });
+    }
+};
+
+//动态加载js
+function _ajaxLoadScript(jsStr, url, callback) {
+    var ca_index = jQuery("script[src*='" + jsStr + "']");
+    if (ca_index) {
+        url = jQuery(ca_index).attr("src").replace(jsStr, url);
+        jQuery.ajax({
+            url: url,
+            async: false,
+            dataType: "script",
+            success: function () {
+                try {
+                    eval(callback);
+                } catch (e) {
+                    console.debug(e);
+                }
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+}
+
+function _isEmptyPub(s) {
+    return ((typeof (s) == undefined || typeof (s) == 'undefined' || s == undefined || s == null || s === "" || s == "{}" || s == "[]" || (s instanceof Array && s.length == 0)) || s.length==0 ? true : false);
+}
+
+function _jsLoadScriptAfterJsStr(url, jsStr, id, callback) {
+    if(!_isEmptyPub(callback)) {
+        console.log('回调函数：', callback);
+    }
+    var script = document.createElement('script'),
+        fn = callback || function () {
+        };
+    script.type = 'text/javascript';
+    script.id = id || '';
+    script.async = false;
+    //IE
+    if (script.readyState) {
+        script.onreadystatechange = function () {
+            if (script.readyState == 'loaded' || script.readyState == 'complete') {
+                script.onreadystatechange = null;
+                fn();
+            }
+        };
+    } else {
+        //其他浏览器
+        script.onload = function () {
+            fn();
+        };
+    }
+    script.src = url;
+    jQuery("script[src*='" + jsStr + "']").after(script);
+    //document.getElementsByTagName('head')[0].appendChild(script);
+}
+

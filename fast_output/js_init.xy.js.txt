@@ -1,0 +1,644 @@
+/**
+ * code组件使用的回调函数
+ * @param datas 传递回来的数据，json格式
+ */
+function codeCallBack(datas) {
+    if (typeof datas === 'string') {
+        try {
+            datas = JSON.parse(datas);
+        } catch (e) {
+            return;
+        }
+    }
+
+    if (datas.method == "sendCodeValue") {
+        var codeid = datas.params.codeid;
+        var codeName = datas.params.codeName;
+        var formx = $("#isFmVisibleForm").parents("form");
+        $(formx).find("input[codeid='"+codeid+"']").each(function(){
+            $(this).remove();
+        });
+        var dmmcView = "";
+
+        dmmcView = dmmcView + '<li class="search-choice" data-choiceid="'+codeid+'" data-choicename="'+codeName+'">';
+        dmmcView = dmmcView + '<span id="code_'+codeid+'" name="code_'+codeid+'">'+datas.params.dmmc+'</span>';
+        dmmcView = dmmcView + '<a class="search-choice-close" onClick="clearInputCodes(this)"></a></li>';
+        $("#"+escapeJquery(codeid)+"_chosen").find("ul").html(dmmcView);
+        $("#" + escapeJquery(codeid)).val(datas.params.dmbs);
+        var input = $("<input type='hidden'>");
+        $(input).attr("name", codeName);
+        $(input).attr("id", codeid);
+        $(input).attr("codeid", codeid);
+        $(input).val(datas.params.dmbs);
+        $("#"+escapeJquery(codeid)+"_chosen").after($(input));
+        var callBackName = datas.params.callBack;
+        if(callBackName && callBackName!==""){
+            var func = callBackName+'("'+codeid+'","'+datas.params.dmbs+'")'
+            eval(func)
+        }
+    }
+}
+
+function codeCheckedCallBack(datas) {
+        if (typeof datas === 'string') {
+            try {
+                datas = JSON.parse(datas);
+            } catch (e) {
+                return;
+            }
+        }
+        if (datas.method == "sendCheckedCodeValue") {
+            var codeid = datas.params.codeid;
+            var codeName = datas.params.codeName;
+            var dmmcs = datas.params.dmmcs;
+            var dmbss = datas.params.dmbss;
+            var formx = $("#isFmVisibleForm").parents("form");
+            $("input[codeid='"+codeid+"']").each(function(){
+                $(this).remove();
+            });
+            $("#" + escapeJquery(codeid)).val("");
+            if (dmbss.length > 0) {
+                $("#" + codeid).val(dmbss[0]);
+            } else {
+                $("#code_" + codeid).val("");
+            }
+            var dmmcArray = dmmcs.split(',');
+            var dmmcView = "";
+            for (var i = 0; i < dmbss.length; i++){
+                dmmcView = dmmcView + '<li class="search-choice" data-choiceid="'+codeid+''+i+'" data-choicename="'+codeName+'">';
+                dmmcView = dmmcView + '<span id="code_'+codeid+''+i+'" name="code_'+codeid+''+i+'">'+dmmcArray[i]+'</span>';
+                dmmcView = dmmcView + '<a class="search-choice-close" onClick="clearInputCodes(this)"></a></li>';
+                var input = $("<input type='hidden'>");
+                $(input).attr("name", codeName);
+                $(input).attr("id", codeid+i);
+                $(input).attr("codeid", codeid);
+                $(input).val(dmbss[i]);
+                $("#"+escapeJquery(codeid)+"_chosen").after($(input));
+            }
+            $("#"+escapeJquery(codeid)+"_chosen").find("ul").html(dmmcView);
+            var callBackName = datas.params.callBack;
+            if(callBackName && callBackName!==""){
+                var func = callBackName+'("'+codeid+'","'+dmbss+'")'
+                eval(func)
+            }
+        }
+}
+
+
+/**
+ * 自定义多选弹出
+ * @param datas
+ */
+function customCheckedCallBack(datas) {
+        if (typeof datas === 'string') {
+            try {
+                datas = JSON.parse(datas);
+            } catch (e) {
+                return;
+            }
+        }
+        if (datas.method == "sendCheckedCustomValue") {
+            var zdyszxzry = datas.params.zdyszxzry;
+            if(zdyszxzry == 1) {
+                return false;
+            }
+            var codeid = datas.params.codeid;
+            var codeName = datas.params.codeName;
+            var customJson =datas.params.custom;
+            // var formx = $("#isFmVisibleForm").parents("form");
+            $("input[codeid='"+codeid+"']").each(function(){
+                $(this).remove();
+            });
+            // if($(this).val()=="undefined"||$(this).val()==null||$(this).val()==""){
+            //     $(this).remove();
+            // }
+            //获取当前存在的input值
+            // var val =[];
+            // $(formx).find("input[name='"+codeid+"']").each(function () {
+            //     val.push($(this).val());
+            // });
+            // var len =$(formx).find("input[name='"+codeid+"']").length;
+            // for (var i = 0; i < customJson.length; i++){
+            //     //判断是都存在，存在了不添加
+            //     if($.inArray(customJson[i].customKey, val)===-1){
+            //         var index = i +len;
+            //
+            //     }
+            // }
+            var customView = "";
+            for (var index = 0; index < customJson.length; index++){
+                 customView = customView + '<li class="search-choice" data-choiceid="'+codeid+''+index+'" data-choicename="'+codeName+'">';
+                customView = customView + '<span id="code_'+codeid+''+index+'" name="code_'+codeid+''+index+'">'+customJson[index].customValue+'</span>';
+                customView = customView + '<a class="search-choice-close" onClick="clearInputCodes(this)"></a></li>';
+                var input = $("<input type='hidden'>");
+                $(input).attr("name", codeName);
+                $(input).attr("id", codeid+index);
+                $(input).attr("codeid", codeid);
+                $(input).val(customJson[index].customKey);
+                $("#"+escapeJquery(codeid)+"_chosen").after($(input));
+
+                var inputLableValue = $("<input type='hidden'>");
+                $(inputLableValue).attr("name", codeName+"name");
+                $(inputLableValue).attr("id", codeid+index+"name");
+                $(inputLableValue).attr("codeid", codeid);
+                $(inputLableValue).val(customJson[index].customValue);
+                $("#"+escapeJquery(codeid)+"_chosen").after($(inputLableValue));
+            }
+            $("#"+escapeJquery(codeid)+"_chosen").find("ul").html(customView);
+
+        }
+}
+function openCodeWindow(obj,labelx,framepath,name,useCommon,isTable,codeid){
+    var value = new Array();
+    var para = $(obj).attr("parameters");
+    var paraEval = eval("(" + para + ")");
+    $("input[codeid='"+codeid+"']").each(function(){
+        value.push($(this).val());
+    });
+    //动态行里trt处理
+    paraEval.codeid=codeid;
+    paraEval.codeName=name;
+    paraEval.framepath=framepath;
+    if(value){
+        paraEval.selectedVal=JSON.stringify(value);
+    }
+    para = JSON.stringify(paraEval);
+    $(obj).attr("parameters",para);
+    if(useCommon === "true" || isTable==="true"){
+        openWindow(obj,{ size:'large',title:labelx,framepath:framepath});
+    }else {
+        openWindow(obj,{size:"small",title:labelx,framepath:framepath});
+    }
+}
+function openCustomWindow(obj,labelx,framepath,name,size,codeid){
+    var value = new Array();
+    var para = $(obj).attr("parameters");
+    var paraEval = eval("(" + para + ")");
+    $("input[codeid='"+codeid+"']").each(function(){
+        value.push($(this).val());
+    });
+    //动态行里trt处理
+    paraEval.codeid=codeid;
+    paraEval.codeName=name;
+    paraEval.framepath=framepath;
+    if(value){
+        paraEval.selectedVal=JSON.stringify(value);
+    }
+    para = JSON.stringify(paraEval);
+    $(obj).attr("parameters",para);
+    openWindow(obj,{size:size ,title:labelx,framepath:framepath});
+
+}
+function verifyInWorkflowCallBack(datas){
+    if (typeof datas === 'string') {
+        try {
+            datas = JSON.parse(datas);
+        } catch (e) {
+            return;
+        }
+    }
+    if (datas.method == "sendokFnInWorkflowCallBack") {
+        var param = datas.params;
+        okFnInWorkflow(param.isSure);
+    }
+}
+
+function refreshCallBack(datas) {
+    if (typeof datas === 'string') {
+        try {
+            datas = JSON.parse(datas);
+        } catch (e) {
+            return;
+        }
+    }
+    if (datas.method == "refresh") {
+        refresh();
+    }
+}
+
+
+/**
+ * 自定义组件的callback函数
+ * 为跨域而生
+ * 注意这里为了公用，将code的函数写在第一位，自定义的时候因为method原因，并不会调用，请悉知
+ * @param datas 传递回来的数据，json格式
+ * @param customFun 调用完成后的回调函数，接受参数为datas
+ */
+function customCallBack(datas) {
+    //code组件回调
+    codeCallBack(datas);
+    //code组件多选回调
+    codeCheckedCallBack(datas)
+    //关闭回调
+    shutCallBack(datas);
+    //弹出窗口回调
+    popupCallBack(datas);
+    //自定义多选弹出
+    customCheckedCallBack(datas);
+    //verify在工作流中的回调
+    verifyInWorkflowCallBack(datas);
+
+    //弹出框放大回调
+    maxPopCallBack(datas);
+    //恢复弹出框大小回调
+    restorePopCallBack(datas);
+    //外部刷新自己
+    refreshCallBack(datas);
+}
+
+
+/**
+ * 开关组件默认给一个隐藏域赋值，后台提交后绑定值使用
+ * @param obj document.querySelector("#" + SWITCH_PREFIX + "xzgly");
+ */
+function superChangeSwitch(obj) {
+    hiddenSwitch = $("#" + obj.id.split("_")[1]);
+    if (obj.checked) {
+        hiddenSwitch.val(YES);
+    } else {
+        hiddenSwitch.val(NO);
+    }
+}
+
+/**
+ * 初始化switch组件方法
+ * @param html document.querySelector("#" + SWITCH_PREFIX + "xzgly");
+ * @returns {*} 包装后的新组件
+ */
+function newSwitchery(html) {
+    if(!(typeof(html)==undefined || html == undefined || html == null || html == "")){
+        var switchery = new Switchery(html, {color: '#1277c7'});
+        html.onchange = function () {
+            superChangeSwitch(html);
+        };
+        return switchery;
+    }else{
+        console.log("init.xy.js中newSwitchery接收到的html参数为空")
+    }
+}
+
+$(document).ready(function () {
+
+    //配置下拉列表框，加载jquery chosen插件 begin
+    var config = {
+        search_contains: true,
+        disable_search_threshold: 5,
+        no_results_text: '未找到搜索的关键字:'
+    }
+    if($(".chosen-select").length>0) {
+        $('.chosen-select').chosen(config);
+    }
+    if($(".chosen-select-more").length>0) {
+        $('.chosen-select-more').chosen(config);
+    }
+    //配置下拉列表框，加载jquery chosen插件 end
+
+    //scrollbar-优化滚动条样式
+    if($(".scrollbar-inner").length>0) {
+        $('.scrollbar-inner').scrollbar();
+    }
+
+    //阻止click事件冒泡,效果：鼠标点击弹出菜单的空白区域不关闭菜单
+    $(".dropdown-menu").on("click",function (e) {
+        e.stopPropagation();
+    })
+
+    //指定要操作的元素的click事件停止传播—定义属性值data-stopPropagation的元素点击时停止传播事件
+    $("body").on('click','[data-stopPropagation]',function (e) {
+        e.stopPropagation();
+    });
+
+    //系统公共回调函数 begin
+    window.addEventListener('message', function (e) {
+        customCallBack(e.data);
+    }, false);
+    //系统公共回调函数 end
+
+    //阻止退回事件,对ie浏览器无效 begin
+    if (history.pushState) {
+        history.pushState(null, null, document.URL);
+        window.addEventListener('popstatnae', function () {
+            history.pushState(null, null, document.URL);
+        });
+    }
+    //阻止退回事件 end
+
+    //记录弹出弹出窗口的frame的id
+    var frameName = getParameterByName("frameName");
+    //判断页面所在流程是否提交，来控制按钮是否可点击 taskStatus=3代表该流程已提交 2是进行中
+    if ($("#taskStatus").val()  && $("#taskStatus").val() != 2) {
+        $('button').each(function (index, obj) {
+            if ($(obj).data("ignoredisabled") != true) {
+                $(obj).attr("disabled", "disabled");
+                $(obj).attr("url", "");
+                $(obj).remove();
+            }
+        });
+        $('input').each(function (index, obj) {
+            if($(obj).data("ignoredisabled") != true){
+                $(obj).attr("disabled", "disabled");
+            }
+
+        });
+        $('textarea').each(function (index, obj) {
+            if($(obj).data("ignoredisabled") != true){
+                $(obj).attr("disabled", "disabled");
+            }
+
+        });
+        $('select').each(function (index, obj) {
+            if($(obj).data("ignoredisabled") != true) {
+                $(obj).attr("disabled", "disabled");
+                $(obj).trigger("chosen:updated");
+            }
+        });
+        $(".chosen-arrow").remove();
+        $(".chosen-drop").remove();
+        $(".input-group-btn").remove();
+        $(".imguploadbt").remove();
+    }
+
+    //记录弹出弹出窗口的frame的id
+
+    //项目向导页面问top页面获取当前滚动调高度，用于弹出位置正确的提示窗口
+    sendMessageCrossDomain('giveMeScrollTop', null,top);
+    //项目向导页面问top页面获取当前滚动调高度，用于弹出位置正确的提示窗口
+
+
+    //表格无数据时自动出现提示图，不需要提示则设置"table-notcontent"
+    $(".table").each(function() {
+        if ($(this).find("tbody > tr").length <= 0) {
+            if (!$(this).hasClass("table-notcontent")) {
+                $(this).after("<div class='nodata'></div>");
+            }
+        }
+    });
+    //表格无数据时自动出现提示图，不需要提示则设置"table-notcontent"
+    $(".grid").each(function() {
+        if ($(this).find(".tbody > ul").length <= 0) {
+            if (!$(this).hasClass("table-notcontent")) {
+                $(this).after("<div class='nodata'></div>");
+            }
+        }
+    });
+    $(".grid-edit").each(function() {
+        if ($(this).find(".tbody > ul").length <= 0) {
+            if (!$(this).hasClass("table-notcontent")) {
+                $(this).after("<div class='nodata'></div>");
+            }
+        }
+    });
+    $(".table-new").each(function() {
+        if ($(this).find("tbody > tr").length <= 0) {
+            if (!$(this).hasClass("table-notcontent")) {
+                $(this).after("<div class='nodata'></div>");
+            }
+        }
+    });
+
+    $(".grid-sm").each(function() {
+        if ($(this).find(".tbody > ul").length <= 0) {
+            if (!$(this).hasClass("grid-notcontent")) {
+                $(this).after("<div class='nodata'></div>");
+            }
+        }
+    });
+
+    $(".project-list").each(function() {
+        if ($(".project-list > .project-item").length <= 0) {
+            $(this).after("<div class='nodata'></div>");
+        }
+    });
+
+    if($("#sfzsgd").val()==1){
+        $(".close-more").toggleClass('active');
+        $("#advancesearch").attr("class","search-bottom collapse in");
+    }
+
+    if ($('.tooltips').length > 0) {
+      $('.tooltips').tooltip();
+    }
+
+    if ($('.popovers').length > 0) {
+      $('.popovers').popover();
+    }
+
+});
+/*点击更多-显示更多筛选条件*/
+function ClassToggle(obj,inputname) {
+    if($("#"+inputname).val()==1){
+        $("#"+inputname).val(0);
+        $(".close-more").removeClass('active');
+    }else{
+        $("#"+inputname).val(1);
+        $(".close-more").toggleClass('active');
+        //在隐藏区时无法初始化，故在展开时再处理(listindex组件)
+        if ($(".search-bottom .listindex").length > 0) {
+            setTimeout(function(){
+                $(".search-bottom .listindex").each(function() {
+                    display_listindex(this);
+                });
+            }, 200);
+        }
+        //在隐藏区时无法初始化，故在展开时再处理(listtab组件)
+        if ($(".tab-step").length > 0) {
+            setTimeout(function(){
+                $(".tab-step").each(function() {
+                    doPageNumber(this);
+                });
+            }, 200);
+        }
+        //在隐藏区时无法初始化，故在展开时再处理(listiselect组件)
+        if ($(".listselect").length > 0) {
+            setTimeout(function(){
+                $(".listselect").each(function() {
+                    display_listselect(this);
+                });
+            }, 200);
+        }
+    }
+}
+function selectLine(id,name,obj,type,showtitle){
+    var xzz=[];
+    var namexzz=[];
+    if($(obj).parent().attr("class").indexOf("select")>-1) {
+        $(obj).parent().attr("class", "item");
+    }else{
+        $(obj).parent().attr("class", "item select");
+    }
+    if(type=="all"){
+        $("#"+escapeJquery(id)).val("");
+    }else if(type=="single"){
+        if($(obj).parent().attr("class").indexOf("select")>-1&&$(obj).parent().attr("value")!="") {
+            xzz.push($(obj).parent().attr("value"));
+            namexzz.push($(obj).parent().attr("name"));
+        }
+        $("#"+escapeJquery(id)).val(xzz);
+    }else{
+        $("#"+escapeJquery(id)+"_dd div").each(function(){
+            if($(this).attr("class").indexOf("select")>-1&&$(this).attr("value")!=""){
+                xzz.push($(this).attr("value"));
+                namexzz.push($(this).attr("name"));
+            }
+            $("#"+escapeJquery(id)).val(xzz);
+        });
+    }
+    if(showtitle){
+        var parentid = $(obj).parent().parent().parent().parent().attr("id");
+        var titleid = parentid + "-title";
+        var htitleid = parentid + "-htitle";
+        var titleContent = $("#"+htitleid).val();
+        var showText = titleContent;
+        if(namexzz.length != 0){
+            showText = titleContent + "(" + namexzz.join(",").replaceAll(";","") + ")";
+        }
+        document.getElementById(titleid).innerText = showText;
+    }
+    submitThis();
+}
+
+//扩展属性展示
+$(".expand-icon").click(function() {
+    $(this).children().toggleClass('fa-angle-right').toggleClass('fa-angle-down');
+    $(this).parent().parent('ul').toggleClass('').toggleClass('active');
+    $(this).parent().parent('ul').next('.expand-content').toggleClass('').toggleClass('active');
+});
+
+//项目向导列表的扩展属性显示
+$(".expand-procontent").click(function() {
+    $(this).children().toggleClass('fa-angle-up').toggleClass('fa-angle-down');
+    $(this).closest('.prodetail').next('.procontent').toggleClass('').toggleClass('active');
+});
+
+//表格带有合并行的间隔变色处理
+function rowspanStriped(datatable){
+    var stable = $(datatable);
+    var rowspan = 0;
+    var iscolor = false;
+    stable.find("tbody").find("tr").each(function () {
+        var attr = $(this).find('td').first().attr("rowspan");
+        if (typeof attr !== typeof undefined && attr !== false) {
+            rowspan = attr;
+        }
+        if (rowspan > 0) {
+            if (iscolor == true) {
+            $(this).addClass("tdbg");
+            }
+            rowspan--;
+            if (rowspan == 0) {
+                iscolor = (iscolor == true) ? false : true;
+            }
+        } else {
+            (iscolor == true) ? $(this).addClass("tdbg") : $(this).removeClass("tdbg");
+            iscolor = (iscolor == true) ? false : true;
+        }
+    });
+}
+
+/**
+ *
+ * @param el
+ */
+function makeExpandingArea(el) {
+    var timer = null;
+    //由于ie8有溢出堆栈问题，故调整了这里
+    var setStyle = function(el, auto) {
+        if (auto) el.style.height = 'auto';
+        if(el.scrollHeight<70){
+            el.style.height = '70px';
+        }else{
+            el.style.height = el.scrollHeight + 'px';
+        }
+    }
+    var delayedResize = function(el) {
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
+        }
+        timer = setTimeout(function() {
+            setStyle(el)
+        }, 200);
+    }
+    if (el.addEventListener) {
+        el.addEventListener('input', function() {
+            setStyle(el, 1);
+        }, false);
+        setStyle(el)
+    } else if (el.attachEvent) {
+        el.attachEvent('onpropertychange', function() {
+            setStyle(el)
+        })
+        setStyle(el)
+    }
+    if (window.VBArray && window.addEventListener) { //IE9
+        el.addEventListener("onkeydown", function() {
+            var key = window.event.keyCode;
+            if (key == 8 || key == 46) delayedResize(el);
+
+        });
+        el.addEventListener("oncut", function() {
+            delayedResize(el);
+        }); //处理粘贴
+    }
+    $(el).css("overflow-y", "hidden");
+    _resizeIframe();
+}
+
+//底部按钮区固定,分几种情况进行处理
+function bottomFix() {
+    var btgroup = $(".container .bt-group:not(.nofix)");
+    var dh = top.$(".sl-header").outerHeight() + Math.floor(top.$(".sl-mainpanel>.sl-pagebody>.container").outerHeight());
+    var st = $(this).scrollTop(); //滚动距离
+    var wh = $(window).height(); //窗口高度
+    var vh = st + wh; //已视总高度
+    if(vh < dh){
+        btgroup.addClass("fixed");
+    } else {
+        btgroup.removeClass("fixed");
+    }
+}
+function bottomFixLayer() {
+    var btgroup = $(".container-popup .bt-group:not(.nofix)");
+    var dh = $(".container-popup").outerHeight();
+    var st = $(this).scrollTop(); //滚动距离
+    var wh = $(window).height(); //窗口高度
+    var vh = st + wh; //已视总高度
+    if(vh < dh){
+        btgroup.addClass("fixed");
+    } else {
+        btgroup.removeClass("fixed");
+    }
+}
+function bottomFixIframe() {
+    var btgroup = $(".container-embed .bt-group:not(.nofix)");
+    var st = $(top).scrollTop(); //滚动距离
+    var wph = $(window.parent).height(); //窗口高度
+    var wot = $(window.parent.document).find(frameElement).offset().top; //iframe上边距
+    var wsh = $(window).height(); //iframe自身高度
+    var total = wot + wsh; //内容实际总高度
+    if(total-wph-st > 0){
+        btgroup.addClass("fixed");
+        var newposition = total-wph-st > 0 ? total-wph-st : 0 ;
+        btgroup.css("bottom",newposition+"px");
+    } else {
+        btgroup.removeClass("fixed");
+        btgroup.css("bottom","0");
+    }
+}
+
+$(function () {
+    if (typeof _fixBtnBottom !== 'undefined' && _fixBtnBottom == 1) {
+        if (self == top && self.frames.length == 0 && ($(".container .bt-group:not(.nofix)").length>0)){
+            //常规普通页
+            $(window).on("load resize scroll",bottomFix);
+        } else if (parent && self != top && ($(".container-popup .bt-group:not(.nofix)").length>0)){
+            //弹框页
+            $(window).on("load resize scroll",bottomFixLayer);
+        } else if (parent && self != top && ($(".container-embed .bt-group:not(.nofix)").length>0)){
+            //项目向导页
+            $(window).on("resize",bottomFixIframe);
+            $(top).on("resize scroll",bottomFixIframe);
+        }
+    }
+});
+
