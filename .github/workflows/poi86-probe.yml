@@ -1,0 +1,36 @@
+name: POI86 Discovery Probe
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/poi86_probe.py
+      - .github/workflows/poi86-probe.yml
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Probe POI86 static data paths
+        run: python scripts/poi86_probe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: poi86-probe
+          path: poi86_probe_output
+          if-no-files-found: error
+          retention-days: 1
