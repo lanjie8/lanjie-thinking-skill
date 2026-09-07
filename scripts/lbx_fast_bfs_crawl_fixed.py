@@ -3,8 +3,8 @@
 
 The API returns is_close as a string. The original exploratory script treated
 "0" as truthy and therefore discarded open stores. This runner patches that
-status check, prefers shop_id for deduplication, and persists a usable snapshot
-at every crawl checkpoint.
+status check, keeps the physical-store deduplication key headed by org_code,
+and persists a usable snapshot at every crawl checkpoint.
 """
 from __future__ import annotations
 
@@ -19,7 +19,8 @@ def is_closed(value: Any) -> bool:
 
 
 def fixed_key(row: dict[str, Any]) -> str:
-    for field in ("shop_id", "sap_id", "org_code"):
+    # org_code collapses multiple H5/M-shop representations of the same physical outlet.
+    for field in ("org_code", "shop_id", "sap_id"):
         value = str(row.get(field) or "").strip()
         if value:
             return f"{field}:{value}"
@@ -66,6 +67,7 @@ if __name__ == "__main__":
         "seed_step": base.SEED_STEP,
         "max_requests": base.MAX_REQUESTS,
         "max_seconds": base.MAX_SECONDS,
+        "physical_store_key_order": ["org_code", "shop_id", "sap_id"],
         "closed_values": ["1", "true", "yes", "closed", "停业", "关闭"],
     }, ensure_ascii=False), flush=True)
     base.main()
