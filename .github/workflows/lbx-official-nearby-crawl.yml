@@ -1,0 +1,49 @@
+name: LBX Official Nearby Store Coverage Crawl
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_official_nearby_crawl.py
+      - .github/workflows/lbx-official-nearby-crawl.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Crawl official public nearby-store endpoint
+        run: python scripts/lbx_official_nearby_crawl.py
+      - name: Validate output
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('lbx_official_nearby_output/summary.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          print(json.dumps(d,ensure_ascii=False,indent=2))
+          if int(d.get('unique_stores',0)) <= 0:
+              raise SystemExit('No stores collected')
+          PY
+      - name: Upload official coverage output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-official-nearby-coverage
+          path: lbx_official_nearby_output/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
