@@ -1,0 +1,91 @@
+name: Temporary LBX endpoint probe
+
+on:
+  push:
+    branches: [tmp-lbx-poi-scrape-20260907]
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp-lbx-poi-scrape-20260907
+      - name: Probe public endpoints
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, re, traceback
+          from pathlib import Path
+          from urllib.parse import urljoin
+          import requests
+
+          out = Path('tmp-lbx-probe')
+          out.mkdir(exist_ok=True)
+          s = requests.Session()
+          s.headers.update({'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131 Safari/537.36','Accept-Language':'zh-CN,zh;q=0.9'})
+          probes=[]
+          def get(name,url,params=None,headers=None):
+              try:
+                  r=s.get(url,params=params,headers=headers or {},timeout=35,allow_redirects=True)
+                  text=r.text
+                  probes.append({'name':name,'request_url':r.request.url,'final_url':r.url,'status':r.status_code,'content_type':r.headers.get('content-type'),'length':len(r.content),'preview':text[:5000]})
+                  (out/f'{name}.txt').write_text(text,encoding='utf-8',errors='replace')
+                  print(name,r.status_code,len(r.content),r.url)
+                  return r
+              except Exception as e:
+                  probes.append({'name':name,'url':url,'error':repr(e),'trace':traceback.format_exc()})
+                  print(name,'ERROR',repr(e))
+                  return None
+
+          h5=get('official_h5','https://yx.lbxcn.com/h5/springgame/index.html?gameCode=spring_251230_6&source=4')
+          findings=[]
+          if h5 is not None and h5.ok:
+              scripts=re.findall(r'<script[^>]+src=[\"\']([^\"\']+)',h5.text,re.I)
+              for i,src in enumerate(scripts):
+                  u=urljoin(h5.url,src)
+                  try:
+                      r=s.get(u,timeout=45,headers={'Referer':h5.url})
+                      txt=r.text
+                      (out/f'asset_{i:03d}.js').write_text(txt,encoding='utf-8',errors='replace')
+                      snippets=[]
+                      low=txt.lower()
+                      for term in ['store','shop','merchant','outlet','nearby','poi','branch','门店','药房']:
+                          start=0
+                          while len(snippets)<1200:
+                              p=low.find(term.lower(),start)
+                              if p<0: break
+                              snippets.append(txt[max(0,p-220):min(len(txt),p+500)])
+                              start=p+len(term)
+                      paths=sorted(set(re.findall(r'[\"\']([^\"\']{1,260}(?:store|shop|merchant|outlet|nearby|poi|branch|门店|药房)[^\"\']{0,260})[\"\']',txt,re.I)))
+                      urls=sorted(set(re.findall(r'https?://[^\"\'\\\s<>]+',txt)))
+                      findings.append({'asset_url':u,'status':r.status_code,'length':len(r.content),'paths':paths[:3000],'urls':urls[:2000],'snippets':snippets})
+                  except Exception as e:
+                      findings.append({'asset_url':u,'error':repr(e)})
+
+          amap_common={'query_type':'TQUERY','pagesize':'50','pagenum':'1','qii':'true','cluster_state':'5','need_utd':'true','utd_sceneid':'1000','div':'PC1000','addr_poi_merge':'true','is_classify':'true','zoom':'12','keywords':'老百姓大药房'}
+          for city in ['430100','110000','310000','420100']:
+              get('amap_'+city,'https://www.amap.com/service/poiInfo',params={**amap_common,'city':city},headers={'Referer':'https://www.amap.com/'})
+          for city in ['158','131','289','218']:
+              get('baidu_'+city,'https://map.baidu.com/',params={'qt':'s','wd':'老百姓大药房','c':city,'pn':'0','nn':'0','ie':'utf-8','oue':'1','from':'webmap','res':'api'},headers={'Referer':'https://map.baidu.com/'})
+          get('nominatim','https://nominatim.openstreetmap.org/search',params={'q':'老百姓大药房','format':'jsonv2','limit':'50'},headers={'User-Agent':'LBX-public-POI-research/1.0'})
+          get('poi86_sample','https://www.poi86.com/poi/amap2/118457097.html')
+          get('poi86_robots','https://www.poi86.com/robots.txt')
+          get('poi86_sitemap','https://www.poi86.com/sitemap.xml')
+          get('mall_home','https://mall.lbxcn.com/')
+          get('jfsc_home','https://jfsc.lbxcn.com/')
+          (out/'probe.json').write_text(json.dumps(probes,ensure_ascii=False,indent=2),encoding='utf-8')
+          (out/'findings.json').write_text(json.dumps(findings,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Commit probe output
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add tmp-lbx-probe
+          git commit -m "chore: save temporary LBX probe output [skip ci]" || exit 0
+          git push origin HEAD:tmp-lbx-poi-scrape-20260907
