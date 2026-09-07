@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunklbx_itemcenter_scmp"]=self["webpackChunklbx_itemcenter_scmp"]||[]).push([[6730],{76730:function(e,n,t){t.r(n),t.d(n,{default:function(){return a}});var u=function(){var e=this,n=e._self._c;return n("div",[e._v(" 404 page ")])},c=[],r={name:"404"},l=r,s=t(6367),i=(0,s.A)(l,u,c,!1,null,"17280393",null),a=i.exports}}]);

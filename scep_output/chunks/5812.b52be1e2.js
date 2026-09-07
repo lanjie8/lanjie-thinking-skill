@@ -1,0 +1,1 @@
+"use strict";(self["webpackChunklbx_itemcenter_scmp"]=self["webpackChunklbx_itemcenter_scmp"]||[]).push([[5812],{65812:function(e,c,s){s.r(c)}}]);
