@@ -1,0 +1,38 @@
+name: LBX Mall Focus
+
+on:
+  push:
+    branches: ["tmp/lbx-poi-crawl-20260907"]
+    paths:
+      - "scripts/lbx_mall_focus.py"
+      - ".github/workflows/lbx-mall-focus.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Discover mall and O2O endpoints
+        run: python scripts/lbx_mall_focus.py
+      - name: Upload output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-mall-focus-output
+          path: mall_focus_output/
+          retention-days: 1
+          if-no-files-found: warn
