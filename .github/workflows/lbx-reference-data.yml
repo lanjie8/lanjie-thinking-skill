@@ -1,0 +1,27 @@
+name: LBX Reference Data
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - .github/workflows/lbx-reference-data.yml
+
+permissions:
+  contents: read
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download current province-city mapping
+        run: |
+          mkdir -p reference_data
+          curl -fsSL https://raw.githubusercontent.com/modood/Administrative-divisions-of-China/master/dist/pca-code.json -o reference_data/pca-code.json
+          curl -fsSL https://raw.githubusercontent.com/modood/Administrative-divisions-of-China/master/dist/pc-code.json -o reference_data/pc-code.json
+      - name: Upload reference data
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-reference-data
+          path: reference_data
+          retention-days: 1
