@@ -1,4 +1,4 @@
-name: LBX Legacy Parameter Fast Probe
+name: LBX Nationwide Store Crawl
 
 on:
   push:
@@ -10,10 +10,14 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: lbx-nationwide-store-crawl
+  cancel-in-progress: true
+
 jobs:
-  probe:
+  crawl:
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,13 +26,13 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install --disable-pip-version-check -q requests
-      - name: Probe wrapper parameters
+      - name: Crawl nationwide store directory
         run: python scripts/lbx_legacy_param_probe_fast.py
-      - name: Upload output
+      - name: Upload crawl output
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: lbx-legacy-param-probe
-          path: legacy_param_probe_output/
+          name: lbx-nationwide-store-crawl
+          path: lbx_nationwide_output/
           retention-days: 1
           if-no-files-found: warn
