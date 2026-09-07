@@ -1,0 +1,37 @@
+name: LBX County Seeded Nationwide Crawl
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-final-run-20260907
+    paths:
+      - '.github/workflows/lbx-county-bfs-crawl.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      LBX_WORKERS: '12'
+      LBX_BATCH_SIZE: '120'
+      LBX_MAX_REQUESTS: '30000'
+      LBX_MAX_SECONDS: '2400'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependency
+        run: python -m pip install --disable-pip-version-check requests
+      - name: Crawl from county-level administrative centers
+        run: python scripts/lbx_county_bfs_crawl.py
+      - name: Upload county-seeded output
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-county-seeded-store-output
+          path: county_crawl_output/
+          if-no-files-found: error
