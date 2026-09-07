@@ -1,0 +1,44 @@
+name: LBX Nationwide Store Crawl
+
+on:
+  push:
+    branches: ["tmp/lbx-poi-crawl-20260907"]
+    paths:
+      - "scripts/lbx_full_crawl.py"
+      - ".github/workflows/lbx-full-crawl.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUNBUFFERED: "1"
+  LBX_WORKERS: "12"
+  LBX_GRID_STEP: "0.60"
+  LBX_MIN_STEP: "0.075"
+  LBX_MAX_REQUESTS: "50000"
+  LBX_MAX_SECONDS: "4800"
+  LBX_BATCH_SIZE: "600"
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Crawl public LBX store endpoint
+        run: python scripts/lbx_full_crawl.py
+      - name: Upload crawl output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-full-crawl-output
+          path: lbx_full_crawl_output/
+          retention-days: 3
+          if-no-files-found: error
