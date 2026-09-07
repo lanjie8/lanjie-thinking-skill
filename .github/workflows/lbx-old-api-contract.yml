@@ -1,0 +1,27 @@
+name: LBX Old Store API Contract Probe
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_old_api_contract_probe.py
+      - .github/workflows/lbx-old-api-contract.yml
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/lbx_old_api_contract_probe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-old-api-contract
+          path: lbx_old_api_contract_output
+          retention-days: 1
