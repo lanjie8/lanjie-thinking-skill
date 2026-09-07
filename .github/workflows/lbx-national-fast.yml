@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   crawl:
@@ -48,3 +48,23 @@ jobs:
           path: lbx_national_fast_output/
           retention-days: 7
           if-no-files-found: warn
+      - name: Publish crawl output to temporary branch
+        if: always()
+        shell: bash
+        run: |
+          if [ ! -d lbx_national_fast_output ]; then
+            echo 'No crawl output directory.'
+            exit 0
+          fi
+          mkdir -p data/lbx_national_fast
+          cp -R lbx_national_fast_output/. data/lbx_national_fast/
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/lbx_national_fast
+          if git diff --cached --quiet; then
+            echo 'No crawl output to publish.'
+            exit 0
+          fi
+          git commit -m 'Publish fast nationwide LBX store crawl'
+          git pull --rebase origin tmp/lbx-poi-crawl-20260907
+          git push origin HEAD:tmp/lbx-poi-crawl-20260907
