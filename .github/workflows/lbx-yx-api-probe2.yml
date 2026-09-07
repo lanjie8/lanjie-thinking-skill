@@ -1,0 +1,28 @@
+name: LBX YX API Probe 2
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_yx_api_probe2.py
+      - .github/workflows/lbx-yx-api-probe2.yml
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/lbx_yx_api_probe2.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add yx_api_probe_output
+          git commit -m "Add LBX store-list API probe output [skip ci]" || exit 0
+          git push origin HEAD:tmp/lbx-poi-crawl-20260907
