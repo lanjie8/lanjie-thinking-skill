@@ -1,0 +1,31 @@
+name: LBX Amap Quick Probe
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_amap_quick.py
+      - .github/workflows/lbx_amap_quick.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - name: Probe Amap endpoint
+        run: python3 scripts/lbx_amap_quick.py
+      - name: Commit probe output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add quick_output
+          git commit -m "Add quick Amap POI probe results [skip ci]" || exit 0
+          git push origin HEAD:tmp/lbx-poi-crawl-20260907
