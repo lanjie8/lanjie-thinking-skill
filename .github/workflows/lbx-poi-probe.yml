@@ -1,4 +1,4 @@
-name: LBX POI Probe
+name: LBX POI Discovery
 
 on:
   push:
@@ -6,15 +6,17 @@ on:
       - tmp/lbx-poi-crawl-20260907
     paths:
       - scripts/lbx_poi_probe.py
+      - scripts/lbx_official_discover.py
+      - scripts/lbx_store_crawler.py
       - .github/workflows/lbx-poi-probe.yml
 
 permissions:
   contents: write
 
 jobs:
-  probe:
+  discover:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,12 +24,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Probe public endpoints
-        run: python scripts/lbx_poi_probe.py
-      - name: Commit probe output
+      - name: Discover official LBX data sources
+        run: python scripts/lbx_official_discover.py
+      - name: Commit discovery output
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add probe_output
-          git commit -m "Add LBX POI probe results" || exit 0
+          git commit -m "Add LBX official data source discovery results" || exit 0
           git push origin HEAD:tmp/lbx-poi-crawl-20260907
