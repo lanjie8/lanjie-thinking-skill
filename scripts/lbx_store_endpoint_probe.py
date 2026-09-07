@@ -18,85 +18,97 @@ S.headers.update({
     "Referer": "https://yx.lbxcn.com/h5/springgame/index.html?gameCode=spring_251230_6&source=4",
 })
 
-POINTS = {
-    "changsha_center": (28.2282, 112.9388),
-    "changsha_east": (28.1900, 113.1000),
-    "beijing": (39.9042, 116.4074),
-    "shanghai": (31.2304, 121.4737),
-    "xian": (34.3416, 108.9398),
-    "hangzhou": (30.2741, 120.1551),
-    "wuhan": (30.5928, 114.3055),
-    "guangzhou": (23.1291, 113.2644),
-    "chengdu": (30.5728, 104.0668),
-    "harbin": (45.8038, 126.5349),
-}
-ENDPOINTS = [
-    "https://yx.lbxcn.com/out/2026api/getlbxStoreList",
-    "https://muyang.hn.cn/out/2026api/getlbxStoreList",
-    "https://yx.lbxcn.com/out/2212sping/getlbxStoreList",
-    "https://muyang.hn.cn/out/2212sping/getlbxStoreList",
-]
-PARAM_VARIANTS = [
-    lambda lat, lon: {"Latitude": lat, "Longitude": lon},
-    lambda lat, lon: {"latitude": lat, "longitude": lon},
-    lambda lat, lon: {"lat": lat, "lng": lon},
+LAT, LON = 28.2282, 112.9388
+WRAPPER = "https://yx.lbxcn.com/out/2212sping/getlbxStoreList"
+DIRECTS = [
+    "https://msapitest.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore",
+    "https://msapi.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore",
+    "https://msapi.lbxcn.com/sems-store/nearby/store/pageNearbyStore",
+    "https://api.lbxcn.com/sems-store/nearby/store/pageNearbyStore",
+    "https://gateway.lbxcn.com/sems-store/nearby/store/pageNearbyStore",
 ]
 
 
-def summarize_json(data):
-    out = {"type": type(data).__name__}
-    if isinstance(data, dict):
-        out["keys"] = list(data.keys())
-        out["code"] = data.get("code")
-        out["message"] = data.get("message") or data.get("msg")
-        d = data.get("data")
-        out["data_type"] = type(d).__name__
-        if isinstance(d, dict):
-            out["data_keys"] = list(d.keys())
-            for k in ("rows", "data", "list", "records"):
-                v = d.get(k)
-                if isinstance(v, list):
-                    out["list_key"] = k
-                    out["list_len"] = len(v)
-                    out["sample"] = v[:3]
-                    break
-        elif isinstance(d, list):
-            out["list_key"] = "data"
-            out["list_len"] = len(d)
-            out["sample"] = d[:3]
-    elif isinstance(data, list):
-        out["list_len"] = len(data)
-        out["sample"] = data[:3]
-    return out
+def get_list(data):
+    if not isinstance(data, dict):
+        return data if isinstance(data, list) else None
+    d = data.get("data")
+    if isinstance(d, dict):
+        for k in ("data", "rows", "list", "records"):
+            if isinstance(d.get(k), list):
+                return d[k]
+    if isinstance(d, list):
+        return d
+    for k in ("rows", "list", "records"):
+        if isinstance(data.get(k), list):
+            return data[k]
+    return None
+
+
+def request(name, method, url, *, params=None, payload=None, headers=None):
+    rec = {"name": name, "method": method, "url": url, "params": params, "payload": payload}
+    try:
+        started = time.time()
+        r = S.request(method, url, params=params, json=payload, headers=headers or {}, timeout=35, allow_redirects=True)
+        rec.update({
+            "status": r.status_code,
+            "final_url": r.url,
+            "content_type": r.headers.get("content-type"),
+            "length": len(r.content),
+            "elapsed": round(time.time() - started, 3),
+            "preview": r.text[:2500],
+        })
+        try:
+            data = r.json()
+            rows = get_list(data)
+            rec["json_keys"] = list(data.keys()) if isinstance(data, dict) else None
+            rec["list_len"] = len(rows) if isinstance(rows, list) else None
+            rec["sample"] = rows[:2] if isinstance(rows, list) else None
+            (OUT / f"{name}.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+        except Exception as exc:
+            rec["json_error"] = repr(exc)
+    except Exception as exc:
+        rec["error"] = repr(exc)
+    print(json.dumps({k: v for k, v in rec.items() if k not in ("preview", "sample")}, ensure_ascii=False, indent=2), flush=True)
+    time.sleep(0.2)
+    return rec
 
 
 def main():
     report = []
-    for endpoint in ENDPOINTS:
-        # Test exact capitalization at Changsha, then all points if successful.
-        variants = PARAM_VARIANTS if endpoint == ENDPOINTS[0] else PARAM_VARIANTS[:1]
-        for variant_idx, variant in enumerate(variants):
-            point_items = list(POINTS.items()) if variant_idx == 0 else [("changsha_center", POINTS["changsha_center"])]
-            for point_name, (lat, lon) in point_items:
-                params = variant(lat, lon)
-                url = endpoint + "?" + urlencode(params)
-                rec = {"endpoint": endpoint, "point": point_name, "params": params, "url": url}
-                try:
-                    started = time.time()
-                    r = S.get(endpoint, params=params, timeout=30)
-                    rec.update({"status": r.status_code, "content_type": r.headers.get("content-type"), "length": len(r.content), "elapsed": round(time.time()-started, 3), "preview": r.text[:1000]})
-                    try:
-                        data = r.json()
-                        rec["json_summary"] = summarize_json(data)
-                        safe_name = f"{ENDPOINTS.index(endpoint):02d}_{variant_idx:02d}_{point_name}.json"
-                        (OUT / safe_name).write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-                    except Exception as exc:
-                        rec["json_error"] = repr(exc)
-                except Exception as exc:
-                    rec["error"] = repr(exc)
-                report.append(rec)
-                print(json.dumps({k: v for k, v in rec.items() if k != "preview"}, ensure_ascii=False, indent=2), flush=True)
-                time.sleep(0.3)
+    # Wrapper: test whether paging/size/radius are passed through.
+    wrapper_params = [
+        ("base", {"Latitude": LAT, "Longitude": LON}),
+        ("size50", {"Latitude": LAT, "Longitude": LON, "size": 50}),
+        ("size500", {"Latitude": LAT, "Longitude": LON, "size": 500}),
+        ("page2", {"Latitude": LAT, "Longitude": LON, "page": 2, "size": 10}),
+        ("radius1000", {"Latitude": LAT, "Longitude": LON, "radius": 1000, "size": 500}),
+        ("lowercase", {"latitude": LAT, "longitude": LON, "page": 1, "size": 500, "radius": 1000}),
+    ]
+    for name, params in wrapper_params:
+        report.append(request("wrapper_" + name, "GET", WRAPPER, params=params))
+    for name, payload in wrapper_params[:5]:
+        report.append(request("wrapper_post_" + name, "POST", WRAPPER, payload=payload))
+
+    payloads = [
+        ("exact", {"latitude": str(LAT), "longitude": str(LON), "page": 1, "size": 5, "formatIdList": ["01", "20", "92"], "isClosed": 0, "isParent": 1, "radius": 100}),
+        ("numeric", {"latitude": LAT, "longitude": LON, "page": 1, "size": 10, "formatIdList": ["01", "20", "92"], "isClosed": 0, "isParent": 1, "radius": 100}),
+        ("nofmt", {"latitude": LAT, "longitude": LON, "page": 1, "size": 100, "isClosed": 0, "isParent": 1, "radius": 1000}),
+        ("emptyfmt", {"latitude": LAT, "longitude": LON, "page": 1, "size": 100, "formatIdList": [], "isClosed": 0, "isParent": 1, "radius": 1000}),
+        ("minimal", {"latitude": LAT, "longitude": LON, "page": 1, "size": 100}),
+    ]
+    header_variants = [
+        ("plain", {}),
+        ("origin", {"Origin": "https://yx.lbxcn.com", "Referer": "https://yx.lbxcn.com/"}),
+        ("app", {"Origin": "https://yx.lbxcn.com", "Referer": "https://yx.lbxcn.com/", "channel": "H5", "tenantId": "1", "appId": "lbx"}),
+    ]
+    for idx, direct in enumerate(DIRECTS):
+        for pname, payload in payloads:
+            # Keep alternate header tests to the known test host only.
+            variants = header_variants if idx == 0 and pname == "exact" else header_variants[:1]
+            for hname, headers in variants:
+                report.append(request(f"direct_{idx}_{pname}_{hname}", "POST", direct, payload=payload, headers=headers))
+        report.append(request(f"direct_{idx}_get", "GET", direct, params=payloads[1][1]))
     (OUT / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
