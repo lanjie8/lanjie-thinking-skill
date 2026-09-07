@@ -1,0 +1,20 @@
+name: LBX Radius Probe
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_radius_probe.py
+      - .github/workflows/lbx-radius-probe.yml
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/lbx_radius_probe.py
