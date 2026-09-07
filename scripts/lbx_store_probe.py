@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Probe the public LBX campaign store-list endpoints with sample coordinates."""
+"""Inspect LBX legacy store endpoint behavior and pagination parameters."""
 from __future__ import annotations
 
 import json
@@ -12,112 +12,108 @@ import requests
 OUT = Path("store_probe_output")
 OUT.mkdir(exist_ok=True)
 
-SESSION = requests.Session()
-SESSION.headers.update(
-    {
-        "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 MicroMessenger/8.0.50",
-        "Accept": "application/json, text/plain, */*",
-        "Accept-Language": "zh-CN,zh;q=0.9",
-        "Referer": "https://yx.lbxcn.com/h5/springgame/index.html?gameCode=spring_251230_6&source=4",
-        "Origin": "https://yx.lbxcn.com",
+S = requests.Session()
+S.headers.update({
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_6 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 MicroMessenger/8.0.50",
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "zh-CN,zh;q=0.9",
+    "Referer": "https://yx.lbxcn.com/h5/springgame/index.html?gameCode=spring_251230_6&source=4",
+    "Origin": "https://yx.lbxcn.com",
+})
+
+OLD = "https://yx.lbxcn.com/out/2212sping/getlbxStoreList"
+NEW_BACKEND = "https://msapitest.lbxcn.com:31443/sems-store/nearby/store/pageNearbyStore"
+
+
+def save_result(name: str, response: requests.Response | None, error: Exception | None, started: float) -> dict:
+    if response is None:
+        return {"name": name, "elapsed": round(time.time()-started, 3), "error": repr(error)}
+    body = response.content
+    (OUT / f"{name}.txt").write_bytes(body)
+    try:
+        parsed = response.json()
+    except Exception:
+        parsed = None
+    return {
+        "name": name,
+        "url": response.url,
+        "status": response.status_code,
+        "headers": dict(response.headers),
+        "length": len(body),
+        "elapsed": round(time.time()-started, 3),
+        "json": parsed,
+        "preview": response.text[:3000],
     }
-)
-
-COORDS = {
-    "changsha_center": (28.2283, 112.9388),
-    "changsha_yuelu": (28.2353, 112.9314),
-    "xian_center": (34.3432, 108.9396),
-    "beijing_center": (39.9042, 116.4074),
-    "nanjing_center": (32.0593, 118.7966),
-    "hefei_center": (31.8206, 117.2272),
-    "shanghai_center": (31.2304, 121.4737),
-    "lanzhou_center": (36.0611, 103.8343),
-    "hangzhou_center": (30.2741, 120.1551),
-    "wuhan_center": (30.5928, 114.3055),
-}
-
-ENDPOINTS = [
-    "https://yx.lbxcn.com/out/2026api/getlbxStoreList",
-    "https://yx.lbxcn.com/out/2212sping/getlbxStoreList",
-]
 
 
-def probe(name: str, url: str, params: dict[str, object] | None = None) -> dict[str, object]:
+def get(name: str, params: dict | None) -> dict:
     started = time.time()
     try:
-        response = SESSION.get(url, params=params, timeout=30, allow_redirects=True)
-        body = response.content
-        text = body.decode(response.encoding or "utf-8", errors="replace")
-        suffix = "json" if "json" in (response.headers.get("content-type") or "").lower() else "txt"
-        (OUT / f"{name}.{suffix}").write_bytes(body)
-        parsed = None
-        try:
-            parsed = response.json()
-        except Exception:
-            pass
-        return {
-            "name": name,
-            "url": response.url,
-            "status": response.status_code,
-            "content_type": response.headers.get("content-type"),
-            "length": len(body),
-            "elapsed": round(time.time() - started, 3),
-            "json": parsed,
-            "preview": text[:2000],
-        }
+        r = S.get(OLD, params=params, timeout=35)
+        return save_result(name, r, None, started)
     except Exception as exc:
-        return {
-            "name": name,
-            "url": url + ("?" + urlencode(params) if params else ""),
-            "elapsed": round(time.time() - started, 3),
-            "error": repr(exc),
-        }
+        return save_result(name, None, exc, started)
+
+
+def post(name: str, url: str, payload: dict, headers: dict | None = None) -> dict:
+    started = time.time()
+    try:
+        r = S.post(url, json=payload, headers=headers or {}, timeout=35)
+        return save_result(name, r, None, started)
+    except Exception as exc:
+        return save_result(name, None, exc, started)
 
 
 def main() -> None:
-    results: list[dict[str, object]] = []
-    for endpoint in ENDPOINTS:
-        tag = "2026" if "2026api" in endpoint else "2212"
-        for coord_name, (lat, lon) in COORDS.items():
-            result = probe(
-                f"{tag}_{coord_name}",
-                endpoint,
-                {"Latitude": lat, "Longitude": lon},
-            )
-            results.append(result)
-            print(json.dumps(result, ensure_ascii=False, indent=2)[:5000], flush=True)
-            time.sleep(0.6)
-
-    # Parameter behavior probes.
-    extras = [
-        ("2026_no_params", ENDPOINTS[0], None),
-        ("2026_lowercase", ENDPOINTS[0], {"latitude": 28.2283, "longitude": 112.9388}),
-        ("2026_zero", ENDPOINTS[0], {"Latitude": 0, "Longitude": 0}),
-        ("2026_page", ENDPOINTS[0], {"Latitude": 28.2283, "Longitude": 112.9388, "page": 2, "pageSize": 100}),
+    lat, lon = 28.2283, 112.9388
+    cases = [
+        ("old_valid", {"Latitude": lat, "Longitude": lon}),
+        ("old_no_params", None),
+        ("old_only_lat", {"Latitude": lat}),
+        ("old_invalid_text", {"Latitude": "abc", "Longitude": "xyz"}),
+        ("old_zero", {"Latitude": 0, "Longitude": 0}),
+        ("old_page_lower", {"Latitude": lat, "Longitude": lon, "page": 2, "size": 100, "radius": 100}),
+        ("old_page_upper", {"Latitude": lat, "Longitude": lon, "Page": 2, "Size": 100, "Radius": 100}),
+        ("old_pagesize", {"Latitude": lat, "Longitude": lon, "page": 2, "pageSize": 100, "Radius": 100}),
+        ("old_alt_coords", {"latitude": lat, "longitude": lon, "page": 2, "size": 100}),
     ]
-    for name, url, params in extras:
-        result = probe(name, url, params)
+    results = []
+    for name, params in cases:
+        result = get(name, params)
         results.append(result)
-        print(json.dumps(result, ensure_ascii=False, indent=2)[:5000], flush=True)
-        time.sleep(0.6)
+        print(json.dumps(result, ensure_ascii=False, indent=2)[:12000], flush=True)
+        time.sleep(0.4)
 
-    # Download the two official footer codes for later decoding/inspection.
-    images = {
-        "official_scan_to_buy.jpg": "https://omo-oss-image.thefastimg.com/portal-saas/pg2024101217574431839/cms/image/68ec6b77-7b58-4aca-9a76-1bdb3531b2c7.jpg",
-        "official_service_wechat.jpg": "https://omo-oss-image.thefastimg.com/portal-saas/pg2024101217574431839/cms/image/b26fce50-3b1f-41d6-b621-5292ce6cedf2.jpg",
+    base_payload = {
+        "latitude": lat,
+        "longitude": lon,
+        "page": 1,
+        "size": 100,
+        "formatIdList": ["01", "20", "92"],
+        "isClosed": 0,
+        "isParent": 1,
+        "radius": 100,
     }
-    for filename, url in images.items():
-        try:
-            r = SESSION.get(url, timeout=30)
-            r.raise_for_status()
-            (OUT / filename).write_bytes(r.content)
-            results.append({"name": filename, "url": url, "status": r.status_code, "length": len(r.content), "content_type": r.headers.get("content-type")})
-        except Exception as exc:
-            results.append({"name": filename, "url": url, "error": repr(exc)})
+    payloads = [
+        ("new_backend_numeric", base_payload),
+        ("new_backend_string", {**base_payload, "latitude": str(lat), "longitude": str(lon)}),
+        ("new_backend_no_formats", {k:v for k,v in base_payload.items() if k != "formatIdList"}),
+        ("new_backend_radius20", {**base_payload, "radius": 20}),
+    ]
+    header_variants = [
+        ("plain", {}),
+        ("ajax", {"X-Requested-With": "XMLHttpRequest"}),
+        ("source", {"source": "4", "channel": "h5"}),
+    ]
+    for pname, payload in payloads:
+        for hname, headers in header_variants:
+            name = f"{pname}_{hname}"
+            result = post(name, NEW_BACKEND, payload, headers)
+            results.append(result)
+            print(json.dumps(result, ensure_ascii=False, indent=2)[:12000], flush=True)
+            time.sleep(0.4)
 
-    (OUT / "probe_summary.json").write_text(
-        json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
+    (OUT / "probe_summary.json").write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 if __name__ == "__main__":
