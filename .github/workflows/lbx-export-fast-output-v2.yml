@@ -1,0 +1,29 @@
+name: LBX Export Fast Output V2
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - .github/workflows/lbx-export-fast-output-v2.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - name: Show files
+        run: find fast_output -maxdepth 3 -type f -printf '%p %s bytes\n' | sort
+      - name: Upload current fast output
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-fast-output-v2
+          path: fast_output
+          if-no-files-found: error
+          retention-days: 3
