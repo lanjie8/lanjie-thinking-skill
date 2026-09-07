@@ -1,0 +1,39 @@
+name: Mapbar Session Probe
+
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/mapbar_session_probe.py
+      - .github/workflows/mapbar-session-probe.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/mapbar_session_probe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mapbar-session-probe
+          path: mapbar_session_probe_output
+          retention-days: 2
+      - name: Commit output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add mapbar_session_probe_output
+          git commit -m "chore: save Mapbar session probe" || exit 0
+          git pull --rebase origin tmp/lbx-poi-crawl-20260907
+          git push origin HEAD:tmp/lbx-poi-crawl-20260907
