@@ -36,3 +36,5 @@ jobs:
           path: store_endpoint_probe_output/
           retention-days: 1
           if-no-files-found: warn
+
+# Triggered for endpoint validation on 2026-09-07.
