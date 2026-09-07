@@ -1,0 +1,31 @@
+name: LBX Overpass Public POI Collect
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - scripts/lbx_overpass_collect.py
+      - .github/workflows/lbx-overpass-collect.yml
+
+permissions:
+  contents: read
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - name: Checkout temporary branch
+        uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - name: Query public Overpass endpoints
+        run: python3 scripts/lbx_overpass_collect.py
+      - name: Upload collected public POIs
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-overpass-public-pois
+          path: overpass_output/**
+          if-no-files-found: error
+          retention-days: 1
