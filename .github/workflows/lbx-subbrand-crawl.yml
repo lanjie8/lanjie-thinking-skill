@@ -33,3 +33,5 @@ jobs:
           path: lbx_subbrand_output/
           retention-days: 3
           if-no-files-found: error
+
+# Triggered after workflow registration.
