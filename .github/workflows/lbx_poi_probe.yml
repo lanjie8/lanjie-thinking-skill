@@ -1,0 +1,29 @@
+name: LBX POI Probe
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - 'scripts/lbx_poi_probe.py'
+      - '.github/workflows/lbx_poi_probe.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run endpoint probes
+        run: python3 scripts/lbx_poi_probe.py
+      - name: Upload probe output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-poi-probe-output
+          path: probe_output/
+          if-no-files-found: warn
