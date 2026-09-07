@@ -1,0 +1,184 @@
+name: LBX Analyze Fast Output
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - .github/workflows/lbx-analyze-fast-output.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q openpyxl
+      - name: Analyze candidates
+        shell: bash
+        run: |
+          python - <<'PY'
+          from __future__ import annotations
+          import csv, json, re
+          from collections import Counter
+          from pathlib import Path
+          from openpyxl import load_workbook
+
+          ROOT = Path('fast_output')
+          OUT = Path('analysis_output')
+          OUT.mkdir(exist_ok=True)
+
+          candidates = json.loads((ROOT / 'bidding_candidates.json').read_text(encoding='utf-8'))
+          ranked = []
+          for rec in candidates:
+              insp = rec.get('inspection') or {}
+              sheets = insp.get('sheets') or []
+              ranked.append({
+                  'label': rec.get('label'),
+                  'notice_title': rec.get('notice_title'),
+                  'notice_url': rec.get('notice_url'),
+                  'source_url': rec.get('url'),
+                  'saved_path': rec.get('saved_path'),
+                  'score': rec.get('candidate_score'),
+                  'max_rows': max([s.get('max_row') or 0 for s in sheets] or [0]),
+                  'sheet_summaries': [
+                      {
+                          'name': s.get('name'), 'rows': s.get('max_row'), 'cols': s.get('max_col'),
+                          'keyword_hits': s.get('keyword_hits'), 'address_like_rows': s.get('address_like_rows'),
+                          'samples': (s.get('samples') or [])[:5],
+                      } for s in sheets
+                  ],
+              })
+          ranked.sort(key=lambda x: (-x['max_rows'], -(x['score'] or 0), str(x['label'])))
+          (OUT / 'ranked_candidates.json').write_text(json.dumps(ranked, ensure_ascii=False, indent=2), encoding='utf-8')
+
+          files = sorted((ROOT / 'candidate_attachments').glob('*.xlsx'))
+          manifest = []
+          extracted = []
+          header_terms = ('门店','店名','药店','药房','机构名称','单位名称','网点','公司名称')
+          address_terms = ('地址','详细地址','门店地址','所在地址')
+          phone_terms = ('电话','联系电话','手机','联系方式')
+          geo_terms = ('经度','纬度','longitude','latitude')
+          addr_re = re.compile(r'(省|自治区|市|区|县|街道|镇|乡|路|街|大道|巷|号|村|社区|广场|商场|中心)')
+          name_re = re.compile(r'(老百姓|百姓缘|怀仁|健康药房|大药房|药店|药房)')
+
+          def sval(v):
+              if v is None: return ''
+              return str(v).strip()
+
+          for path in files:
+              book_info = {'file': path.name, 'size': path.stat().st_size, 'sheets': []}
+              try:
+                  wb = load_workbook(path, read_only=True, data_only=True)
+                  for ws in wb.worksheets:
+                      info = {'name': ws.title, 'max_row': ws.max_row or 0, 'max_col': ws.max_column or 0,
+                              'header_hits': [], 'store_like_rows': 0, 'samples': []}
+                      header_map = None
+                      header_row_num = None
+                      rows_scanned = 0
+                      for rnum, row in enumerate(ws.iter_rows(values_only=True), start=1):
+                          vals = [sval(v) for v in row]
+                          if not any(vals):
+                              continue
+                          rows_scanned += 1
+                          joined = ' | '.join(vals)
+                          if rnum <= 30:
+                              hits = [t for t in (*header_terms,*address_terms,*phone_terms,*geo_terms,'省','市','区县') if t in joined]
+                              if hits:
+                                  info['header_hits'].append({'row': rnum, 'hits': sorted(set(hits)), 'values': vals[:40]})
+                              if header_map is None:
+                                  name_cols = [i for i,v in enumerate(vals) if any(t in v for t in header_terms)]
+                                  addr_cols = [i for i,v in enumerate(vals) if any(t in v for t in address_terms)]
+                                  if name_cols and addr_cols:
+                                      header_map = {'name_cols': name_cols, 'addr_cols': addr_cols, 'headers': vals}
+                                      header_row_num = rnum
+                          is_store = bool(name_re.search(joined)) and bool(addr_re.search(joined)) and len(joined) >= 12
+                          if header_map and header_row_num and rnum > header_row_num:
+                              name_val = ' '.join(vals[i] for i in header_map['name_cols'] if i < len(vals)).strip()
+                              addr_val = ' '.join(vals[i] for i in header_map['addr_cols'] if i < len(vals)).strip()
+                              is_store = is_store or (bool(name_val) and bool(addr_val) and (name_re.search(name_val) or addr_re.search(addr_val)))
+                          if is_store:
+                              info['store_like_rows'] += 1
+                              if len(info['samples']) < 20:
+                                  info['samples'].append({'row': rnum, 'values': vals[:50]})
+                              extracted.append({
+                                  'source_file': path.name,
+                                  'sheet': ws.title,
+                                  'row_number': rnum,
+                                  'row_text': joined[:4000],
+                                  'source_type': '公开采购附件',
+                              })
+                          if rows_scanned >= 50000:
+                              break
+                      info['rows_scanned'] = rows_scanned
+                      book_info['sheets'].append(info)
+                  wb.close()
+              except Exception as exc:
+                  book_info['error'] = repr(exc)
+              manifest.append(book_info)
+
+          (OUT / 'attachment_manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
+          with (OUT / 'store_like_rows.csv').open('w', encoding='utf-8-sig', newline='') as f:
+              w = csv.DictWriter(f, fieldnames=['source_file','sheet','row_number','row_text','source_type'])
+              w.writeheader(); w.writerows(extracted)
+
+          endpoint_set = set()
+          endpoint_contexts = []
+          endpoint_re = re.compile(r'(?:(?:https?:)?//[^\s\"\'<>]{5,}|/[A-Za-z0-9_./?=&%:-]{5,})')
+          keywords = ('store','shop','nearby','poi','location','longitude','latitude','branch','outlet','门店','药房')
+          for path in sorted(ROOT.glob('js_*.txt')):
+              try:
+                  text = path.read_text(encoding='utf-8', errors='ignore')[:12_000_000]
+              except Exception:
+                  continue
+              for m in endpoint_re.findall(text):
+                  low = m.lower()
+                  if any(k in low for k in keywords):
+                      cleaned = m[:1000]
+                      if cleaned not in endpoint_set:
+                          endpoint_set.add(cleaned)
+                          idx = text.find(m)
+                          endpoint_contexts.append({
+                              'file': path.name, 'endpoint': cleaned,
+                              'context': text[max(0,idx-250):idx+len(m)+250],
+                          })
+          (OUT / 'endpoint_candidates.json').write_text(json.dumps(endpoint_contexts[:5000], ensure_ascii=False, indent=2), encoding='utf-8')
+
+          summary = {
+              'candidate_count': len(candidates),
+              'attachment_xlsx_count': len(files),
+              'store_like_row_count': len(extracted),
+              'endpoint_candidate_count': len(endpoint_contexts),
+              'top_large_files': sorted([
+                  {'file': x['file'], 'max_rows': max([s.get('max_row',0) for s in x.get('sheets',[])] or [0]),
+                   'store_like_rows': sum(s.get('store_like_rows',0) for s in x.get('sheets',[])),
+                   'sheets': len(x.get('sheets',[]))}
+                  for x in manifest
+              ], key=lambda x: (-x['max_rows'], -x['store_like_rows']))[:50],
+              'top_store_like_files': sorted([
+                  {'file': x['file'], 'max_rows': max([s.get('max_row',0) for s in x.get('sheets',[])] or [0]),
+                   'store_like_rows': sum(s.get('store_like_rows',0) for s in x.get('sheets',[])),
+                   'sheets': len(x.get('sheets',[]))}
+                  for x in manifest
+              ], key=lambda x: (-x['store_like_rows'], -x['max_rows']))[:50],
+              'endpoint_keyword_counts': dict(Counter(
+                  next((k for k in keywords if k in x['endpoint'].lower()), 'other') for x in endpoint_contexts
+              )),
+          }
+          (OUT / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')
+          print(json.dumps(summary, ensure_ascii=False, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-fast-analysis
+          path: analysis_output
+          retention-days: 3
