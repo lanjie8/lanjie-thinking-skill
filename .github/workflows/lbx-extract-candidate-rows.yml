@@ -1,0 +1,35 @@
+name: LBX Extract Candidate Rows
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_extract_candidate_rows.py
+      - .github/workflows/lbx-extract-candidate-rows.yml
+permissions:
+  contents: write
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q openpyxl
+      - run: python scripts/lbx_extract_candidate_rows.py
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add candidate_extract_output
+          git commit -m "Add LBX candidate row extraction output [skip ci]" || exit 0
+          for i in 1 2 3; do
+            git pull --rebase origin tmp/lbx-poi-crawl-20260907 || true
+            git push origin HEAD:tmp/lbx-poi-crawl-20260907 && exit 0
+            sleep 3
+          done
+          exit 1
