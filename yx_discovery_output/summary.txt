@@ -1,0 +1,796 @@
+PAGE {"url": "https://yx.lbxcn.com/h5/springgame/index.html?gameCode=spring_251230_6&source=4", "status": 200, "final_url": "https://yx.lbxcn.com/h5/springgame/index.html?gameCode=spring_251230_6&source=4", "content_type": "text/html; charset=utf-8", "length": 30674}
+SCRIPTS 10
+
+https://muyang.hn.cn/hdh5/2026/01lbxnhj/js/get_wxinfo.js
+CANDIDATE ;
+		}
+	}
+
+	window.setCookie = setCookie;
+	window.getCookie = getCookie;
+
+	//将url中的参数转换成json格式
+	function urlToJson() { //默认参数为当前链接
+		var url = arguments[0] || window.location.href;
+		var arr = url.split(
+CANDIDATE ;
+	}
+
+	var pageUrl = window.location.href;
+	pageUrl = pageUrl.split(
+SNIPPET scape(arr[2]); } } else { return ''; } } window.setCookie = setCookie; window.getCookie = getCookie; //将url中的参数转换成json格式 function urlToJson() { //默认参数为当前链接 var url = arguments[0] || window.location.href; var arr = url.split('?'); if (url.indexOf('?') > 0 && arr[1]) { var paraString = url.substring(url.indexOf('?') + 1, url.length); var paraJsonString; paraJsonString = paraString.replace(/\=/g, "\
+SNIPPET localStorage.unionid = userData.unionid; localStorage.openID = userData.openID; userData.nickName = localStorage.nickName || ''; userData.headimgurl = localStorage.headimgurl || ''; } var pageUrl = window.location.href; pageUrl = pageUrl.split('?')[0]; //去掉参数 if (pageUrl.indexOf('127.0.0.1') >= 0 || pageUrl.indexOf('192.168') >= 0 || pageUrl.indexOf('localhost') >= 0) { //陈祥 userData.openID = 'ocbhX6564nh6IUKEK9
+
+https://res.wx.qq.com/t/wx_fed/cdn_libs/res/weui/1.2.3/weui.min.js
+SNIPPET +)if(274==t.getUint16(i+12*u,o))return t.getUint16(i+12*u+8,o)}else{if(65280!=(65280&a))break;i+=t.getUint16(i,!1)}}return-1}function r(e,t,n){var i=e.width,a=e.height;switch(n>4&&(e.width=a,e.height=i),n){case 2:t.translate(i,0),t.scale(-1,1);break;case 3:t.translate(i,a),t.rotate(Math.PI);break;case 4:t.translate(0,a),t.scale(1,-1);break;case 5:t.rotate(.5*Math.PI),t.scale(1,-1);break;case 6:t.rotate(.5*Math.PI),t.translate(0,-a);break;c
+SNIPPET Uint16(i+12*u+8,o)}else{if(65280!=(65280&a))break;i+=t.getUint16(i,!1)}}return-1}function r(e,t,n){var i=e.width,a=e.height;switch(n>4&&(e.width=a,e.height=i),n){case 2:t.translate(i,0),t.scale(-1,1);break;case 3:t.translate(i,a),t.rotate(Math.PI);break;case 4:t.translate(0,a),t.scale(1,-1);break;case 5:t.rotate(.5*Math.PI),t.scale(1,-1);break;case 6:t.rotate(.5*Math.PI),t.translate(0,-a);break;case 7:t.rotate(.5*Math.PI),t.translate(i,-a)
+SNIPPET k;i+=t.getUint16(i,!1)}}return-1}function r(e,t,n){var i=e.width,a=e.height;switch(n>4&&(e.width=a,e.height=i),n){case 2:t.translate(i,0),t.scale(-1,1);break;case 3:t.translate(i,a),t.rotate(Math.PI);break;case 4:t.translate(0,a),t.scale(1,-1);break;case 5:t.rotate(.5*Math.PI),t.scale(1,-1);break;case 6:t.rotate(.5*Math.PI),t.translate(0,-a);break;case 7:t.rotate(.5*Math.PI),t.translate(i,-a),t.scale(-1,1);break;case 8:t.rotate(-.5*Math.PI
+SNIPPET {case 2:t.translate(i,0),t.scale(-1,1);break;case 3:t.translate(i,a),t.rotate(Math.PI);break;case 4:t.translate(0,a),t.scale(1,-1);break;case 5:t.rotate(.5*Math.PI),t.scale(1,-1);break;case 6:t.rotate(.5*Math.PI),t.translate(0,-a);break;case 7:t.rotate(.5*Math.PI),t.translate(i,-a),t.scale(-1,1);break;case 8:t.rotate(-.5*Math.PI),t.translate(-i,0)}}function u(e,t,u){var l=new FileReader;l.onload=function(l){if(t.compress===!1)return e.base
+SNIPPET t.translate(i,a),t.rotate(Math.PI);break;case 4:t.translate(0,a),t.scale(1,-1);break;case 5:t.rotate(.5*Math.PI),t.scale(1,-1);break;case 6:t.rotate(.5*Math.PI),t.translate(0,-a);break;case 7:t.rotate(.5*Math.PI),t.translate(i,-a),t.scale(-1,1);break;case 8:t.rotate(-.5*Math.PI),t.translate(-i,0)}}function u(e,t,u){var l=new FileReader;l.onload=function(l){if(t.compress===!1)return e.base64=l.target.result,void u(e);var s=new Image;s.onloa
+SNIPPET scale(1,-1);break;case 5:t.rotate(.5*Math.PI),t.scale(1,-1);break;case 6:t.rotate(.5*Math.PI),t.translate(0,-a);break;case 7:t.rotate(.5*Math.PI),t.translate(i,-a),t.scale(-1,1);break;case 8:t.rotate(-.5*Math.PI),t.translate(-i,0)}}function u(e,t,u){var l=new FileReader;l.onload=function(l){if(t.compress===!1)return e.base64=l.target.result,void u(e);var s=new Image;s.onload=function(){var l=n(s),d=o(i(s.src)),f=document.createElement("can
+SNIPPET structor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},o=n(2),r=i(o),u=function(e,t){return e.css({"-webkit-transition":"all "+t+"s",transition:"all "+t+"s"})},l=function(e,t){return e.css({"-webkit-transform":"translate3d(0, "+t+"px, 0)",transform:"translate3d(0, "+t+"px, 0)"})},s=function(e){for(var t=Math.floor(e.length/2),n=0;e[t]&&e[t].disabled;)if(t=++t%e.length,n++,n>e.length)throw new Error("No selectable item.");return t},d=fu
+SNIPPET ?"symbol":typeof e},o=n(2),r=i(o),u=function(e,t){return e.css({"-webkit-transition":"all "+t+"s",transition:"all "+t+"s"})},l=function(e,t){return e.css({"-webkit-transform":"translate3d(0, "+t+"px, 0)",transform:"translate3d(0, "+t+"px, 0)"})},s=function(e){for(var t=Math.floor(e.length/2),n=0;e[t]&&e[t].disabled;)if(t=++t%e.length,n++,n>e.length)throw new Error("No selectable item.");return t},d=function(e,t,n){var i=s(n);return(e-i)*t}
+
+https://res.wx.qq.com/open/js/jweixin-1.6.0.js
+CANDIDATE ,getLocation:
+CANDIDATE ,isPreVerifyOk:1,systemType:u?1:l?2:-1,clientVersion:p,url:encodeURIComponent(location.href)},h={},S={_completes:[]},y={state:0,data:{}},O(function(){m.initEndTime=L()}),I=!1,v=[],_={config:function(e){C(
+CANDIDATE ,link:e.link||location.href,type:e.type||
+CANDIDATE ,link:e.link||location.href},e)}},e)},onMenuShareQZone:function(e){M(a.onMenuShareQZone,{complete:function(){k(
+CANDIDATE ,link:e.link||location.href},e)}},e)},onMenuShareWeibo:function(e){M(a.onMenuShareWeibo,{complete:function(){k(
+CANDIDATE ,link:e.link||location.href},e)}},e)},updateTimelineShareData:function(e){k(
+CANDIDATE ,link:n.link||location.href,img_url:n.imgUrl||
+CANDIDATE ,{app_id:h.appId,location_id:e.shopId||
+CANDIDATE ]},(e._complete=function(e){if(l){var n=e.localIds;try{n&&(e.localIds=JSON.parse(n))}catch(e){}}},e))},getLocation:function(e){},getLocation:function(e){e=e||{},k(a.getLocation,{type:e.type||
+CANDIDATE }}},e))},openLocation:function(e){k(
+SNIPPET ardId=o.card_id,o.cardExt=o.card_ext,o.isSuccess=!!o.is_succ,delete o.card_id,delete o.card_ext,delete o.is_succ}e.cardList=n,delete e.card_list}},e))},chooseCard:function(e){k("chooseCard",{app_id:h.appId,location_id:e.shopId||"",sign_type:e.signType||"SHA1",card_id:e.cardId||"",card_type:e.cardType||"",card_sign:e.cardSign,time_stamp:e.timestamp+"",nonce_str:e.nonceStr},(e._complete=function(e){e.cardList=e.choose_card_info,delete e.choos
+SNIPPET nuShareTimeline:"menu:share:timeline",onMenuShareAppMessage:"menu:share:appmessage",onMenuShareQQ:"menu:share:qq",onMenuShareWeibo:"menu:share:weiboApp",onMenuShareQZone:"menu:share:QZone",previewImage:"imagePreview",getLocation:"geoLocation",openProductSpecificView:"openProductViewWithPid",addCard:"batchAddCard",openCard:"batchViewCard",chooseWXPay:"getBrandWCPayRequest",openEnterpriseRedPacket:"getRecevieBizHongBaoRequest",startSearchBeacons:
+SNIPPET ne:"menu:share:timeline",onMenuShareAppMessage:"menu:share:appmessage",onMenuShareQQ:"menu:share:qq",onMenuShareWeibo:"menu:share:weiboApp",onMenuShareQZone:"menu:share:QZone",previewImage:"imagePreview",getLocation:"geoLocation",openProductSpecificView:"openProductViewWithPid",addCard:"batchAddCard",openCard:"batchViewCard",chooseWXPay:"getBrandWCPayRequest",openEnterpriseRedPacket:"getRecevieBizHongBaoRequest",startSearchBeacons:"startMonitor
+SNIPPET "",m={initStartTime:L(),initEndTime:0,preVerifyStartTime:0,preVerifyEndTime:0},g={version:1,appId:"",initTime:0,preVerifyTime:0,networkType:"",isPreVerifyOk:1,systemType:u?1:l?2:-1,clientVersion:p,url:encodeURIComponent(location.href)},h={},S={_completes:[]},y={state:0,data:{}},O(function(){m.initEndTime=L()}),I=!1,v=[],_={config:function(e){C("config",h=e);var o=!1!==h.check;O(function(){if(o)k(a.config,{verifyJsApiList:A(h.jsApiList),verifyOp
+SNIPPET for(n in t){var o=c[n];o&&(t[o]=t[n],delete t[n])}},e))},onMenuShareTimeline:function(e){M(a.onMenuShareTimeline,{complete:function(){k("shareTimeline",{title:e.title||i,desc:e.title||i,img_url:e.imgUrl||"",link:e.link||location.href,type:e.type||"link",data_url:e.dataUrl||""},e)}},e)},onMenuShareAppMessage:function(n){M(a.onMenuShareAppMessage,{complete:function(e){"favorite"===e.scene?k("sendAppMessage",{title:n.title||i,desc:n.desc||"",link:
+SNIPPET pe:e.type||"link",data_url:e.dataUrl||""},e)}},e)},onMenuShareAppMessage:function(n){M(a.onMenuShareAppMessage,{complete:function(e){"favorite"===e.scene?k("sendAppMessage",{title:n.title||i,desc:n.desc||"",link:n.link||location.href,img_url:n.imgUrl||"",type:n.type||"link",data_url:n.dataUrl||""}):k("sendAppMessage",{title:n.title||i,desc:n.desc||"",link:n.link||location.href,img_url:n.imgUrl||"",type:n.type||"link",data_url:n.dataUrl||""},n)}
+SNIPPET e.scene?k("sendAppMessage",{title:n.title||i,desc:n.desc||"",link:n.link||location.href,img_url:n.imgUrl||"",type:n.type||"link",data_url:n.dataUrl||""}):k("sendAppMessage",{title:n.title||i,desc:n.desc||"",link:n.link||location.href,img_url:n.imgUrl||"",type:n.type||"link",data_url:n.dataUrl||""},n)}},n)},onMenuShareQQ:function(e){M(a.onMenuShareQQ,{complete:function(){k("shareQQ",{title:e.title||i,desc:e.desc||"",img_url:e.imgUrl||"",link:e.l
+SNIPPET ,img_url:n.imgUrl||"",type:n.type||"link",data_url:n.dataUrl||""},n)}},n)},onMenuShareQQ:function(e){M(a.onMenuShareQQ,{complete:function(){k("shareQQ",{title:e.title||i,desc:e.desc||"",img_url:e.imgUrl||"",link:e.link||location.href},e)}},e)},onMenuShareWeibo:function(e){M(a.onMenuShareWeibo,{complete:function(){k("shareWeiboApp",{title:e.title||i,desc:e.desc||"",img_url:e.imgUrl||"",link:e.link||location.href},e)}},e)},onMenuShareQZone:functi
+SNIPPET ||"",img_url:e.imgUrl||"",link:e.link||location.href},e)}},e)},onMenuShareWeibo:function(e){M(a.onMenuShareWeibo,{complete:function(){k("shareWeiboApp",{title:e.title||i,desc:e.desc||"",img_url:e.imgUrl||"",link:e.link||location.href},e)}},e)},onMenuShareQZone:function(e){M(a.onMenuShareQZone,{complete:function(){k("shareQZone",{title:e.title||i,desc:e.desc||"",img_url:e.imgUrl||"",link:e.link||location.href},e)}},e)},updateTimelineShareData:fu
+SNIPPET esc||"",img_url:e.imgUrl||"",link:e.link||location.href},e)}},e)},onMenuShareQZone:function(e){M(a.onMenuShareQZone,{complete:function(){k("shareQZone",{title:e.title||i,desc:e.desc||"",img_url:e.imgUrl||"",link:e.link||location.href},e)}},e)},updateTimelineShareData:function(e){k("updateTimelineShareData",{title:e.title,link:e.link,imgUrl:e.imgUrl},e)},updateAppMessageShareData:function(e){k("updateAppMessageShareData",{title:e.title,desc:e.de
+SNIPPET e:"1|2",count:e.count||9,sizeType:e.sizeType||["original","compressed"],sourceType:e.sourceType||["album","camera"]},(e._complete=function(e){if(l){var n=e.localIds;try{n&&(e.localIds=JSON.parse(n))}catch(e){}}},e))},getLocation:function(e){},getLocation:function(e){e=e||{},k(a.getLocation,{type:e.type||"wgs84"},(e._complete=function(e){delete e.type},e))},previewImage:function(e){k(a.previewImage,{current:e.current,urls:e.urls},e)},uploadImage
+SNIPPET izeType:e.sizeType||["original","compressed"],sourceType:e.sourceType||["album","camera"]},(e._complete=function(e){if(l){var n=e.localIds;try{n&&(e.localIds=JSON.parse(n))}catch(e){}}},e))},getLocation:function(e){},getLocation:function(e){e=e||{},k(a.getLocation,{type:e.type||"wgs84"},(e._complete=function(e){delete e.type},e))},previewImage:function(e){k(a.previewImage,{current:e.current,urls:e.urls},e)},uploadImage:function(e){k("uploadImag
+SNIPPET pressed"],sourceType:e.sourceType||["album","camera"]},(e._complete=function(e){if(l){var n=e.localIds;try{n&&(e.localIds=JSON.parse(n))}catch(e){}}},e))},getLocation:function(e){},getLocation:function(e){e=e||{},k(a.getLocation,{type:e.type||"wgs84"},(e._complete=function(e){delete e.type},e))},previewImage:function(e){k(a.previewImage,{current:e.current,urls:e.urls},e)},uploadImage:function(e){k("uploadImage",{localId:e.localId,isShowProgress
+SNIPPET kType:ok",n.subtype);if(delete n.subtype,i)n.networkType=i;else{var i=e.indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionM
+SNIPPET te n.subtype,i)n.networkType=i;else{var i=e.indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptio
+SNIPPET var o=n[i];o.cardId=o.card_id,o.cardExt=o.card_ext,o.isSuccess=!!o.is_succ,delete o.card_id,delete o.card_ext,delete o.is_succ}e.cardList=n,delete e.card_list}},e))},chooseCard:function(e){k("chooseCard",{app_id:h.appId,location_id:e.shopId||"",sign_type:e.signType||"SHA1",card_id:e.cardId||"",card_type:e.cardType||"",card_sign:e.cardSign,time_stamp:e.timestamp+"",nonce_str:e.nonceStr},(e._complete=function(e){e.cardList=e.choose_card_info,dele
+SNIPPET else{var i=e.indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu",{},e)},closeWindow:functi
+SNIPPET .indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu",{},e)},closeWindow:function(e){k("clo
+SNIPPET e,i)n.networkType=i;else{var i=e.indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu",{},e
+SNIPPET rkType=i;else{var i=e.indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu",{},e)},closeWin
+SNIPPET hBeacons:"onBeaconsInRange",consumeAndShareCard:"consumedShareCard",openAddress:"editAddress"},c=(()=>{var e,n={};for(e in a)n[a[e]]=e;return n})(),i=(n=r.document).title,t=navigator.userAgent.toLowerCase(),f=navigator.platform.toLowerCase(),o=!(!f.match("mac")&&!f.match("win")),s=-1!=t.indexOf("wxdebugger"),d=-1!=t.indexOf("micromessenger"),l=-1!=t.indexOf("android"),u=-1!=t.indexOf("iphone")||-1!=t.indexOf("ipad"),p=(f=t.match(/micromess
+SNIPPET unction(e){k("uploadVoice",{localId:e.localId,isShowProgressTips:0==e.isShowProgressTips?0:1},e)},downloadVoice:function(e){k("downloadVoice",{serverId:e.serverId,isShowProgressTips:0==e.isShowProgressTips?0:1},e)},translateVoice:function(e){k("translateVoice",{localId:e.localId,isShowProgressTips:0==e.isShowProgressTips?0:1},e)},chooseImage:function(e){k("chooseImage",{scene:"1|2",count:e.count||9,sizeType:e.sizeType||["original","compres
+SNIPPET calId:e.localId,isShowProgressTips:0==e.isShowProgressTips?0:1},e)},downloadVoice:function(e){k("downloadVoice",{serverId:e.serverId,isShowProgressTips:0==e.isShowProgressTips?0:1},e)},translateVoice:function(e){k("translateVoice",{localId:e.localId,isShowProgressTips:0==e.isShowProgressTips?0:1},e)},chooseImage:function(e){k("chooseImage",{scene:"1|2",count:e.count||9,sizeType:e.sizeType||["original","compressed"],sourceType:e.sourceType|
+SNIPPET e,i)n.networkType=i;else{var i=e.indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu"
+SNIPPET rkType=i;else{var i=e.indexOf(":"),t=e.substring(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu",{},e)},clo
+SNIPPET ,openEnterpriseRedPacket:"getRecevieBizHongBaoRequest",startSearchBeacons:"startMonitoringBeacons",stopSearchBeacons:"stopMonitoringBeacons",onSearchBeacons:"onBeaconsInRange",consumeAndShareCard:"consumedShareCard",openAddress:"editAddress"},c=(()=>{var e,n={};for(e in a)n[a[e]]=e;return n})(),i=(n=r.document).title,t=navigator.userAgent.toLowerCase(),f=navigator.platform.toLowerCase(),o=!(!f.match("mac")&&!f.match("win")),s=-1!=t.indexOf("wx
+SNIPPET seRedPacket:"getRecevieBizHongBaoRequest",startSearchBeacons:"startMonitoringBeacons",stopSearchBeacons:"stopMonitoringBeacons",onSearchBeacons:"onBeaconsInRange",consumeAndShareCard:"consumedShareCard",openAddress:"editAddress"},c=(()=>{var e,n={};for(e in a)n[a[e]]=e;return n})(),i=(n=r.document).title,t=navigator.userAgent.toLowerCase(),f=navigator.platform.toLowerCase(),o=!(!f.match("mac")&&!f.match("win")),s=-1!=t.indexOf("wxdebugger"),d=
+SNIPPET g(i+1);switch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu",{},e)},closeWindow:function(e){k("closeWindow",{},e=e||{})},h
+SNIPPET tch(t){case"wifi":case"edge":case"wwan":n.networkType=t;break;default:n.errMsg="getNetworkType:fail"}}},e))},openLocation:function(e){k("openLocation",{latitude:e.latitude,longitude:e.longitude,name:e.name||"",address:e.address||"",scale:e.scale||28,infoUrl:e.infoUrl||""},e)},hideOptionMenu:function(e){k("hideOptionMenu",{},e)},showOptionMenu:function(e){k("showOptionMenu",{},e)},closeWindow:function(e){k("closeWindow",{},e=e||{})},hideMenuIte
+SNIPPET anQRCode",{needResult:(e=e||{}).needResult||0,scanType:e.scanType||["qrCode","barCode"]},(e._complete=function(e){var n;u&&(n=e.resultStr)&&(n=JSON.parse(n),e.resultStr=n&&n.scan_code&&n.scan_code.scan_result)},e))},openAddress:function(e){k(a.openAddress,{},(e._complete=function(e){(e=e).postalCode=e.addressPostalCode,delete e.addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecon
+SNIPPET {}).needResult||0,scanType:e.scanType||["qrCode","barCode"]},(e._complete=function(e){var n;u&&(n=e.resultStr)&&(n=JSON.parse(n),e.resultStr=n&&n.scan_code&&n.scan_code.scan_result)},e))},openAddress:function(e){k(a.openAddress,{},(e._complete=function(e){(e=e).postalCode=e.addressPostalCode,delete e.addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressC
+SNIPPET de"]},(e._complete=function(e){var n;u&&(n=e.resultStr)&&(n=JSON.parse(n),e.resultStr=n&&n.scan_code&&n.scan_code.scan_result)},e))},openAddress:function(e){k(a.openAddress,{},(e._complete=function(e){(e=e).postalCode=e.addressPostalCode,delete e.addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThird
+SNIPPET (e){var n;u&&(n=e.resultStr)&&(n=JSON.parse(n),e.resultStr=n&&n.scan_code&&n.scan_code.scan_result)},e))},openAddress:function(e){k(a.openAddress,{},(e._complete=function(e){(e=e).postalCode=e.addressPostalCode,delete e.addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThirdStageName,delete e.addressC
+SNIPPET e))},openAddress:function(e){k(a.openAddress,{},(e._complete=function(e){(e=e).postalCode=e.addressPostalCode,delete e.addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThirdStageName,delete e.addressCountiesThirdStageName,e.detailInfo=e.addressDetailInfo,delete e.addressDetailInfo},e))},openProductSp
+SNIPPET nAddress,{},(e._complete=function(e){(e=e).postalCode=e.addressPostalCode,delete e.addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThirdStageName,delete e.addressCountiesThirdStageName,e.detailInfo=e.addressDetailInfo,delete e.addressDetailInfo},e))},openProductSpecificView:function(e){k(a.openProdu
+SNIPPET postalCode=e.addressPostalCode,delete e.addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThirdStageName,delete e.addressCountiesThirdStageName,e.detailInfo=e.addressDetailInfo,delete e.addressDetailInfo},e))},openProductSpecificView:function(e){k(a.openProductSpecificView,{pid:e.productId,view_type:e
+SNIPPET .addressPostalCode,e.provinceName=e.proviceFirstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThirdStageName,delete e.addressCountiesThirdStageName,e.detailInfo=e.addressDetailInfo,delete e.addressDetailInfo},e))},openProductSpecificView:function(e){k(a.openProductSpecificView,{pid:e.productId,view_type:e.viewType||0,ext_info:e.extInfo},e)},ad
+SNIPPET rstStageName,delete e.proviceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThirdStageName,delete e.addressCountiesThirdStageName,e.detailInfo=e.addressDetailInfo,delete e.addressDetailInfo},e))},openProductSpecificView:function(e){k(a.openProductSpecificView,{pid:e.productId,view_type:e.viewType||0,ext_info:e.extInfo},e)},addCard:function(e){for(var n=e.cardList,i=[],t
+SNIPPET ceFirstStageName,e.cityName=e.addressCitySecondStageName,delete e.addressCitySecondStageName,e.countryName=e.addressCountiesThirdStageName,delete e.addressCountiesThirdStageName,e.detailInfo=e.addressDetailInfo,delete e.addressDetailInfo},e))},openProductSpecificView:function(e){k(a.openProductSpecificView,{pid:e.productId,view_type:e.viewType||0,ext_info:e.extInfo},e)},addCard:function(e){for(var n=e.cardList,i=[],t=0,o=n.length;t<o;++t){var
+SNIPPET ((e,n)=>{"function"==typeof define&&(define.amd||define.cmd)?define(function(){return n(e)}):n(e,!0)})(this,function(r,e){var a,c,n,i,t,o,s,d,l,u,p,f,m,g,h,S,y,I,v,_,w,T;if(!r.jWeixin)return a={config:"preVerifyJSAPI",onMenuShareTimeline:"menu:share:timeline",onMenuShareAppMessage:"menu:share:appmessage",onMenuShareQQ:"menu:share:qq",onMenuShareWeibo:"menu:share:weiboApp",onMenuShareQZone:"menu:share:QZone",previewImage:"imagePrevie
+
+https://lbx-prod-yx-1302700033.cos.ap-guangzhou.myqcloud.com/01lbxnhj/js/zepto_1.2.0.min.js
+CANDIDATE )),e.ajaxJSONP(s,a);var P,d=s.accepts[c],g={},b=function(t,e){g[t.toLowerCase()]=[t,e]},C=/^([\w-]+:)\/\//.test(s.url)?RegExp.$1:t.location.protocol,N=s.xhr(),O=N.setRequestHeader;if(a&&a.promise(N),s.crossDomain||b(
+CANDIDATE );h.href=t.location.href,e.active=0,e.ajaxJSONP=function(i,o){if(!(
+CANDIDATE +u.host),s.url||(s.url=t.location.toString()),(f=s.url.indexOf(
+SNIPPET te,r=t.document,s=/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,a=/^(?:text|application)\/javascript/i,u=/^(?:text|application)\/xml/i,f="application/json",c="text/html",l=/^\s*$/,h=r.createElement("a");h.href=t.location.href,e.active=0,e.ajaxJSONP=function(i,o){if(!("type"in i))return e.ajax(i);var c,p,s=i.jsonpCallback,a=(e.isFunction(s)?s():s)||"Zepto"+n++,u=r.createElement("script"),f=t[a],l=function(t){e(u).triggerHandler("error",t
+SNIPPET rred();for(i in e.ajaxSettings)void 0===s[i]&&(s[i]=e.ajaxSettings[i]);m(s),s.crossDomain||(u=r.createElement("a"),u.href=s.url,u.href=u.href,s.crossDomain=h.protocol+"//"+h.host!=u.protocol+"//"+u.host),s.url||(s.url=t.location.toString()),(f=s.url.indexOf("#"))>-1&&(s.url=s.url.slice(0,f)),S(s);var c=s.dataType,p=/\?.+=\?/.test(s.url);if(p&&(c="jsonp"),s.cache!==!1&&(n&&n.cache===!0||"script"!=c&&"jsonp"!=c)||(s.url=T(s.url,"_="+Date.now())),
+SNIPPET ))),"jsonp"==c)return p||(s.url=T(s.url,s.jsonp?s.jsonp+"=?":s.jsonp===!1?"":"callback=?")),e.ajaxJSONP(s,a);var P,d=s.accepts[c],g={},b=function(t,e){g[t.toLowerCase()]=[t,e]},C=/^([\w-]+:)\/\//.test(s.url)?RegExp.$1:t.location.protocol,N=s.xhr(),O=N.setRequestHeader;if(a&&a.promise(N),s.crossDomain||b("X-Requested-With","XMLHttpRequest"),b("Accept",d||"*/*"),(d=s.mimeType||d)&&(d.indexOf(",")>-1&&(d=d.split(",",2)[0]),N.overrideMimeType&&N.ov
+SNIPPET :this[0].value)},offset:function(e){if(e)return this.each(function(t){var n=r(this),i=Y(this,e,t,n.offset()),o=n.offsetParent().offset(),s={top:i.top-o.top,left:i.left-o.left};"static"==n.css("position")&&(s.position="relative"),n.css(s)});if(!this.length)return null;if(f.documentElement!==this[0]&&!r.contains(f.documentElement,this[0]))return{top:0,left:0};var n=this[0].getBoundingClientRect();return{left:n.left+t.pageXOffset,top:n.top+t.
+SNIPPET (t){return l[t]||f&&c[t]||t}function y(t,n,i,o,s,u,f){var c=h(t),p=a[c]||(a[c]=[]);n.split(/\s/).forEach(function(n){if("ready"==n)return e(document).ready(i);var a=d(n);a.fn=i,a.sel=s,a.e in l&&(i=function(t){var n=t.relatedTarget;return!n||n!==this&&!e.contains(this,n)?a.fn.apply(this,arguments):void 0}),a.del=u;var c=u||i;a.proxy=function(e){if(e=T(e),!e.isImmediatePropagationStopped()){e.data=o;var n=c.apply(t,e._args==r?[e]:[e].concat
+SNIPPET rn this.each(function(o){r(this).wrapAll(e?t.call(this,o):i?n.cloneNode(!0):n)})},wrapAll:function(t){if(this[0]){r(this[0]).before(t=r(t));for(var e;(e=t.children()).length;)t=e.first();r(t).append(this)}return this},wrapInner:function(t){var e=F(t);return this.each(function(n){var i=r(this),o=i.contents(),s=e?t.call(this,n):t;o.length?o.wrapAll(s):i.append(s)})},unwrap:function(){return this.parent().each(function(){r(this).replaceWith(r
+
+https://lbx-prod-yx-1302700033.cos.ap-guangzhou.myqcloud.com/01lbxnhj/js/function.v.0.2.js
+CANDIDATE ) {
+		wx.openLocation({
+			latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90
+			longitude: parseFloat(location[0]), // 经度，浮点数，范围为180 ~ -180。
+			name: name, // 位置名
+			address: address, // 地址详情说明
+			scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大
+			infoUrl:
+CANDIDATE ); //去掉第一个&符号
+
+	return urlStr;
+}
+
+//将url中的参数转换成json格式
+function urlToJson() { //默认参数为当前链接
+	var url = arguments[0] || window.location.href;
+	if (url.indexOf(
+CANDIDATE + locationSign +
+CANDIDATE ,amap_lng, amap_lat);
+    return {
+        lat: amap_lat,
+        lng: amap_lng
+    };
+}
+
+/**
+ *  判断经纬度是否超出中国境内
+ */
+function isLocationOutOfChina(latitude, longitude) {
+  if (longitude < 72.004 || longitude > 137.8347 || latitude < 0.8293 || latitude > 55.8271)
+    return true;
+  return false;
+}
+
+
+/**
+ *  将WGS-84(国际标准)转为GCJ-02(火星坐标):
+ */
+function transformFromWGSToGCJ(latitude, longitude) {
+  var lat =
+CANDIDATE : function () { }, //分享成功的回调函数
+};
+
+function openMap(locationSign, name, address) {
+	var location = locationSign.split(
+CANDIDATE ;
+  var ee = 0.00669342162296594323;
+  var a = 6378245.0;
+  var pi = 3.14159265358979324;
+
+  if (isLocationOutOfChina(latitude, longitude)) {
+    lat = latitude;
+    lon = longitude;
+  }
+  else {
+    var adjustLat = transformLatWithXY(longitude - 105.0, latitude - 35.0);
+    var adjustLon = transformLonWithXY(longitude - 105.0, latitude - 35.0);
+    var radLat = latitude / 180.0 * pi;
+    var magic = Math.sin(radLat);
+    magic = 1 - ee * magic * magic;
+    var sqrtMagic = Math.sqrt(magic);
+    adjustLat = (adjustLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);
+    adjustLon = (adjustLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi);
+    latitude = latitude + adjustLat;
+    longitude = longitude + adjustLon;
+  }
+  return { latitude: latitude, longitude: longitude };
+
+}
+
+/**
+ *  将GCJ-02(火星坐标)转为百度坐标(DB-09):
+ */
+function transformFromGCJToBaidu(latitude, longitude) {  
+  var pi = 3.14159265358979324 * 3000.0 / 180.0;
+
+  var z = Math.sqrt(longitude * longitude + latitude * latitude) + 0.00002 * Math.sin(latitude * pi);
+  var theta = Math.atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi);
+  var a_latitude = (z * Math.sin(theta) + 0.006);
+  var a_longitude = (z * Math.cos(theta) + 0.0065);
+
+  return { latitude: a_latitude, longitude: a_longitude };
+}
+
+/**
+ *  将百度坐标(DB-09)转为GCJ-02(火星坐标):
+ */
+function transformFromBaiduToGCJ(latitude, longitude) {
+  var xPi = 3.14159265358979323846264338327950288 * 3000.0 / 180.0;
+
+  var x = longitude - 0.0065;
+  var y = latitude - 0.006;
+  var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * xPi);
+  var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * xPi);
+  var a_latitude = z * Math.sin(theta);
+  var a_longitude = z * Math.cos(theta);
+
+  return { latitude: a_latitude, longitude: a_longitude };
+}
+
+/**
+ *  将GCJ-02(火星坐标)转为WGS-84(国际标准):
+ */
+function transformFromGCJToWGS(latitude, longitude) {
+  var threshold = 0.00001;
+
+  // The boundary
+  var minLat = latitude - 0.5;
+  var maxLat = latitude + 0.5;
+  var minLng = longitude - 0.5;
+  var maxLng = longitude + 0.5;
+
+  var delta = 1;
+  var maxIteration = 30;
+
+  while (true) {
+    var leftBottom = transformFromWGSToGCJ(minLat, minLng);
+    var rightBottom = transformFromWGSToGCJ(minLat, maxLng);
+    var leftUp = transformFromWGSToGCJ(maxLat, minLng);
+    var midPoint = transformFromWGSToGCJ((minLat + maxLat) / 2, (minLng + maxLng) / 2);
+    delta = Math.abs(midPoint.latitude - latitude) + Math.abs(midPoint.longitude - longitude);
+
+    if (maxIteration-- <= 0 || delta <= threshold) {
+      return { latitude: (minLat + maxLat) / 2, longitude: (minLng + maxLng) / 2 };
+    }
+
+    if (isContains({ latitude: latitude, longitude: longitude }, leftBottom, midPoint)) {
+      maxLat = (minLat + maxLat) / 2;
+      maxLng = (minLng + maxLng) / 2;
+    }
+    else if (isContains({ latitude: latitude, longitude: longitude }, rightBottom, midPoint)) {
+      maxLat = (minLat + maxLat) / 2;
+      minLng = (minLng + maxLng) / 2;
+    }
+    else if (isContains({ latitude: latitude, longitude: longitude }, leftUp, midPoint)) {
+      minLat = (minLat + maxLat) / 2;
+      maxLng = (minLng + maxLng) / 2;
+    }
+    else {
+      minLat = (minLat + maxLat) / 2;
+      minLng = (minLng + maxLng) / 2;
+    }
+  }
+
+}
+
+function isContains(point, p1, p2) {
+  return (point.latitude >= Math.min(p1.latitude, p2.latitude) && point.latitude <= Math.max(p1.latitude, p2.latitude)) && (point.longitude >= Math.min(p1.longitude, p2.longitude) && point.longitude <= Math.max(p1.longitude, p2.longitude));
+}
+
+function transformLatWithXY(x, y) {
+  var pi = 3.14159265358979324;
+  var lat = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x));
+  lat += (20.0 * Math.sin(6.0 * x * pi) + 20.0 * Math.sin(2.0 * x * pi)) * 2.0 / 3.0;
+  lat += (20.0 * Math.sin(y * pi) + 40.0 * Math.sin(y / 3.0 * pi)) * 2.0 / 3.0;
+  lat += (160.0 * Math.sin(y / 12.0 * pi) + 320 * Math.sin(y * pi / 30.0)) * 2.0 / 3.0;
+  return lat;
+}
+
+function transformLonWithXY(x, y) {
+  var pi = 3.14159265358979324;
+  var lon = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * Math.sqrt(Math.abs(x));
+  lon += (20.0 * Math.sin(6.0 * x * pi) + 20.0 * Math.sin(2.0 * x * pi)) * 2.0 / 3.0;
+  lon += (20.0 * Math.sin(x * pi) + 40.0 * Math.sin(x / 3.0 * pi)) * 2.0 / 3.0;
+  lon += (150.0 * Math.sin(x / 12.0 * pi) + 300.0 * Math.sin(x / 30.0 * pi)) * 2.0 / 3.0;
+  return lon;
+}
+
+
+function getOperator(phoneNum) {
+	var head = parseInt(phoneNum.substr(1, 2));
+	if (head == 30 || head == 31 || head == 32 || head == 55 || head == 56 || head == 85 || head == 86) {
+		return
+SNIPPET var hostName = location.hostname; if (hostName == 'localhost') { hostName = "https://muyang.hn.cn"; } else { hostName = "https://" + hostName; } //设备情况 var ua = 'other', plat = 'other'; var u = navigator.userAgent; var isAndroid
+SNIPPET "imgUrl": "https://muyang.hn.cn/img/logo.jpg", //分享图片,不填默认是qqlogo "tLink": '', //分享的链接, 不填默认是当前页面 "tTitle": "", "tContent": "", "timeLine": "", "wasShare": function () { }, //分享成功的回调函数 }; function openMap(locationSign, name, address) { var location = locationSign.split(','); if (plat == 'weixin') { wx.openLocation({ latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90 longitude: parseFloat(location[0]), // 经度，浮
+SNIPPET logo.jpg", //分享图片,不填默认是qqlogo "tLink": '', //分享的链接, 不填默认是当前页面 "tTitle": "", "tContent": "", "timeLine": "", "wasShare": function () { }, //分享成功的回调函数 }; function openMap(locationSign, name, address) { var location = locationSign.split(','); if (plat == 'weixin') { wx.openLocation({ latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90 longitude: parseFloat(location[0]), // 经度，浮点数，范围为180 ~ -180。 name: name, //
+SNIPPET //分享图片,不填默认是qqlogo "tLink": '', //分享的链接, 不填默认是当前页面 "tTitle": "", "tContent": "", "timeLine": "", "wasShare": function () { }, //分享成功的回调函数 }; function openMap(locationSign, name, address) { var location = locationSign.split(','); if (plat == 'weixin') { wx.openLocation({ latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90 longitude: parseFloat(location[0]), // 经度，浮点数，范围为180 ~ -180。 name: name, // 位置名 add
+SNIPPET e": "", "tContent": "", "timeLine": "", "wasShare": function () { }, //分享成功的回调函数 }; function openMap(locationSign, name, address) { var location = locationSign.split(','); if (plat == 'weixin') { wx.openLocation({ latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90 longitude: parseFloat(location[0]), // 经度，浮点数，范围为180 ~ -180。 name: name, // 位置名 address: address, // 地址详情说明 scale: 15, // 地图缩放级别,整形值,范围从1~28
+SNIPPET e": "", "wasShare": function () { }, //分享成功的回调函数 }; function openMap(locationSign, name, address) { var location = locationSign.split(','); if (plat == 'weixin') { wx.openLocation({ latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90 longitude: parseFloat(location[0]), // 经度，浮点数，范围为180 ~ -180。 name: name, // 位置名 address: address, // 地址详情说明 scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大 infoUrl: '' // 在查看位置界面底部显
+SNIPPET tion openMap(locationSign, name, address) { var location = locationSign.split(','); if (plat == 'weixin') { wx.openLocation({ latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90 longitude: parseFloat(location[0]), // 经度，浮点数，范围为180 ~ -180。 name: name, // 位置名 address: address, // 地址详情说明 scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大 infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转 }); } else { // alert('只能在微信中使用'); wi
+SNIPPET // 位置名 address: address, // 地址详情说明 scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大 infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转 }); } else { // alert('只能在微信中使用'); window.open('//uri.amap.com/marker?position=' + locationSign + '&name=' + name + address + '&src=qqsj&coordinate=gaode&callnative=1'); } } // 更精确的转换方法（基于官方算法） function bdToAmapAccurate(bd_lat, bd_lng) { // 常量定义 const x_pi = Math.PI * 3000.0 / 180.0;
+SNIPPET * Math.cos(theta); const amap_lat = z * Math.sin(theta); console.log('转高德坐标',amap_lng, amap_lat); return { lat: amap_lat, lng: amap_lng }; } /** * 判断经纬度是否超出中国境内 */ function isLocationOutOfChina(latitude, longitude) { if (longitude < 72.004 || longitude > 137.8347 || latitude < 0.8293 || latitude > 55.8271) return true; return false; } /** * 将WGS-84(国际标准)转为GCJ-02(火星坐标): */ funct
+SNIPPET 84(国际标准)转为GCJ-02(火星坐标): */ function transformFromWGSToGCJ(latitude, longitude) { var lat = ""; var lon = ""; var ee = 0.00669342162296594323; var a = 6378245.0; var pi = 3.14159265358979324; if (isLocationOutOfChina(latitude, longitude)) { lat = latitude; lon = longitude; } else { var adjustLat = transformLatWithXY(longitude - 105.0, latitude - 35.0); var adjustLon = transformLonWithXY(longitude
+SNIPPET tr, 'gm'), tempStr2); xb1 = urlStr.indexOf('].'); } urlStr = urlStr.replace('&', ''); //去掉第一个&符号 return urlStr; } //将url中的参数转换成json格式 function urlToJson() { //默认参数为当前链接 var url = arguments[0] || window.location.href; if (url.indexOf('?') < 0) { return false; //不存在参数返回false } else { var paraString = url.substring(url.indexOf('?') + 1, url.length); if (paraString) { var paraJsonString; paraJsonString = par
+SNIPPET /分享成功的回调函数 }; function openMap(locationSign, name, address) { var location = locationSign.split(','); if (plat == 'weixin') { wx.openLocation({ latitude: parseFloat(location[1]), // 纬度，浮点数，范围为90 ~ -90 longitude: parseFloat(location[0]), // 经度，浮点数，范围为180 ~ -180。 name: name, // 位置名 address: address, // 地址详情说明 scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大 infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转 }); } else { // ale
+SNIPPET amap_lat = z * Math.sin(theta); console.log('转高德坐标',amap_lng, amap_lat); return { lat: amap_lat, lng: amap_lng }; } /** * 判断经纬度是否超出中国境内 */ function isLocationOutOfChina(latitude, longitude) { if (longitude < 72.004 || longitude > 137.8347 || latitude < 0.8293 || latitude > 55.8271) return true; return false; } /** * 将WGS-84(国际标准)转为GCJ-02(火星坐标): */ function transformFromWGSToGCJ(lati
+SNIPPET .sin(theta); console.log('转高德坐标',amap_lng, amap_lat); return { lat: amap_lat, lng: amap_lng }; } /** * 判断经纬度是否超出中国境内 */ function isLocationOutOfChina(latitude, longitude) { if (longitude < 72.004 || longitude > 137.8347 || latitude < 0.8293 || latitude > 55.8271) return true; return false; } /** * 将WGS-84(国际标准)转为GCJ-02(火星坐标): */ function transformFromWGSToGCJ(latitude, longitude) {
+SNIPPET .log('转高德坐标',amap_lng, amap_lat); return { lat: amap_lat, lng: amap_lng }; } /** * 判断经纬度是否超出中国境内 */ function isLocationOutOfChina(latitude, longitude) { if (longitude < 72.004 || longitude > 137.8347 || latitude < 0.8293 || latitude > 55.8271) return true; return false; } /** * 将WGS-84(国际标准)转为GCJ-02(火星坐标): */ function transformFromWGSToGCJ(latitude, longitude) { var lat = ""; var
+SNIPPET if (longitude < 72.004 || longitude > 137.8347 || latitude < 0.8293 || latitude > 55.8271) return true; return false; } /** * 将WGS-84(国际标准)转为GCJ-02(火星坐标): */ function transformFromWGSToGCJ(latitude, longitude) { var lat = ""; var lon = ""; var ee = 0.00669342162296594323; var a = 6378245.0; var pi = 3.14159265358979324; if (isLocationOutOfChina(latitude, longitude)) { lat = latitude; lon = longi
+SNIPPET function transformFromWGSToGCJ(latitude, longitude) { var lat = ""; var lon = ""; var ee = 0.00669342162296594323; var a = 6378245.0; var pi = 3.14159265358979324; if (isLocationOutOfChina(latitude, longitude)) { lat = latitude; lon = longitude; } else { var adjustLat = transformLatWithXY(longitude - 105.0, latitude - 35.0); var adjustLon = transformLonWithXY(longitude - 105.0, latitude - 35.0);
+SNIPPET itude) { var lat = ""; var lon = ""; var ee = 0.00669342162296594323; var a = 6378245.0; var pi = 3.14159265358979324; if (isLocationOutOfChina(latitude, longitude)) { lat = latitude; lon = longitude; } else { var adjustLat = transformLatWithXY(longitude - 105.0, latitude - 35.0); var adjustLon = transformLonWithXY(longitude - 105.0, latitude - 35.0); var radLat = latitude / 180.0 * pi; var
+SNIPPET 62296594323; var a = 6378245.0; var pi = 3.14159265358979324; if (isLocationOutOfChina(latitude, longitude)) { lat = latitude; lon = longitude; } else { var adjustLat = transformLatWithXY(longitude - 105.0, latitude - 35.0); var adjustLon = transformLonWithXY(longitude - 105.0, latitude - 35.0); var radLat = latitude / 180.0 * pi; var magic = Math.sin(radLat); magic = 1 - ee * magic * magic;
+SNIPPET isLocationOutOfChina(latitude, longitude)) { lat = latitude; lon = longitude; } else { var adjustLat = transformLatWithXY(longitude - 105.0, latitude - 35.0); var adjustLon = transformLonWithXY(longitude - 105.0, latitude - 35.0); var radLat = latitude / 180.0 * pi; var magic = Math.sin(radLat); magic = 1 - ee * magic * magic; var sqrtMagic = Math.sqrt(magic); adjustLat = (adjustLat * 180.0) / (
+SNIPPET sqrt(magic); adjustLat = (adjustLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi); adjustLon = (adjustLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi); latitude = latitude + adjustLat; longitude = longitude + adjustLon; } return { latitude: latitude, longitude: longitude }; } /** * 将GCJ-02(火星坐标)转为百度坐标(DB-09): */ function transformFromGCJToBaidu(latitude, longitude) { var pi = 3.1415926535
+SNIPPET adjustLat = (adjustLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi); adjustLon = (adjustLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi); latitude = latitude + adjustLat; longitude = longitude + adjustLon; } return { latitude: latitude, longitude: longitude }; } /** * 将GCJ-02(火星坐标)转为百度坐标(DB-09): */ function transformFromGCJToBaidu(latitude, longitude) { var pi = 3.14159265358979324 * 30
+SNIPPET agic * sqrtMagic) * pi); adjustLon = (adjustLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi); latitude = latitude + adjustLat; longitude = longitude + adjustLon; } return { latitude: latitude, longitude: longitude }; } /** * 将GCJ-02(火星坐标)转为百度坐标(DB-09): */ function transformFromGCJToBaidu(latitude, longitude) { var pi = 3.14159265358979324 * 3000.0 / 180.0; var z = Math.sqrt(longitude * longitude +
+SNIPPET Magic) * pi); adjustLon = (adjustLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi); latitude = latitude + adjustLat; longitude = longitude + adjustLon; } return { latitude: latitude, longitude: longitude }; } /** * 将GCJ-02(火星坐标)转为百度坐标(DB-09): */ function transformFromGCJToBaidu(latitude, longitude) { var pi = 3.14159265358979324 * 3000.0 / 180.0; var z = Math.sqrt(longitude * longitude + latitude *
+SNIPPET = latitude + adjustLat; longitude = longitude + adjustLon; } return { latitude: latitude, longitude: longitude }; } /** * 将GCJ-02(火星坐标)转为百度坐标(DB-09): */ function transformFromGCJToBaidu(latitude, longitude) { var pi = 3.14159265358979324 * 3000.0 / 180.0; var z = Math.sqrt(longitude * longitude + latitude * latitude) + 0.00002 * Math.sin(latitude * pi); var theta = Math.atan2(latitude, longitude) + 0.000003 *
+SNIPPET de: latitude, longitude: longitude }; } /** * 将GCJ-02(火星坐标)转为百度坐标(DB-09): */ function transformFromGCJToBaidu(latitude, longitude) { var pi = 3.14159265358979324 * 3000.0 / 180.0; var z = Math.sqrt(longitude * longitude + latitude * latitude) + 0.00002 * Math.sin(latitude * pi); var theta = Math.atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi); var a_latitude = (z * Math.sin(theta) + 0.006); var a_l
+SNIPPET , longitude: longitude }; } /** * 将GCJ-02(火星坐标)转为百度坐标(DB-09): */ function transformFromGCJToBaidu(latitude, longitude) { var pi = 3.14159265358979324 * 3000.0 / 180.0; var z = Math.sqrt(longitude * longitude + latitude * latitude) + 0.00002 * Math.sin(latitude * pi); var theta = Math.atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi); var a_latitude = (z * Math.sin(theta) + 0.006); var a_longitude = (
+SNIPPET idu(latitude, longitude) { var pi = 3.14159265358979324 * 3000.0 / 180.0; var z = Math.sqrt(longitude * longitude + latitude * latitude) + 0.00002 * Math.sin(latitude * pi); var theta = Math.atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi); var a_latitude = (z * Math.sin(theta) + 0.006); var a_longitude = (z * Math.cos(theta) + 0.0065); return { latitude: a_latitude, longitude: a_longitude }; } /** *
+SNIPPET ar pi = 3.14159265358979324 * 3000.0 / 180.0; var z = Math.sqrt(longitude * longitude + latitude * latitude) + 0.00002 * Math.sin(latitude * pi); var theta = Math.atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi); var a_latitude = (z * Math.sin(theta) + 0.006); var a_longitude = (z * Math.cos(theta) + 0.0065); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将百度坐标(DB-09)转为GCJ-02(火星坐标): *
+SNIPPET e * longitude + latitude * latitude) + 0.00002 * Math.sin(latitude * pi); var theta = Math.atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi); var a_latitude = (z * Math.sin(theta) + 0.006); var a_longitude = (z * Math.cos(theta) + 0.0065); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将百度坐标(DB-09)转为GCJ-02(火星坐标): */ function transformFromBaiduToGCJ(latitude, longitude) { var xPi = 3.141
+SNIPPET theta = Math.atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi); var a_latitude = (z * Math.sin(theta) + 0.006); var a_longitude = (z * Math.cos(theta) + 0.0065); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将百度坐标(DB-09)转为GCJ-02(火星坐标): */ function transformFromBaiduToGCJ(latitude, longitude) { var xPi = 3.14159265358979323846264338327950288 * 3000.0 / 180.0; var x = longitude - 0.00
+SNIPPET .atan2(latitude, longitude) + 0.000003 * Math.cos(longitude * pi); var a_latitude = (z * Math.sin(theta) + 0.006); var a_longitude = (z * Math.cos(theta) + 0.0065); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将百度坐标(DB-09)转为GCJ-02(火星坐标): */ function transformFromBaiduToGCJ(latitude, longitude) { var xPi = 3.14159265358979323846264338327950288 * 3000.0 / 180.0; var x = longitude - 0.0065; var y
+SNIPPET a) + 0.006); var a_longitude = (z * Math.cos(theta) + 0.0065); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将百度坐标(DB-09)转为GCJ-02(火星坐标): */ function transformFromBaiduToGCJ(latitude, longitude) { var xPi = 3.14159265358979323846264338327950288 * 3000.0 / 180.0; var x = longitude - 0.0065; var y = latitude - 0.006; var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * xPi); var theta = Mat
+SNIPPET itude, longitude: a_longitude }; } /** * 将百度坐标(DB-09)转为GCJ-02(火星坐标): */ function transformFromBaiduToGCJ(latitude, longitude) { var xPi = 3.14159265358979323846264338327950288 * 3000.0 / 180.0; var x = longitude - 0.0065; var y = latitude - 0.006; var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * xPi); var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * xPi); var a_latitude = z * Math.sin(theta); var a
+SNIPPET - 0.0065; var y = latitude - 0.006; var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * xPi); var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * xPi); var a_latitude = z * Math.sin(theta); var a_longitude = z * Math.cos(theta); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将GCJ-02(火星坐标)转为WGS-84(国际标准): */ function transformFromGCJToWGS(latitude, longitude) { var threshold = 0.00001;
+SNIPPET * y) - 0.00002 * Math.sin(y * xPi); var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * xPi); var a_latitude = z * Math.sin(theta); var a_longitude = z * Math.cos(theta); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将GCJ-02(火星坐标)转为WGS-84(国际标准): */ function transformFromGCJToWGS(latitude, longitude) { var threshold = 0.00001; // The boundary var minLat = latitude - 0.5; var maxLat = la
+SNIPPET 02 * Math.sin(y * xPi); var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * xPi); var a_latitude = z * Math.sin(theta); var a_longitude = z * Math.cos(theta); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将GCJ-02(火星坐标)转为WGS-84(国际标准): */ function transformFromGCJToWGS(latitude, longitude) { var threshold = 0.00001; // The boundary var minLat = latitude - 0.5; var maxLat = latitude + 0.5;
+SNIPPET e = z * Math.sin(theta); var a_longitude = z * Math.cos(theta); return { latitude: a_latitude, longitude: a_longitude }; } /** * 将GCJ-02(火星坐标)转为WGS-84(国际标准): */ function transformFromGCJToWGS(latitude, longitude) { var threshold = 0.00001; // The boundary var minLat = latitude - 0.5; var maxLat = latitude + 0.5; var minLng = longitude - 0.5; var maxLng = longitude + 0.5; var delta = 1; var maxIterati
+SNIPPET 将GCJ-02(火星坐标)转为WGS-84(国际标准): */ function transformFromGCJToWGS(latitude, longitude) { var threshold = 0.00001; // The boundary var minLat = latitude - 0.5; var maxLat = latitude + 0.5; var minLng = longitude - 0.5; var maxLng = longitude + 0.5; var delta = 1; var maxIteration = 30; while (true) { var leftBottom = transformFromWGSToGCJ(minLat, minLng); var rightBottom = transformFromWGSToGCJ(minLat,
+SNIPPET */ function transformFromGCJToWGS(latitude, longitude) { var threshold = 0.00001; // The boundary var minLat = latitude - 0.5; var maxLat = latitude + 0.5; var minLng = longitude - 0.5; var maxLng = longitude + 0.5; var delta = 1; var maxIteration = 30; while (true) { var leftBottom = transformFromWGSToGCJ(minLat, minLng); var rightBottom = transformFromWGSToGCJ(minLat, maxLng); var leftUp = trans
+
+https://lbx-prod-yx-1302700033.cos.ap-guangzhou.myqcloud.com/01lbxnhj/js/h5.v.1.3.js
+CANDIDATE ) >= 0 ||
+	location.host.indexOf(
+CANDIDATE ).show();
+}
+
+
+if (window.location.href.indexOf(
+CANDIDATE https://unpkg.com/vconsole@latest/dist/vconsole.min.js
+SNIPPET 'fadeOut animated'); setTimeout(function () { $("#" + id).hide().removeClass('fadeOut'); }, 1100); } function showDom(id) { $("#" + id).removeClass('fadeOut').addClass('fadeIn').show(); } if (window.location.href.indexOf('vconsole') >= 0 || location.host.indexOf('remmli.com') >= 0 || location.host.indexOf('192.168') >= 0) { (function () { /** * 动态加载js文件 * @param {string} url js文件的url地址 * @para
+SNIPPET ) { $("#" + id).hide().removeClass('fadeOut'); }, 1100); } function showDom(id) { $("#" + id).removeClass('fadeOut').addClass('fadeIn').show(); } if (window.location.href.indexOf('vconsole') >= 0 || location.host.indexOf('remmli.com') >= 0 || location.host.indexOf('192.168') >= 0) { (function () { /** * 动态加载js文件 * @param {string} url js文件的url地址 * @param {Function} callback 加载完成后的回调函数 */
+SNIPPET '); }, 1100); } function showDom(id) { $("#" + id).removeClass('fadeOut').addClass('fadeIn').show(); } if (window.location.href.indexOf('vconsole') >= 0 || location.host.indexOf('remmli.com') >= 0 || location.host.indexOf('192.168') >= 0) { (function () { /** * 动态加载js文件 * @param {string} url js文件的url地址 * @param {Function} callback 加载完成后的回调函数 */ var _getScript = function (url, callback) {
+SNIPPET xt/plain,'); document.documentElement.appendChild(iframe); var alertFrame = window.frames[0]; var iwindow = alertFrame.window; if (iwindow == undefined) { iwindow = alertFrame.contentWindow; } if (plat != 'other') { iwindow.alert(message); } else { wAlert(message) } iframe.parentNode.removeChild(iframe); } catch (exc) { return wAlert(message); } } function getDeg(matrix) { var str = matri
+SNIPPET } } else { js.onload = function () { callbackFn(); } } } //如果使用的是zepto，就添加扩展函数 if (Zepto) { $.getScript = _getScript; } })(); $.getScript('https://unpkg.com/vconsole@latest/dist/vconsole.min.js', function () { var vConsole = new VConsole(); }) } var winH = window.innerHeight; var winW = window.innerWidth; console.log(winW / winH); var bili = winW / winH; if (winW >= winH) {
+
+https://muyang.hn.cn/hdh5/2026/01lbxnhj/js/main.js
+CANDIDATE #appointment-address
+CANDIDATE #mask-choice-store
+CANDIDATE #mask-choice-store .scroll-y
+CANDIDATE ) > 0) {
+                                //是省级
+                                if (item.substr(0, 2) == userCity.substr(0, 2)) {
+                                    canPlay = true;
+                                }
+                            }
+                            else {
+                                //是市级
+                                if (item.substr(0, 4) == userCity.substr(0, 4)) {
+                                    canPlay = true;
+                                }
+                            }
+                        }
+                        if (canPlay) {
+                            //命中了活动城市
+                            saveShopID();
+                        }
+                        else {
+                            weui.alert(
+CANDIDATE ) >= 0
+    || location.host.indexOf(
+CANDIDATE ) >= 0) {
+            //正式版
+            window.location.replace(
+CANDIDATE )).text(task.finishedNum);
+                game_user_info.totalPoint += task.point;
+                game_user_info.totalCoins += task.coins;
+                game_user_info.totalChance += task.chance;
+                m_points.drawMain();
+                if (task.finishedNum >= task.dailylimit ||
+                    task.finishedAllNum >= task.totallimit) {
+                    //超过可完成极限了
+                    disableTask(taskKey);
+                }
+            });
+        }
+    };
+    var addChance = function (taskID, callback) {
+        globalLoading.show();
+        $.post(apiHost +
+CANDIDATE ).click(function () {
+        getPrizeData();
+    });
+    var myPrizeLog = [];
+    var needMyPrize = true;
+    var rankPrizeLog = null;
+    var getMyPrize = function (callback) {
+        if (!needMyPrize) {
+            //不需要刷新数据
+            callback && callback();
+            return;
+        }
+        needMyPrize = false;
+        // m_game.initGps((shop_id) => {
+        globalLoading.show();
+        var couponDom = $(
+CANDIDATE ).click(function () {
+        if (myRankNo <= 1500 && game_user_info && game_user_info.totalPoint > 0) {
+            m_prize.fillRankAddress();
+        }
+        else {
+            weui.alert(
+CANDIDATE ).concat(element.shop_id
+CANDIDATE ).concat(localStorage.shop_id);
+                            console.log(curPrizeLog.cardInfo, path);
+                        }
+                        $(
+CANDIDATE ).concat(localStorage.shop_id);
+                console.log(curPrizeLog.cardInfo, path);
+            }
+            wx.miniProgram.navigateTo({
+                url: path
+            });
+        }
+    });
+    var initStore = function (list) {
+        if (hasStore) {
+            return;
+        }
+        hasStore = true;
+        storeList = list;
+        var htmlStr =
+CANDIDATE ).hide();
+                }, 1200);
+                coinsCallback && coinsCallback(getCoinsNum);
+            }
+        },
+        endRound: function () {
+            return thisRoundGet;
+        },
+        useCoins: function (callback) {
+            var continueCoins = conins_config[2].num;
+            if (game_user_info.totalCoins >= -1 * continueCoins) {
+                //注意这里是负数
+                game_user_info.totalCoins += continueCoins;
+                m_points.drawMain();
+                $.post(apiHost +
+CANDIDATE ).hide();
+    });
+    var prizeLogID = 0;
+    var choiceStoreID = 0;
+    var hasStore = false;
+    var storeList = [];
+    var choiceStore = {};
+    var curPrizeLog = null;
+    var pcaData = [
+CANDIDATE ).show();
+            });
+        },
+        initStore: initStore,
+        getZoumadeng: getZoumadeng,
+        refreshMyPrize: function () {
+            needMyPrize = true;
+            // getMyPrize();
+        },
+    };
+})();
+//品牌与埋点
+var m_brand = (function () {
+    $(
+CANDIDATE ).show();
+    console.log(location.href);
+    // gdp(
+CANDIDATE ).text(totalCoins);
+        //渲染一次，存档一次
+        localStorage.game_user_info = JSON.stringify(game_user_info);
+    };
+    return {
+        getRankData: getRankData,
+        drawMain: drawMain,
+        savePoints: function (step, t) {
+            game_user_info.totalPoint += step;
+            $.post(apiHost +
+CANDIDATE ).text(totalNum);
+                    });
+                    localStorage.shop_id = 1384;
+                    nearestShopID = localStorage.shop_id;
+                    callback && callback(nearestShopID);
+                }, {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0 // 不使用缓存位置
+                });
+            };
+            getGPSLocation();
+        };
+        getLocation();
+    };
+    var initAvatar = function () {
+        var $avatars = $(
+CANDIDATE ).text(totalNum);
+                // })
+                // return getCity(28.15, 112.95);
+            }
+            var getGPSLocation = function () {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var gps = transformFromWGSToGCJ(position.coords.latitude, position.coords.longitude);
+                    console.log(
+CANDIDATE );
+                        globalLoading.hide();
+                    }
+                }
+                else {
+                    saveShopID();
+                }
+            };
+            var saveShopID = function () {
+                if (getNearestShopID && localStorage.latitude) {
+                    $.get(apiHost +
+CANDIDATE );
+                    }
+                }
+                if (!localStorage.saveAddress && myRankNo <= 1500 && game_user_info.totalPoint > 0) {
+                    weui.dialog({
+                        title:
+CANDIDATE );
+                goOauth();
+                return;
+            }
+            else {
+                var totalChance = game_user_info.totalChance, totalPoint = game_user_info.totalPoint;
+                if (totalChance < 1) {
+                    return m_task.showTask();
+                }
+                game_user_info.totalChance--;
+                game_user_info.useChance++;
+                m_points.drawMain();
+                thisRoundPrize = {
+                    prize: null,
+                    card: null,
+                };
+                $.post(apiHost +
+CANDIDATE );
+                }
+                else if (prizelog.prizeType == 21) {
+                    // 十全大奖，线下核销券（20公里内无门店才发货）
+                    var btnText =
+CANDIDATE );
+        }
+        else {
+            window.location.replace(
+CANDIDATE );
+    }
+    if (location.href.indexOf(
+CANDIDATE ,
+            // deptId: localStorage.shop_id,
+        }, function (res) {
+            localStorage.game_user_info = JSON.stringify(res.data);
+            window.game_user_info = res.data;
+            //
+            // limitPhone.length > 0 && checkPhone();
+        });
+    };
+    var updateProvinceData = function (add) {
+        if (add === void 0) { add =
+CANDIDATE ,
+        //     virtualNumber: 100,
+        // }, (res) => {
+        //     const totalNum = res.data.realNumber + res.data.incrementNumber + res.data.virtualNumber;
+        //     console.log(totalNum)
+        // })
+    };
+    var geolocation = null;
+    var geocoder = null;
+    var nearestShopID = null;
+    var initGps = function (callback, getNearestShopID) {
+        if (getNearestShopID === void 0) { getNearestShopID = false; }
+        // callback && callback(1384);
+        // return
+CANDIDATE ,
+        };
+        if (window.game_user_info && window.game_user_info.totalPoint) {
+            params.totalPoint = window.game_user_info.totalPoint;
+            params.unionID = window.game_user_info.unionID;
+        }
+        $.get(apiHost +
+CANDIDATE , path);
+                        if (location.host.indexOf(
+CANDIDATE , {
+                                gameCode: gameCode,
+                                unionID: userData.unionid,
+                            }, function (res) {
+                                m_task.helpOthers();
+                                window.game_user_info = res.data;
+                                if (!window.game_user_info.name && localStorage.nickName) {
+                                    //处理清数据后的缓存问题
+                                    updateUserInfo();
+                                }
+                                // if (!res.data.avatar || !res.data.deptId) {
+                                //没有头像或门店，则需要完善信息
+                                //     updateUserInfo();
+                                // }
+                                m_points.drawMain();
+                                if (gameInfo) {
+                                    var startDate_1 = gameInfo.startDate, endtDate_1 = gameInfo.endtDate;
+                                    var enrollmentTime = window.game_user_info.enrollmentTime;
+                                    console.log(enrollmentTime, startDate_1, endtDate_1);
+                                    if (new Date(enrollmentTime).valueOf() >= new Date(startDate_1).valueOf() &&
+                                        new Date(enrollmentTime).valueOf() <= new Date(endtDate_1).valueOf()) {
+                                        // todo: 完成注册任务后刷新任务
+                                        m_task.updateTask(function () {
+                                            m_task.successTask(
+CANDIDATE , {
+                        Latitude: localStorage.latitude, Longitude: localStorage.longitude
+                    }, function (res) {
+                        console.log(res);
+                        if (res.data && res.data && res.data.rows.length > 0) {
+                            m_prize.initStore(res.data.rows);
+                            var dept = res.data.rows[0];
+                            localStorage.shop_id = dept.deptCode;
+                        }
+                        else {
+                            localStorage.shop_id = 1384;
+                        }
+                        nearestShopID = localStorage.shop_id;
+                        callback && callback(nearestShopID);
+                        globalLoading.hide();
+                    });
+                }
+                else {
+                    callback && callback();
+                    globalLoading.hide();
+                }
+            };
+            checkCity();
+            // saveShopID();
+        };
+        var getLocation = function () {
+            console.log(
+CANDIDATE .appointment-address
+CANDIDATE ;
+                    // if (location.host.indexOf(
+CANDIDATE ;
+        if (nearestShopID) {
+            //已经获取过最近的门店了
+            callback && callback(nearestShopID);
+            return;
+        }
+        globalLoading.show();
+        var getCity = function (latitude, longitude) {
+            localStorage.latitude = latitude;
+            localStorage.longitude = longitude;
+            var checkCity = function () {
+                if (limitCity) {
+                    var userCity = localStorage.userCity;
+                    //限制了城市
+                    if (userCity) {
+                        var limitCityList = limitCity.split(
+CANDIDATE ;
+    var map_brand_info = [];
+    var cur_map_brand = null;
+    var limitPhone = [];
+    var allowUser = true;
+    var startDate, endtDate, limitCity, gameStatus;
+    var diffculty = [0, 5, 10, 15, 20, 25];
+    var curCengshu = 0;
+    var conins_config = [];
+    var thisRoundPrize = {
+        prize: null,
+        card: null,
+    };
+    var thisRoundGet = {
+        prize: null,
+        card: null,
+        coins: 0,
+    };
+    var goOauth = function () {
+        if (location.host.indexOf(
+CANDIDATE ;
+if (location.host.indexOf(
+CANDIDATE data-shop_id
+CANDIDATE data-shop_id=\
+CANDIDATE data-shop_index
+CANDIDATE data-shop_index=\
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/count/detail
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/count/set
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/config
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/getConins
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/getOtherCard
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/getcard
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/lottery
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/step
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/useConins
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/game/userinfo
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/prize
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/prize/appointment
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/prize/editaddress
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/prize/log
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/prize/unlock
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/task/log
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/task/mylog
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/user/editinfo
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/user/helpOthers
+CANDIDATE https://muyang.hn.cn/api/client/spring2026/user/pointrank
+CANDIDATE https://muyang.hn.cn/japi/lbx/getscore
+CANDIDATE https://muyang.hn.cn/japi/lbx/usescore2026
+CANDIDATE https://muyang.hn.cn/out/2026api/getlbxStoreList
+CANDIDATE https://muyang.hn.cn/out/2212sping/getlbxStoreList
+CANDIDATE https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx48fcd3afdf246f81&redirect_uri=http://wechattest.lbxdrugs.com/lbxdrugs-weoffacc-uat/pages/html/result/authorization3.html?appid=wx48fcd3afdf246f81&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1&#wechat_redirect
+CANDIDATE https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd7c4ac832c697f6f&redirect_uri=https://wx.lbxdrugs.com/lbxdrugs-weoffacc/program/pages/html/result/authorization3.html?appid=wxd7c4ac832c697f6f&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1&#wechat_redirect
+CANDIDATE https://unpkg.com/vconsole@latest/dist/vconsole.min.js
+CANDIDATE https://yx.lbxcn.com/japi/lbx/getscore
+CANDIDATE https://yx.lbxcn.com/japi/lbx/usescore2026
+CANDIDATE location\
+CANDIDATE 门店自提
+CANDIDATE 附近有门店
+CANDIDATE 附近没有门店
+SNIPPET var nearestShopID = null; var initGps = function (callback, getNearestShopID) { if (getNearestShopID === void 0) { getNearestShopID = false; } // callback && callback(1384); // return '直接取消附近门店'; if (nearestShopID) { //已经获取过最近的门店了 callback && callback(nearestShopID); return; } globalLoading.show(); var getCity = function (latitude, longitude)
+SNIPPET allback, getNearestShopID) { if (getNearestShopID === void 0) { getNearestShopID = false; } // callback && callback(1384); // return '直接取消附近门店'; if (nearestShopID) { //已经获取过最近的门店了 callback && callback(nearestShopID); return; } globalLoading.show(); var getCity = function (latitude, longitude) { localStorage.latitude = latitude;
+SNIPPET //处理清数据后的缓存问题 updateUserInfo(); } // if (!res.data.avatar || !res.data.deptId) { //没有头像或门店，则需要完善信息 // updateUserInfo(); // } m_points.drawMain(); if (gameInfo) {
+SNIPPET ").concat(wxh5btn, "\n </div>\n </div>"); } else if (prizelog.prizeType == 21) { // 十全大奖，线下核销券（20公里内无门店才发货） var btnText = '去领奖'; if (prizelog.address) { btnText = '地址详情'; if (prizelog.expressName == '门店自提') {
+SNIPPET // 十全大奖，线下核销券（20公里内无门店才发货） var btnText = '去领奖'; if (prizelog.address) { btnText = '地址详情'; if (prizelog.expressName == '门店自提') { btnText = '预约信息'; } else if (prizelog.expressNo) { btnText = '快递详情'; }
+SNIPPET zelog; break; } } var btnText = '去领奖'; if (curPrizeLog.address) { btnText = '地址详情'; if (curPrizeLog.expressName == '门店自提') { btnText = '预约信息'; } else if (curPrizeLog.expressNo) { btnText = '快递详情'; } } switch (btnText) {
+SNIPPET lStorage.longitude }, function (res) { console.log(res); if (res.data && res.data.data) { // weui.alert('附近有门店'); $('#mask-choice-store').show(); initStore(res.data.data); } else {
+SNIPPET $('#mask-choice-store').show(); initStore(res.data.data); } else { // weui.alert('附近没有门店'); $("#inp-name").val(''); $("#inp-phone").val(''); $("#inp-pca").val(''); $("#inp-address"
+SNIPPET "), { prizeLogID: prizeLogID, name: name, phone: phone, province: date, // city: choiceStoreID, expressNo: choiceStoreID, expressName: '门店自提', address: choiceStore.deptName, }, function (res) { globalLoading.hide(); if (res.code == 1) { weui.alert('预约成功'); needMyPrize = true;
+SNIPPET saveShopID(); } }; var saveShopID = function () { if (getNearestShopID && localStorage.latitude) { $.get(apiHost + '/out/2026api/getlbxStoreList', { Latitude: localStorage.latitude, Longitude: localStorage.longitude }, function (res) { console.log(res); if (res.data &
+SNIPPET Storage.longitude }, function (res) { console.log(res); if (res.data && res.data && res.data.rows.length > 0) { m_prize.initStore(res.data.rows); var dept = res.data.rows[0]; localStorage.shop_id = dept.deptCode; } else {
+SNIPPET veClass('fixed'); }); $('.btn-goOauth').click(function () { m_game.goOauth(); }); $('#task-order .btn-canget').click(function () { m_game.initGps(function () { $("#mask-choice-store").show().removeClass('can-appointment'); }, true); }); $('#task-score .btn-canget').click(function () { if (game_user_info && game_user_info.memberId) { globalLoading.show();
+SNIPPET ction () { if (userData.unionid) { getMyPrize(); } }); $('#mask-address .m-close').click(function () { $('#mask-address').hide(); }); var prizeLogID = 0; var choiceStoreID = 0; var hasStore = false; var storeList = []; var choiceStore = {}; var curPrizeLog = null; var pcaData = ['430000', '430100', '430101']; //填写收货地址等按钮更新 var bindAddressClick = function () {
+SNIPPET serData.unionid) { getMyPrize(); } }); $('#mask-address .m-close').click(function () { $('#mask-address').hide(); }); var prizeLogID = 0; var choiceStoreID = 0; var hasStore = false; var storeList = []; var choiceStore = {}; var curPrizeLog = null; var pcaData = ['430000', '430100', '430101']; //填写收货地址等按钮更新 var bindAddressClick = function () { $('#mask-my-pri
+SNIPPET getMyPrize(); } }); $('#mask-address .m-close').click(function () { $('#mask-address').hide(); }); var prizeLogID = 0; var choiceStoreID = 0; var hasStore = false; var storeList = []; var choiceStore = {}; var curPrizeLog = null; var pcaData = ['430000', '430100', '430101']; //填写收货地址等按钮更新 var bindAddressClick = function () { $('#mask-my-prize .scroll-y .coupon .b
+SNIPPET } }); $('#mask-address .m-close').click(function () { $('#mask-address').hide(); }); var prizeLogID = 0; var choiceStoreID = 0; var hasStore = false; var storeList = []; var choiceStore = {}; var curPrizeLog = null; var pcaData = ['430000', '430100', '430101']; //填写收货地址等按钮更新 var bindAddressClick = function () { $('#mask-my-prize .scroll-y .coupon .btn').click(function () {
+SNIPPET } else if (curPrizeLog.expressNo) { btnText = '快递详情'; } } switch (btnText) { case '去领奖': $('#mask-choice-store').addClass('can-appointment'); if (hasStore) { $('#mask-choice-store').show(); break; } if (localStorage.latitu
+SNIPPET btnText = '快递详情'; } } switch (btnText) { case '去领奖': $('#mask-choice-store').addClass('can-appointment'); if (hasStore) { $('#mask-choice-store').show(); break; } if (localStorage.latitude) { //有gps glo
+SNIPPET } switch (btnText) { case '去领奖': $('#mask-choice-store').addClass('can-appointment'); if (hasStore) { $('#mask-choice-store').show(); break; } if (localStorage.latitude) { //有gps globalLoading.show(); $.get(
+SNIPPET break; } if (localStorage.latitude) { //有gps globalLoading.show(); $.get(apiHost + '/out/2212sping/getlbxStoreList', { Latitude: localStorage.latitude, Longitude: localStorage.longitude }, function (res) { console.log(res)
+SNIPPET (res) { console.log(res); if (res.data && res.data.data) { // weui.alert('附近有门店'); $('#mask-choice-store').show(); initStore(res.data.data); } else { // weui.alert('附近没有门店');
+SNIPPET ); if (res.data && res.data.data) { // weui.alert('附近有门店'); $('#mask-choice-store').show(); initStore(res.data.data); } else { // weui.alert('附近没有门店'); $("#inp-name").val('');
+SNIPPET tId=").concat(localStorage.shop_id); console.log(curPrizeLog.cardInfo, path); } wx.miniProgram.navigateTo({ url: path }); } }); var initStore = function (list) { if (hasStore) { return; } hasStore = true; storeList = list; var htmlStr = ''; for (var i = 0; i < list.length && i < 5; i++) {
+SNIPPET console.log(curPrizeLog.cardInfo, path); } wx.miniProgram.navigateTo({ url: path }); } }); var initStore = function (list) { if (hasStore) { return; } hasStore = true; storeList = list; var htmlStr = ''; for (var i = 0; i < list.length && i < 5; i++) { var element = list[i]; var t
+SNIPPET ); } wx.miniProgram.navigateTo({ url: path }); } }); var initStore = function (list) { if (hasStore) { return; } hasStore = true; storeList = list; var htmlStr = ''; for (var i = 0; i < list.length && i < 5; i++) { var element = list[i]; var time = ''; if (element.dateYyKs && elem
+SNIPPET wx.miniProgram.navigateTo({ url: path }); } }); var initStore = function (list) { if (hasStore) { return; } hasStore = true; storeList = list; var htmlStr = ''; for (var i = 0; i < list.length && i < 5; i++) { var element = list[i]; var time = ''; if (element.dateYyKs && element.dateYyJs) {
+SNIPPET m/image/k23.png\" data-shop_index=\"").concat(i, "\" data-shop_id=\"").concat(element.shop_id, "\" class=\"btn btn-appointment\" alt=\"\" srcset=\"\">\n </div>"); } $('#mask-choice-store .scroll-y').html(htmlStr); }; $('#mask-choice-store .scroll-y').click(function (e) { if (e.target.className.indexOf('btn-appointment') >= 0) { //是按钮 var index = e.target.getAttrib
+SNIPPET op_id=\"").concat(element.shop_id, "\" class=\"btn btn-appointment\" alt=\"\" srcset=\"\">\n </div>"); } $('#mask-choice-store .scroll-y').html(htmlStr); }; $('#mask-choice-store .scroll-y').click(function (e) { if (e.target.className.indexOf('btn-appointment') >= 0) { //是按钮 var index = e.target.getAttribute('data-shop_index'); choiceStoreID = e.target
+SNIPPET #mask-choice-store .scroll-y').click(function (e) { if (e.target.className.indexOf('btn-appointment') >= 0) { //是按钮 var index = e.target.getAttribute('data-shop_index'); choiceStoreID = e.target.getAttribute('data-shop_id'); choiceStore = storeList[parseInt(index)]; $("#appointment-address").val(choiceStore.deptName); $('#mask-appointment').show(); }
+SNIPPET arget.className.indexOf('btn-appointment') >= 0) { //是按钮 var index = e.target.getAttribute('data-shop_index'); choiceStoreID = e.target.getAttribute('data-shop_id'); choiceStore = storeList[parseInt(index)]; $("#appointment-address").val(choiceStore.deptName); $('#mask-appointment').show(); } }); $('#mask-appointment .date-picker').click(function () {
+SNIPPET assName.indexOf('btn-appointment') >= 0) { //是按钮 var index = e.target.getAttribute('data-shop_index'); choiceStoreID = e.target.getAttribute('data-shop_id'); choiceStore = storeList[parseInt(index)]; $("#appointment-address").val(choiceStore.deptName); $('#mask-appointment').show(); } }); $('#mask-appointment .date-picker').click(function () { //
+SNIPPET index = e.target.getAttribute('data-shop_index'); choiceStoreID = e.target.getAttribute('data-shop_id'); choiceStore = storeList[parseInt(index)]; $("#appointment-address").val(choiceStore.deptName); $('#mask-appointment').show(); } }); $('#mask-appointment .date-picker').click(function () { // 级联picker weui.datePicker({ start: new Date(),
+SNIPPET $.post("".concat(apiHost, "/api/client/spring2026/prize/appointment"), { prizeLogID: prizeLogID, name: name, phone: phone, province: date, // city: choiceStoreID, expressNo: choiceStoreID, expressName: '门店自提', address: choiceStore.deptName, }, function (res) { globalLoading.hide(); if (res.code == 1) {
+SNIPPET client/spring2026/prize/appointment"), { prizeLogID: prizeLogID, name: name, phone: phone, province: date, // city: choiceStoreID, expressNo: choiceStoreID, expressName: '门店自提', address: choiceStore.deptName, }, function (res) { globalLoading.hide(); if (res.code == 1) { weui.alert('预约成功');
+SNIPPET eLogID, name: name, phone: phone, province: date, // city: choiceStoreID, expressNo: choiceStoreID, expressName: '门店自提', address: choiceStore.deptName, }, function (res) { globalLoading.hide(); if (res.code == 1) { weui.alert('预约成功'); needMyPrize = true; getMyPrize();
+SNIPPET de(); if (res.code == 1) { weui.alert('预约成功'); needMyPrize = true; getMyPrize(); $("#mask-appointment").hide(); $("#mask-choice-store").hide(); } else { weui.alert(res.message); } }); }); $('#mask-address .pca-picker').click(function () { // 级联picker weui.picker(cityDa
+SNIPPET np-address").val(curPrizeLog_1.address); console.log(rankPrizeLog); } prizeLogID = 0; $("#mask-address").show(); }); }, initStore: initStore, getZoumadeng: getZoumadeng, refreshMyPrize: function () { needMyPrize = true; // getMyPrize(); }, }; })(); //品牌与埋点 var m_brand = (function () { $('#pag
+SNIPPET ).val(curPrizeLog_1.address); console.log(rankPrizeLog); } prizeLogID = 0; $("#mask-address").show(); }); }, initStore: initStore, getZoumadeng: getZoumadeng, refreshMyPrize: function () { needMyPrize = true; // getMyPrize(); }, }; })(); //品牌与埋点 var m_brand = (function () { $('#page-start .sh
+SNIPPET gameCode, openID: userData.openID, unionID: userData.unionid, name: localStorage.nickName || '', avatar: localStorage.headimgurl || '', // deptId: localStorage.shop_id, }, function (res) { localStorage.game_user_info = JSON.stringify(res.data); window.game_user_info = res.data; // // limitPhone.length > 0 && checkPhone();
+SNIPPET const totalNum = res.data.realNumber + res.data.incrementNumber + res.data.virtualNumber; // console.log(totalNum) // }) }; var geolocation = null; var geocoder = null; var nearestShopID = null; var initGps = function (callback, getNearestShopID) { if (getNearestShopID === void 0) { getNearestShopID = false; } // callback && callback(1384); // return '直接取消附近门店'; if
+
+https://lbx-prod-yx-1302700033.cos.ap-guangzhou.myqcloud.com/01lbxnhj/js/full_screen.v.1.0.js
+SNIPPET ne|iPod|iPad/:/iPhone|iPod/).test(navigator.userAgent))return}!e.paused&&e.webkitDisplayingFullscreen&&e.pause(),l(e,!e.muted),f(e),e.classList.add("IIV"),e.muted&&e.autoplay&&e.play(),/iPhone|iPod|iPad/.test(navigator.platform)||console.warn("iphone-inline-video is not guaranteed to work in emulated environments")}}var m,y="object"==typeof document&&"object-fit"in document.head.style&&!matchMedia("(-webkit-video-playable-inline)").matches
+SNIPPET ebkitDisplayingFullscreen&&e.pause(),l(e,!e.muted),f(e),e.classList.add("IIV"),e.muted&&e.autoplay&&e.play(),/iPhone|iPod|iPad/.test(navigator.platform)||console.warn("iphone-inline-video is not guaranteed to work in emulated environments")}}var m,y="object"==typeof document&&"object-fit"in document.head.style&&!matchMedia("(-webkit-video-playable-inline)").matches,g="bfred-it:iphone-inline-video",h="bfred-it:iphone-inline-video:event",b="
+SNIPPET tion(e,i){return e*=t.DEG_TO_RAD,i*=t.DEG_TO_RAD,this.append(Math.cos(i),Math.sin(i),-Math.sin(e),Math.cos(e),0,0),this}},{key:"scale",value:function(t,e){return this.a*=t,this.b*=t,this.c*=e,this.d*=e,this}},{key:"translate",value:function(t,e){return this.tx+=this.a*t+this.c*e,this.ty+=this.b*t+this.d*e,this}},{key:"identity",value:function(){return this.a=this.d=1,this.b=this.c=this.tx=this.ty=0,this}},{key:"invert",value:function(){var
+
+https://lbx-prod-yx-1302700033.cos.ap-guangzhou.myqcloud.com/01lbxnhj/js/js-sdk_mta.v1.9.js
+CANDIDATE );
+    }
+  }
+
+  window.setShare = function () {
+    if (!window.shareData) {
+      window.shareData = {};
+    }
+    if (!shareData.title) {
+      shareData.title = document.title;
+    }
+    if (!shareData.timeline) {
+      shareData.timeline = shareData.title;
+    }
+    if (!shareData.link) {
+      shareData.link = window.location.href;
+    }
+
+    if (!shareData.timelinelink) {
+      shareData.timelinelink = shareData.link;
+    }
+    if (!shareData.desc) {
+      shareData.desc = shareData.title;
+    }
+    if (!shareData.imgUrl) {
+      shareData.imgUrl =
+CANDIDATE , function () {
+  var isDev = location.host.indexOf(
+CANDIDATE ;
+    // if (location.host.indexOf(
+CANDIDATE getLocation
+CANDIDATE https:// }    // if (location.host.indexOf(
+CANDIDATE https:// }    ajaxPost(apiUrl, {      url: encodeURIComponent(location.href.split(
+CANDIDATE openLocation
+SNIPPET document.addEventListener("DOMContentLoaded", function () { var isDev = location.host.indexOf('localhost') >= 0; (function () { if (!isDev) { //百度埋点 var _hmt = _hmt || []; (function () { var hm = document.createElement("script"); hm.src = "https://hm.baidu.c
+SNIPPET ; } if (!shareData.title) { shareData.title = document.title; } if (!shareData.timeline) { shareData.timeline = shareData.title; } if (!shareData.link) { shareData.link = window.location.href; } if (!shareData.timelinelink) { shareData.timelinelink = shareData.link; } if (!shareData.desc) { shareData.desc = shareData.title; } if (!shareData.imgUrl) { shareData.
+SNIPPET areData.wasShare(); } }) } // window.onload = function () { console.log('window load'); if (!isDev && plat == 'weixin') { // if (1) { var apiUrl = 'https://muyang.hn.cn/wechat/jssdk'; // if (location.host.indexOf('lbxcn.com') >= 0) { // apiUrl = 'https://yx.lbxcn.com/out/2207lbx21/jssdk' // } // if (location.host.indexOf('localhost') >= 0) { // apiUrl = 'http://localhost:3007/out/2207lbx21/jssdk'
+SNIPPET t == 'weixin') { // if (1) { var apiUrl = 'https://muyang.hn.cn/wechat/jssdk'; // if (location.host.indexOf('lbxcn.com') >= 0) { // apiUrl = 'https://yx.lbxcn.com/out/2207lbx21/jssdk' // } // if (location.host.indexOf('localhost') >= 0) { // apiUrl = 'http://localhost:3007/out/2207lbx21/jssdk' // } ajaxPost(apiUrl, { url: encodeURIComponent(location.href.split('#')[0]) }, function (res) { v
+SNIPPET .lbxcn.com/out/2207lbx21/jssdk' // } // if (location.host.indexOf('localhost') >= 0) { // apiUrl = 'http://localhost:3007/out/2207lbx21/jssdk' // } ajaxPost(apiUrl, { url: encodeURIComponent(location.href.split('#')[0]) }, function (res) { var data = JSON.parse(res); // console.log(data); wx.config({ debug: localStorage.debug || false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端
+SNIPPET 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 'translateVoice', 'getLocation', 'openLocation', 'previewImage' ], openTagList: ['wx-open-launch-app', 'wx-open-launch-weapp', 'wx-open-subscribe'] }); wx.ready(function () { wx.hideMenuItems({
+SNIPPET , 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 'translateVoice', 'getLocation', 'openLocation', 'previewImage' ], openTagList: ['wx-open-launch-app', 'wx-open-launch-weapp', 'wx-open-subscribe'] }); wx.ready(function () { wx.hideMenuItems({ menuList: [
+SNIPPET t', '94b19b09d2877f5a', 'abf14fbab95812ce', 'wx48fcd3afdf246f81', { // host: 'collector-prod.lbxcn.com', // version: '1.0' // }); })(); (typeof (wxInit) != "undefined") && wxInit(); return; var plat = 'other'; var u = navigator.userAgent; if (u.toLowerCase().match(/MicroMessenger/i) == 'micromessenger') { plat = 'weixin'; } function ajaxPost(url, postData, callback) { if (url) { postData = pos
+SNIPPET ersion: '1.0' // }); })(); (typeof (wxInit) != "undefined") && wxInit(); return; var plat = 'other'; var u = navigator.userAgent; if (u.toLowerCase().match(/MicroMessenger/i) == 'micromessenger') { plat = 'weixin'; } function ajaxPost(url, postData, callback) { if (url) { postData = postData || {}; callback = callback || function () { }; postData = (function (obj) { // 转成post需要的字符串.
+SNIPPET }, trigger: function () { console.log('分享到朋友圈'); shareData.wasShare && shareData.wasShare(); } }) } // window.onload = function () { console.log('window load'); if (!isDev && plat == 'weixin') { // if (1) { var apiUrl = 'https://muyang.hn.cn/wechat/jssdk'; // if (location.host.indexOf('lbxcn.com') >= 0) { // apiUrl = 'https://yx.lbxcn.com/out/2207lbx21/jssdk' // } // if (l
+SNIPPET 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 'translateVoice', 'getLocation', 'openLocation', 'previewImage' ], openTagList: ['wx-open-launch-app', 'wx-open-launch-weapp', 'wx-open-subscribe'] }); wx.ready(function (
+SNIPPET console.log('分享到朋友圈'); shareData.wasShare && shareData.wasShare(); } }) } // window.onload = function () { console.log('window load'); if (!isDev && plat == 'weixin') { // if (1) { var apiUrl = 'https://muyang.hn.cn/wechat/jssdk'; // if (location.host.indexOf('lbxcn.com') >= 0) { // apiUrl = 'https://yx.lbxcn.com/out/2207lbx21/jssdk' // } // if (location.host.indexOf('localhost') >= 0) {
+SNIPPET onload = function () { console.log('window load'); if (!isDev && plat == 'weixin') { // if (1) { var apiUrl = 'https://muyang.hn.cn/wechat/jssdk'; // if (location.host.indexOf('lbxcn.com') >= 0) { // apiUrl = 'https://yx.lbxcn.com/out/2207lbx21/jssdk' // } // if (location.host.indexOf('localhost') >= 0) { // apiUrl = 'http://localhost:3007/out/2207lbx21/jssdk' // } ajaxPost(apiUrl, { url: en
+SNIPPET ps://muyang.hn.cn/wechat/jssdk'; // if (location.host.indexOf('lbxcn.com') >= 0) { // apiUrl = 'https://yx.lbxcn.com/out/2207lbx21/jssdk' // } // if (location.host.indexOf('localhost') >= 0) { // apiUrl = 'http://localhost:3007/out/2207lbx21/jssdk' // } ajaxPost(apiUrl, { url: encodeURIComponent(location.href.split('#')[0]) }, function (res) { var data = JSON.parse(res); // console.log
+SNIPPET ') >= 0) { // apiUrl = 'https://yx.lbxcn.com/out/2207lbx21/jssdk' // } // if (location.host.indexOf('localhost') >= 0) { // apiUrl = 'http://localhost:3007/out/2207lbx21/jssdk' // } ajaxPost(apiUrl, { url: encodeURIComponent(location.href.split('#')[0]) }, function (res) { var data = JSON.parse(res); // console.log(data); wx.config({ debug: localStorage.debug || false, // 开启调
+SNIPPET url: encodeURIComponent(location.href.split('#')[0]) }, function (res) { var data = JSON.parse(res); // console.log(data); wx.config({ debug: localStorage.debug || false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。 appId: data.appId, // 必填，公众号的唯一标识 timestamp: data.timestamp, // 必填，生成签名的时间戳 nonceStr: data.nonceStr, // 必填，生成签名的随机串 signature:
+SNIPPET 会通过log打出，仅在pc端时才会打印。 appId: data.appId, // 必填，公众号的唯一标识 timestamp: data.timestamp, // 必填，生成签名的时间戳 nonceStr: data.nonceStr, // 必填，生成签名的随机串 signature: data.signature, // 必填，签名，见附录1 jsApiList: [ 'checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'updateAppMessageShareData', 'updateTimelineShareData', 'hideMenuItems', 'startR
+SNIPPET appId: data.appId, // 必填，公众号的唯一标识 timestamp: data.timestamp, // 必填，生成签名的时间戳 nonceStr: data.nonceStr, // 必填，生成签名的随机串 signature: data.signature, // 必填，签名，见附录1 jsApiList: [ 'checkJsApi', 'onMenuShareTimeline', 'onMenuShareAppMessage', 'updateAppMessageShareData', 'updateTimelineShareData', 'hideMenuItems', 'startRecord', 'stopRecord
