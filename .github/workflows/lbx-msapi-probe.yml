@@ -1,0 +1,26 @@
+name: LBX Direct Store API Probe
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - scripts/lbx_msapi_probe.py
+      - .github/workflows/lbx-msapi-probe.yml
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -q requests
+      - run: python scripts/lbx_msapi_probe.py | tee lbx_msapi_probe.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lbx-msapi-probe
+          path: lbx_msapi_probe.txt
+          retention-days: 1
