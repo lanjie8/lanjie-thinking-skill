@@ -1,0 +1,288 @@
+{
+  "crawl_started_epoch": 1788774928.9183164,
+  "crawl_finished_epoch": 1788774985.702039,
+  "elapsed_seconds": 56.784,
+  "robots": {
+    "url": "https://poi.mapbar.com/robots.txt",
+    "fetched": true,
+    "category_allowed": null,
+    "detail_allowed": null,
+    "status": 404,
+    "text": "<html><head><title>Apache Tomcat/7.0.42 - Error report</title><style><!--H1 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:22px;} H2 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16px;} H3 {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size:14px;} BODY {font-family:Tahoma,Arial,sans-serif;color:black;background-color:white;} B {font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525D76;} P {font-family:Tahoma,Arial,sans-serif;background:white;color:black;font-size:12px;}A {color : black;}A.name {color : black;}HR {color : #525D76;}--></style> </head><body><h1>HTTP Status 404 - /robots.txt</h1><HR size=\"1\" noshade=\"noshade\"><p><b>type</b> Status report</p><p><b>message</b> <u>/robots.txt</u></p><p><b>description</b> <u>The requested resource is not available.</u></p><HR size=\"1\" noshade=\"noshade\"><h3>Apache Tomcat/7.0.42</h3></body></html>",
+    "error": "HTTPError('404 Client Error: Not Found for url: https://poi.mapbar.com/robots.txt')"
+  },
+  "city_count": 369,
+  "city_success_count": 9,
+  "city_error_count": 360,
+  "total_directory_poi_links": 4267,
+  "strict_candidate_count": 14,
+  "broad_candidate_count": 48,
+  "strict_detail_count": 14,
+  "strict_detail_success_count": 0,
+  "strict_detail_error_count": 14,
+  "exact_dedup_count": 14,
+  "phone_present_count": 0,
+  "address_present_count": 0,
+  "coordinate_present_count": 0,
+  "admin_division_report": {
+    "attempted": false,
+    "success": false,
+    "error": "ModuleNotFoundError(\"No module named 'pkg_resources'\")"
+  },
+  "duplicate_report": {
+    "duplicate_groups": 0,
+    "duplicate_rows": 0
+  },
+  "top_cities": [
+    {
+      "city": "安庆市",
+      "strict": 4,
+      "broad": 18
+    },
+    {
+      "city": "鞍山市",
+      "strict": 4,
+      "broad": 12
+    },
+    {
+      "city": "阿克苏地区",
+      "strict": 3,
+      "broad": 4
+    },
+    {
+      "city": "安康市",
+      "strict": 2,
+      "broad": 9
+    },
+    {
+      "city": "阿拉善盟",
+      "strict": 1,
+      "broad": 1
+    },
+    {
+      "city": "七台河市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "万宁市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "三亚市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "三明市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "三沙市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "三门峡市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "上海市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "上饶市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "东方市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "东莞市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "东营市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "中卫市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "中山市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "临夏回族自治州",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "临汾市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "临沂市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "临沧市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "临高县",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "丹东市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "丽水市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "丽江市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "乌兰察布市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "乌海市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "乌鲁木齐市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "乐东黎族自治县",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "乐山市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "九江市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "云浮市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "五家渠市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "五指山市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "亳州市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "仙桃市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "伊春市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "伊犁哈萨克自治州",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "佛山市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "佳木斯市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "保亭黎族苗族自治县",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "保定市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "保山市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "信阳市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "儋州市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "克孜勒苏柯尔克孜自治州",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "克拉玛依市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "六安市",
+      "strict": 0,
+      "broad": 0
+    },
+    {
+      "city": "六盘水市",
+      "strict": 0,
+      "broad": 0
+    }
+  ]
+}
