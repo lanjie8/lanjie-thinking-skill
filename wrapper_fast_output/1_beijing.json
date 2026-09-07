@@ -1,0 +1,47 @@
+{
+  "code": 1,
+  "message": "success",
+  "data": {
+    "code": 0,
+    "msg": "操作成功",
+    "data": [
+      {
+        "third_org_name": "",
+        "deptName": "北京源通百姓平安大药房有限公司第五十一分店",
+        "latGd": "39.75331100000000000000",
+        "distance": "18.1",
+        "city": "",
+        "lngGd": "116.48558600000000000000",
+        "winter_start_hours": "",
+        "contactPerson": "雷海燕",
+        "shopLabels": "",
+        "distanceGd": "18.1",
+        "shipStartTime": "",
+        "sap_id": "M856",
+        "pdeptId": "20184",
+        "third_org_code": "",
+        "org_name": "",
+        "winter_closing_hours": "",
+        "lat": "39.75331100000000000000",
+        "latBd": "",
+        "companyCode": "9D30",
+        "summer_closing_hours": "",
+        "lngBd": "",
+        "lng": "116.48558600000000000000",
+        "is_m_shop": "0",
+        "distanceBd": "99999.0",
+        "is_close": "0",
+        "deptType": "",
+        "summer_start_hours": "",
+        "shop_id": "20201",
+        "parentName": "老百姓源通医药（北京）有限公司",
+        "phone": "18533691740",
+        "sales_scan_name": "",
+        "deptAddr": "北京市大兴区四海路5号院17号楼四海路5号院17号楼3单元",
+        "org_code": "",
+        "sales_scan_id": "",
+        "shipEndTime": ""
+      }
+    ]
+  }
+}
