@@ -1,0 +1,24 @@
+name: LBX City Seed Parse
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths: [scripts/lbx_city_seed_parse.py, .github/workflows/lbx-city-seed-parse.yml]
+permissions:
+  contents: write
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: tmp/lbx-poi-crawl-20260907}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python scripts/lbx_city_seed_parse.py
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add city_seed_output
+          git commit -m "Add LBX official-market coordinate seeds [skip ci]" || exit 0
+          git pull --rebase origin tmp/lbx-poi-crawl-20260907
+          git push origin HEAD:tmp/lbx-poi-crawl-20260907
