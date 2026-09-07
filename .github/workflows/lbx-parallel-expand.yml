@@ -1,0 +1,92 @@
+name: LBX Parallel Expand and Merge
+
+on:
+  push:
+    branches: [tmp/lbx-poi-crawl-20260907]
+    paths:
+      - .github/workflows/lbx-parallel-expand.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  expand:
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [0, 1, 2, 3]
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check -q requests
+      - name: Download first-pass artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lbx-fast-national-output
+          path: base_output
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: lanjie8/lanjie-thinking-skill
+          run-id: 34109189392
+      - name: Expand partition ${{ matrix.part }}
+        run: >-
+          python scripts/lbx_expand_partition.py
+          --base-dir base_output
+          --output part_output
+          --part ${{ matrix.part }}
+          --parts 4
+          --max-seconds 570
+          --rps 11
+          --workers 24
+      - name: Upload partition
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-expand-part-${{ matrix.part }}
+          path: part_output/
+          retention-days: 2
+          if-no-files-found: warn
+          compression-level: 6
+
+  merge:
+    needs: expand
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download first-pass artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: lbx-fast-national-output
+          path: base_output
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: lanjie8/lanjie-thinking-skill
+          run-id: 34109189392
+      - name: Download partition artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: lbx-expand-part-*
+          path: expand_parts
+          merge-multiple: false
+      - name: Merge and deduplicate
+        run: python scripts/lbx_merge_expanded.py --base-dir base_output --parts-dir expand_parts --output expanded_union
+      - name: Upload expanded union
+        uses: actions/upload-artifact@v4
+        with:
+          name: lbx-expanded-union
+          path: expanded_union/
+          retention-days: 3
+          compression-level: 6
