@@ -1,0 +1,28 @@
+name: LBX Export Candidate Extract V1
+
+on:
+  push:
+    branches:
+      - tmp/lbx-poi-crawl-20260907
+    paths:
+      - .github/workflows/lbx-export-candidate-extract-v1.yml
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp/lbx-poi-crawl-20260907
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lbx-candidate-extract-output-v1
+          path: |
+            candidate_extract_output/**
+            city_seed_output/official_market_seeds.csv
+            city_seed_output/summary.json
+          if-no-files-found: error
+          retention-days: 1
